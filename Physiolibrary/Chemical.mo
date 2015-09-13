@@ -1,5 +1,5 @@
 within Physiolibrary;
-package Chemical "Domain with Molar Concentration and Molar Flow"
+package Chemical "Please use 'Chemical' library instead!"
  extends Modelica.Icons.Package;
   package Examples
     "Examples that demonstrate usage of the Pressure flow components"
@@ -23,13 +23,11 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
       connect(B.q_out, reaction.products[1]) annotation (Line(
           points={{52,2},{10,2}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(A.q_out, reaction.substrates[1]) annotation (Line(
           points={{-46,2},{-10,2}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       annotation ( Documentation(revisions="<html>
 <p><i>2013</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
@@ -53,18 +51,15 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
       connect(A.q_out, reaction.substrates[1]) annotation (Line(
           points={{-30,2},{-6,2}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(reaction.products[1], B.q_out) annotation (Line(
           points={{14,1.5},{24,1.5},{24,2},{46,2}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(reaction.products[2], C.q_out) annotation (Line(
           points={{14,2.5},{24,2.5},{24,26},{46,26}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       annotation ( Documentation(revisions="<html>
 <p><i>2013</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
@@ -95,23 +90,19 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
       connect(B.q_out, reaction.products[1]) annotation (Line(
           points={{54,2},{10,2}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(A.q_out, reaction.substrates[1]) annotation (Line(
           points={{-46,2},{-10,2}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(reaction.heatPort, heatFlowSensor.port_a) annotation (Line(
           points={{0,2},{0,-48},{12,-48}},
           color={191,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(unlimitedHeat.port, heatFlowSensor.port_b) annotation (Line(
           points={{54,-48},{32,-48}},
           color={191,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       annotation ( Documentation(revisions="<html>
 <p><i>2013</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
@@ -125,11 +116,9 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
       extends SteadyStates.Interfaces.SteadyStateSystem(
                                                  Simulation=Types.SimulationType.SteadyState);
 
-      Chemical.Sources.UnlimitedSolutionStorage
-                       P(Conc=0)
+      Physiolibrary.Chemical.Sources.UnlimitedSolutionStorage P(Conc=0)
         annotation (Placement(transformation(extent={{92,-12},{72,8}})));
-      Chemical.Sources.UnlimitedSolutionStorage
-                       S(Conc=0.1)
+      Physiolibrary.Chemical.Sources.UnlimitedSolutionStorage S(Conc=0.1)
         annotation (Placement(transformation(extent={{-94,-12},{-74,8}})));
 
          parameter Types.AmountOfSubstance tE=0.01 "total amount of enzyme";
@@ -138,15 +127,14 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
          parameter Types.Concentration Km = 0.1
         "Michaelis constant = substrate concentration at rate of half Vmax";
 
-          Chemical.Components.Substance
-                              ES(                       solute_start=0,
-            Simulation=Types.SimulationType.SteadyState)
-            annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-          Chemical.Components.Substance
-                              E(                       solute_start=tE,
-            isDependent=true,
-            Simulation=Types.SimulationType.SteadyState)
-            annotation (Placement(transformation(extent={{-10,38},{10,58}})));
+      Physiolibrary.Chemical.Components.Substance ES(solute_start=0, Simulation=
+           Types.SimulationType.SteadyState)
+        annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+      Physiolibrary.Chemical.Components.Substance E(
+        solute_start=tE,
+        isDependent=true,
+        Simulation=Types.SimulationType.SteadyState)
+        annotation (Placement(transformation(extent={{-10,38},{10,58}})));
           Components.ChemicalReaction
                            chemicalReaction(nS=2,
             K=2/Km,
@@ -167,33 +155,27 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
       connect(S.q_out, chemicalReaction.substrates[1]) annotation (Line(
           points={{-74,-2},{-60,-2},{-60,-0.5},{-42,-0.5}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(chemicalReaction1.products[1], P.q_out) annotation (Line(
           points={{44,-0.5},{54,-0.5},{54,-2},{72,-2}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(E.q_out, chemicalReaction.substrates[2]) annotation (Line(
           points={{0,48},{-50,48},{-50,0.5},{-42,0.5}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(E.q_out, chemicalReaction1.products[2]) annotation (Line(
           points={{0,48},{50,48},{50,0.5},{44,0.5}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(chemicalReaction.products[1], ES.q_out) annotation (Line(
           points={{-22,0},{0,0}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(ES.q_out, chemicalReaction1.substrates[1]) annotation (Line(
           points={{0,0},{24,0}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
           annotation ( Documentation(revisions="<html>
 <p><i>2013</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
@@ -368,325 +350,258 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         connect(quaternaryForm.products[1],T0. q_out) annotation (Line(
             points={{24,88},{42,88}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyR1.substrates[1],R1. q_out) annotation (Line(
             points={{-10,54},{-10,46}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(R1.q_out,oxyR2. products[1]) annotation (Line(
             points={{-10,46},{-10,32},{-10.5,32}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyR2.substrates[1],R2. q_out) annotation (Line(
             points={{-10,12},{-10,0}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyR3.substrates[1],R3. q_out) annotation (Line(
             points={{-10,-34},{-10,-44}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyR3.products[1],R2. q_out) annotation (Line(
             points={{-10.5,-14},{-10.5,-7},{-10,-7},{-10,0}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(R3.q_out,oxyR4. products[1]) annotation (Line(
             points={{-10,-44},{-10,-56},{-10.5,-56}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyR4.substrates[1],R4. q_out) annotation (Line(
             points={{-10,-76},{-10,-82}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyT1.products[1],T0. q_out) annotation (Line(
             points={{44.5,74},{44.5,88},{42,88}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyT1.substrates[1],T1. q_out) annotation (Line(
             points={{44,54},{44,46}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(T1.q_out,oxyT2. products[1]) annotation (Line(
             points={{44,46},{44,32},{44.5,32}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyT2.substrates[1],T2. q_out) annotation (Line(
             points={{44,12},{44,0}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(T2.q_out,oxyT3. products[1]) annotation (Line(
             points={{44,0},{44,-14},{44.5,-14}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyT3.substrates[1],T3. q_out) annotation (Line(
             points={{44,-34},{44,-44}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(T3.q_out,oxyT4. products[1]) annotation (Line(
             points={{44,-44},{44,-56},{44.5,-56}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyT4.substrates[1],T4. q_out) annotation (Line(
             points={{44,-76},{44,-82}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(R0.q_out,quaternaryForm. substrates[1]) annotation (Line(
             points={{-10,88},{4,88}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(R0.q_out,oxyR1. products[1]) annotation (Line(
             points={{-10,88},{-10,74},{-10.5,74}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(R1.q_out,quaternaryForm1. substrates[1]) annotation (Line(
             points={{-10,46},{8,46}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(quaternaryForm1.products[1],T1. q_out) annotation (Line(
             points={{28,46},{44,46}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(R2.q_out,quaternaryForm2. substrates[1]) annotation (Line(
             points={{-10,0},{8,0}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(quaternaryForm2.products[1],T2. q_out) annotation (Line(
             points={{28,0},{44,0}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(R3.q_out,quaternaryForm3. substrates[1]) annotation (Line(
             points={{-10,-44},{8,-44}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(quaternaryForm3.products[1],T3. q_out) annotation (Line(
             points={{28,-44},{44,-44}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(R4.q_out,quaternaryForm4. substrates[1]) annotation (Line(
             points={{-10,-82},{10,-82}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(quaternaryForm4.products[1],T4. q_out) annotation (Line(
             points={{30,-82},{44,-82}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(R4.solute,hemoglobinConservationLaw. fragment[1])        annotation (
             Line(
             points={{-4,-92},{-4,-98},{64,-98},{64,2.2},{72,2.2}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T4.solute,hemoglobinConservationLaw. fragment[2])        annotation (
             Line(
             points={{50,-92},{50,-98},{64,-98},{64,2.6},{72,2.6}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R3.solute,hemoglobinConservationLaw. fragment[3])        annotation (
             Line(
             points={{-4,-54},{64,-54},{64,3},{72,3}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T3.solute,hemoglobinConservationLaw. fragment[4])        annotation (
             Line(
             points={{50,-54},{64,-54},{64,3.4},{72,3.4}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R2.solute,hemoglobinConservationLaw. fragment[5])        annotation (
             Line(
             points={{-4,-10},{64,-10},{64,3.8},{72,3.8}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T2.solute,hemoglobinConservationLaw. fragment[6])        annotation (
             Line(
             points={{50,-10},{64,-10},{64,4.2},{72,4.2}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R1.solute,hemoglobinConservationLaw. fragment[7])        annotation (
             Line(
             points={{-4,36},{64,36},{64,4.6},{72,4.6}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T1.solute,hemoglobinConservationLaw. fragment[8])        annotation (
             Line(
             points={{50,36},{64,36},{64,5},{72,5}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R0.solute,hemoglobinConservationLaw. fragment[9])        annotation (
             Line(
             points={{-4,78},{64,78},{64,5.4},{72,5.4}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T0.solute,hemoglobinConservationLaw. fragment[10])        annotation (
            Line(
             points={{48,78},{64,78},{64,5.8},{72,5.8}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R1.solute,oxygen_bound. u[1]) annotation (Line(
             points={{-4,36},{64,36},{64,-51.875},{71,-51.875}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T1.solute,oxygen_bound. u[2]) annotation (Line(
             points={{50,36},{64,36},{64,-51.625},{71,-51.625}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R2.solute,oxygen_bound. u[3]) annotation (Line(
             points={{-4,-10},{64,-10},{64,-51.375},{71,-51.375}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T2.solute,oxygen_bound. u[4]) annotation (Line(
             points={{50,-10},{64,-10},{64,-51.125},{71,-51.125}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R3.solute,oxygen_bound. u[5]) annotation (Line(
             points={{-4,-54},{64,-54},{64,-50.875},{71,-50.875}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T3.solute,oxygen_bound. u[6]) annotation (Line(
             points={{50,-54},{64,-54},{64,-50.625},{71,-50.625}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R4.solute,oxygen_bound. u[7]) annotation (Line(
             points={{-4,-92},{-4,-98},{64,-98},{64,-50.375},{71,-50.375}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T4.solute,oxygen_bound. u[8]) annotation (Line(
             points={{50,-92},{50,-98},{64,-98},{64,-50.125},{71,-50.125}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(oxygen_bound.y,sO2_. u1) annotation (Line(
             points={{82.5,-51},{84,-51},{84,-52},{85,-52}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(sO2_.u2,tHb. y) annotation (Line(
             points={{85,-58},{84,-58},{84,-65},{82.5,-65}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R0.solute,tHb. u[1]) annotation (Line(
             points={{-4,78},{64,78},{64,-65.9},{71,-65.9}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T0.solute,tHb. u[2]) annotation (Line(
             points={{48,78},{64,78},{64,-65.7},{71,-65.7}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R1.solute,tHb. u[3]) annotation (Line(
             points={{-4,36},{64,36},{64,-65.5},{71,-65.5}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T1.solute,tHb. u[4]) annotation (Line(
             points={{50,36},{64,36},{64,-65.3},{71,-65.3}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R2.solute,tHb. u[5]) annotation (Line(
             points={{-4,-10},{64,-10},{64,-65.1},{71,-65.1}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T2.solute,tHb. u[6]) annotation (Line(
             points={{50,-10},{64,-10},{64,-64.9},{71,-64.9}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R3.solute,tHb. u[7]) annotation (Line(
             points={{-4,-54},{64,-54},{64,-64.7},{71,-64.7}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T3.solute,tHb. u[8]) annotation (Line(
             points={{50,-54},{64,-54},{64,-64.5},{71,-64.5}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(R4.solute,tHb. u[9]) annotation (Line(
             points={{-4,-92},{-4,-98},{64,-98},{64,-64.3},{71,-64.3}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T4.solute,tHb. u[10]) annotation (Line(
             points={{50,-92},{50,-98},{64,-98},{64,-64.1},{71,-64.1}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(oxyR1.products[2],oxygen_unbound. q_out)
                                             annotation (Line(
             points={{-9.5,74},{-46,74},{-46,-34}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyR2.products[2],oxygen_unbound. q_out)
                                             annotation (Line(
             points={{-9.5,32},{-46,32},{-46,-34}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyR3.products[2],oxygen_unbound. q_out)
                                             annotation (Line(
             points={{-9.5,-14},{-46,-14},{-46,-34}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxyR4.products[2],oxygen_unbound. q_out)
                                             annotation (Line(
             points={{-9.5,-56},{-46,-56},{-46,-34}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygen_unbound.q_out, oxyT1.products[2])
                                             annotation (Line(
             points={{-46,-34},{-46,74},{43.5,74}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygen_unbound.q_out, oxyT2.products[2])
                                             annotation (Line(
             points={{-46,-34},{-46,32},{43.5,32}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygen_unbound.q_out, oxyT3.products[2])
                                             annotation (Line(
             points={{-46,-34},{-46,-14},{43.5,-14}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygen_unbound.q_out, oxyT4.products[2])
                                             annotation (Line(
             points={{-46,-34},{-46,-56},{43.5,-56}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygen_unbound.q_out,gasSolubility. q_in) annotation (Line(
             points={{-46,-34},{-66,-34},{-66,-12}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(O2_in_air.q_out,gasSolubility. q_out) annotation (Line(
             points={{-66,14},{-66,6}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(clock.y,O2_in_air. partialPressure) annotation (Line(
             points={{-73,54},{-66,54},{-66,34}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         annotation (          experiment(
             StopTime=15000,
             Tolerance=1e-014,
@@ -733,7 +648,8 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 
         parameter Types.AmountOfSubstance totalAmountOfHemoglobin=1;
 
-        Chemical.Components.ChemicalReaction      quaternaryForm(K=L,
+        Components.ChemicalReaction quaternaryForm(
+          K=L,
           TK=310.15,
           dH=dHL)
           annotation (Placement(transformation(extent={{-2,-76},{18,-56}})));
@@ -743,44 +659,47 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         Components.Speciation
                            T0_in_T(NumberOfSubunits=4, useInternalHeatsInput=true)
           annotation (Placement(transformation(extent={{70,-66},{50,-46}})));
-        Chemical.Components.Substance OxyRHm[4](
+        Components.Substance OxyRHm[4](
           each Simulation=Types.SimulationType.SteadyState,
           each isDependent=true,
           each solute_start=4e-19,
           each dH=-dHL/4 - dHR)
           "Oxygenated subunit in R structure of hemoglobin tetramer"
           annotation (Placement(transformation(extent={{-96,-18},{-76,2}})));
-        Chemical.Components.ChemicalReaction oxygenation_R[4](each K=KR, each nP=2,
+        Components.ChemicalReaction oxygenation_R[4](
+          each K=KR,
+          each nP=2,
           each TK=310.15,
           each dH=dHR)
           annotation (Placement(transformation(extent={{-68,-18},{-48,2}})));
-        Chemical.Components.Substance DeoxyRHm[4](each Simulation=
-              Types.SimulationType.SteadyState,
+        Components.Substance DeoxyRHm[4](
+          each Simulation=Types.SimulationType.SteadyState,
           each solute_start=4e-11,
           each dH=-dHL/4)
           "Deoxygenated subunit in R structure of hemoglobin tetramer"
           annotation (Placement(transformation(extent={{-40,-18},{-20,2}})));
-        Chemical.Components.Substance OxyTHm[4](
+        Components.Substance OxyTHm[4](
           each Simulation=Types.SimulationType.SteadyState,
           isDependent={false,true,true,true},
           each dH=-dHT,
           each solute_start=1e-14)
           "Oxygenated subunit in T structure of hemoglobin tetramer"
           annotation (Placement(transformation(extent={{14,-18},{34,2}})));
-        Chemical.Components.ChemicalReaction oxygenation_T[4](each K=KT, each nP=2,
+        Components.ChemicalReaction oxygenation_T[4](
+          each K=KT,
+          each nP=2,
           each dH=dHT,
           each TK=310.15)
           annotation (Placement(transformation(extent={{42,-18},{62,2}})));
-        Chemical.Components.Substance DeoxyTHm[4](
-                                                 each Simulation=Types.SimulationType.SteadyState,
+        Components.Substance DeoxyTHm[4](
+          each Simulation=Types.SimulationType.SteadyState,
           each solute_start=0.00025,
           each dH=0)
           "Deoxygenated subunit in T structure of hemoglobin tetramer"
           annotation (Placement(transformation(extent={{70,-18},{90,2}})));
 
-        Chemical.Components.Substance
-                            oxygen_unbound(Simulation=Types.SimulationType.SteadyState, solute_start=0.000001
-              *7.875647668393782383419689119171e-5)
+        Components.Substance oxygen_unbound(Simulation=Types.SimulationType.SteadyState,
+            solute_start=0.000001*7.875647668393782383419689119171e-5)
           annotation (Placement(transformation(extent={{-2,6},{18,26}})));
         Modelica.Blocks.Sources.Clock clock(offset=10)
           annotation (Placement(transformation(extent={{-40,74},{-20,94}})));
@@ -840,26 +759,22 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
                                                          annotation (Line(
             points={{-50,-66},{-2,-66}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(quaternaryForm.products[1], T0_in_T.specificForm)
                                                        annotation (Line(
             points={{18,-66},{34,-66},{34,-64},{50,-64}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(OxyTHm.q_out, oxygenation_T.substrates[1])
                                                  annotation (Line(
             points={{24,-8},{42,-8}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygenation_T.products[1], DeoxyTHm.q_out)
                                                annotation (Line(
             points={{62,-8.5},{72,-8.5},{72,-8},{80,-8}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
 
         connect(OxyTHm.solute, add1.u2) annotation (Line(
             points={{30,-18},{30,-24},{27.6,-24},{27.6,-43.2}},
@@ -873,17 +788,14 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
                                                   annotation (Line(
             points={{8,50},{8,58}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(partialPressure1.q_in, oxygen_unbound.q_out) annotation (Line(
             points={{8,32},{8,16}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(clock.y, oxygen_in_air.partialPressure) annotation (Line(
             points={{-19,84},{8,84},{8,78}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(add.y, R0_in_R.amountOfSubunit) annotation (Line(
             points={{-58,-40.4},{-58,-58},{-48,-58}},
             color={0,0,127},
@@ -899,64 +811,52 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         connect(OxyRHm.q_out, oxygenation_R.substrates[1]) annotation (Line(
             points={{-86,-8},{-68,-8}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(DeoxyRHm.q_out, R0_in_R.specificSubunitForm) annotation (Line(
             points={{-30,-8},{-40,-8},{-40,-48}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygenation_R.products[1], DeoxyRHm.q_out) annotation (Line(
             points={{-48,-8.5},{-40,-8.5},{-40,-8},{-30,-8}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygenation_R[1].products[2], oxygen_unbound.q_out) annotation (Line(
             points={{-48,-7.5},{-34,-7.5},{-34,16},{8,16}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygenation_R[2].products[2], oxygen_unbound.q_out) annotation (Line(
             points={{-48,-7.5},{-34,-7.5},{-34,16},{8,16}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygenation_R[3].products[2], oxygen_unbound.q_out) annotation (Line(
             points={{-48,-7.5},{-34,-7.5},{-34,16},{8,16}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygenation_R[4].products[2], oxygen_unbound.q_out) annotation (Line(
             points={{-48,-7.5},{-34,-7.5},{-34,16},{8,16}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygenation_T[1].products[2], oxygen_unbound.q_out) annotation (Line(
             points={{62,-7.5},{78,-7.5},{78,16},{8,16}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygenation_T[2].products[2], oxygen_unbound.q_out) annotation (Line(
             points={{62,-7.5},{78,-7.5},{78,16},{8,16}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
        connect(oxygenation_T[3].products[2], oxygen_unbound.q_out) annotation (Line(
             points={{62,-7.5},{78,-7.5},{78,16},{8,16}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
             connect(oxygenation_T[4].products[2], oxygen_unbound.q_out) annotation (Line(
             points={{62,-7.5},{78,-7.5},{78,16},{8,16}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(T0_in_T.specificSubunitForm, DeoxyTHm.q_out)
                                                      annotation (Line(
             points={{60,-46},{84,-46},{84,-8},{80,-8}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(add1.y, T0_in_T.amountOfSubunit) annotation (Line(
             points={{30,-52.4},{30,-56},{52,-56}},
             color={0,0,127},
@@ -989,36 +889,28 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
             smooth=Smooth.Bezier));
         connect(R0_in_R.internalHeat, internalHeat.u[1]) annotation (Line(
             points={{-34,-66},{-34,-90.4},{3.2,-90.4}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(T0_in_T.internalHeat, internalHeat.u[2]) annotation (Line(
             points={{66,-64},{66,-74},{-24,-74},{-24,-89.6},{3.2,-89.6}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(add3.y, T0_in_T.subunitInternalHeat) annotation (Line(
             points={{47,-44.5},{47,-50},{52,-50}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(add2.y, R0_in_R.subunitInternalHeat) annotation (Line(
             points={{-73,-42.5},{-73,-52},{-48,-52}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(add3.u1, DeoxyTHm.internalHeat) annotation (Line(
             points={{50,-33},{50,-30},{91.6,-30},{91.6,-12}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(OxyTHm.internalHeat, add3.u2) annotation (Line(
             points={{35.6,-12},{35.6,-30},{44,-30},{44,-33}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(OxyRHm.internalHeat, add2.u2) annotation (Line(
             points={{-74.4,-12},{-74.4,-28},{-76,-28},{-76,-31}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(DeoxyRHm.internalHeat, add2.u1) annotation (Line(
             points={{-18.4,-12},{-18.4,-28},{-70,-28},{-70,-31}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
                   -100},{100,100}}), graphics={Ellipse(
                 extent={{2,12},{100,-36}},
@@ -1080,111 +972,111 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
       parameter Boolean isDependent=false
           "contains dependent equation (if solver is not smart enough)";
 
-      Chemical.Interfaces.ChemicalPort_a Hbtn
-          annotation (Placement(transformation(extent={{-108,-10},{-88,10}})));
-          Chemical.Components.Substance Hbu_A_NH3[4](each Simulation=
-              Types.SimulationType.SteadyState,
+      Interfaces.ChemicalPort_a Hbtn annotation (Placement(transformation(
+                extent={{-108,-10},{-88,10}})));
+          Components.Substance Hbu_A_NH3[4](
+          each Simulation=Types.SimulationType.SteadyState,
           dH=dH_HbuANH2 - dHz,
-          each dirName = dirName,
+          each dirName=dirName,
           each LOAD_STARTS=loadStarts,
           each SAVE_RESULTS=storeState,
           each solute_start=1e-06)
           annotation (Placement(transformation(extent={{-32,70},{-12,90}})));
-      Chemical.Components.Substance Hbu_AH_NH3[4](each Simulation=
-              Types.SimulationType.SteadyState,
-          each dirName = dirName,
+      Components.Substance Hbu_AH_NH3[4](
+          each Simulation=Types.SimulationType.SteadyState,
+          each dirName=dirName,
           each LOAD_STARTS=loadStarts,
           each SAVE_RESULTS=storeState,
           each solute_start=1e-06,
           dH=dH_HbuANH2 - dHh - dHz)
           annotation (Placement(transformation(extent={{54,70},{74,90}})));
-      Chemical.Components.Substance Hbu_A_NH2[4](each Simulation=
-              Types.SimulationType.SteadyState,
+      Components.Substance Hbu_A_NH2[4](
+          each Simulation=Types.SimulationType.SteadyState,
           isDependent={isDependent,true,true,true},
-          each dirName = dirName,
+          each dirName=dirName,
           each LOAD_STARTS=loadStarts,
           each SAVE_RESULTS=storeState,
           each solute_start=1e-06,
           dH=dH_HbuANH2)
           annotation (Placement(transformation(extent={{-32,-2},{-12,18}})));
-      Chemical.Components.Substance Hbu_AH_NH2[4](each Simulation=
-              Types.SimulationType.SteadyState,
-          each dirName = dirName,
+      Components.Substance Hbu_AH_NH2[4](
+          each Simulation=Types.SimulationType.SteadyState,
+          each dirName=dirName,
           each LOAD_STARTS=loadStarts,
           each SAVE_RESULTS=storeState,
           each solute_start=1e-06,
           dH=dH_HbuANH2 - dHh)
           annotation (Placement(transformation(extent={{54,-2},{74,18}})));
-      Chemical.Components.Substance Hbu_A_NHCOO[4](each Simulation=
-              Types.SimulationType.SteadyState,
+      Components.Substance Hbu_A_NHCOO[4](
+          each Simulation=Types.SimulationType.SteadyState,
           dH=dH_HbuANH2 + dHc,
-          each dirName = dirName,
+          each dirName=dirName,
           each LOAD_STARTS=loadStarts,
           each SAVE_RESULTS=storeState,
-          each solute_start=1e-06)
-          annotation (Placement(transformation(extent={{-32,-84},{-12,-64}})));
-      Chemical.Components.Substance Hbu_AH_NHCOO[4](each Simulation=
-              Types.SimulationType.SteadyState,
-          each dirName = dirName,
+          each solute_start=1e-06) annotation (Placement(transformation(
+                extent={{-32,-84},{-12,-64}})));
+      Components.Substance Hbu_AH_NHCOO[4](
+          each Simulation=Types.SimulationType.SteadyState,
+          each dirName=dirName,
           each LOAD_STARTS=loadStarts,
           each SAVE_RESULTS=storeState,
           dH=dH_HbuANH2 + dHc,
           each solute_start=1e-06)
           annotation (Placement(transformation(extent={{54,-84},{74,-64}})));
-      Chemical.Components.ChemicalReaction h2[4](
+      Components.ChemicalReaction h2[4](
           each nS=1,
           each nP=2,
           K=fill(10, 4) .^ (-pKh .+ 3),
           each TK=310.15,
           dH=dHh)
-                annotation (Placement(transformation(extent={{32,-2},{12,18}})));
-      Chemical.Components.ChemicalReaction z1[4](each nP=2, K=fill(10, 4)
-               .^ (-pKz .+ 3),
+          annotation (Placement(transformation(extent={{32,-2},{12,18}})));
+      Components.ChemicalReaction z1[4](
+          each nP=2,
+          K=fill(10, 4) .^ (-pKz .+ 3),
           dH=dHz,
-          each TK=310.15)
-          annotation (Placement(transformation(
+          each TK=310.15) annotation (Placement(transformation(
               extent={{-10,-10},{10,10}},
               rotation=270,
               origin={-22,44})));
-      Chemical.Components.ChemicalReaction z2[4](each nP=2, K=fill(10, 4)
-               .^ (-pKz .+ 3),
+      Components.ChemicalReaction z2[4](
+          each nP=2,
+          K=fill(10, 4) .^ (-pKz .+ 3),
           each TK=310.15,
-          dH=dHz)
-          annotation (Placement(transformation(
+          dH=dHz) annotation (Placement(transformation(
               extent={{-10,-10},{10,10}},
               rotation=270,
               origin={64,44})));
-      Chemical.Components.ChemicalReaction c1[4](
+      Components.ChemicalReaction c1[4](
           each nS=2,
           each nP=2,
           K=fill(10, 4) .^ (-pKc .+ 3),
           each TK=310.15,
-          dH=dHc)
-                annotation (Placement(transformation(
+          dH=dHc) annotation (Placement(transformation(
               extent={{-10,-10},{10,10}},
               rotation=270,
               origin={-22,-34})));
-      Chemical.Components.ChemicalReaction c2[4](
+      Components.ChemicalReaction c2[4](
           each nS=2,
           each nP=2,
           K=fill(10, 4) .^ (-pKc .+ 3),
           each TK=310.15,
-          dH=dHc)
-                annotation (Placement(transformation(
+          dH=dHc) annotation (Placement(transformation(
               extent={{-10,-10},{10,10}},
               rotation=270,
               origin={64,-34})));
-      Modelica.Blocks.Math.Sum total[4](each nin=6) annotation (Placement(transformation(
+      Modelica.Blocks.Math.Sum totalAmounts[4](each nin=6) annotation (
+            Placement(transformation(
               extent={{-10,-10},{10,10}},
               rotation=180,
               origin={-64,62})));
-        Chemical.Interfaces.ChemicalPort_a H(conc(nominal=10^(-7.2+3)))
+        Interfaces.ChemicalPort_a H(conc(nominal=10^(-7.2 + 3)))
           "hydrogen ions"
           annotation (Placement(transformation(extent={{90,76},{110,96}})));
-        Chemical.Interfaces.ChemicalPort_a CO2
+        Interfaces.ChemicalPort_a CO2
           annotation (Placement(transformation(extent={{90,-70},{110,-50}})));
-        Chemical.Components.Speciation Hb_tn(Simulation=Types.SimulationType.SteadyState,
-            NumberOfSubunits=4,
+        Components.Speciation Hb_tn(
+          Simulation=Types.SimulationType.SteadyState,
+          NumberOfSubunits=4,
           useInternalHeatsInput=true)
           annotation (Placement(transformation(extent={{-54,-22},{-74,-2}})));
       Types.RealIO.AmountOfSubstanceOutput tHb_u annotation (
@@ -1196,9 +1088,9 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
             Placement(transformation(
               extent={{-10,-10},{10,10}},
               rotation=180,
-              origin={-100,-100})));
-      Modelica.Blocks.Math.Sum total1[
-                                     4](each nin=6) annotation (Placement(transformation(
+              origin={-100,-98})));
+      Modelica.Blocks.Math.Sum totalHeats[4](each nin=6) annotation (Placement(
+              transformation(
               extent={{-10,-10},{10,10}},
               rotation=180,
               origin={-64,32})));
@@ -1206,175 +1098,140 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
       connect(Hbu_AH_NH3.q_out, z2.substrates[1]) annotation (Line(
           points={{64,80},{64,54}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(Hbu_A_NH3.q_out, z1.substrates[1]) annotation (Line(
           points={{-22,80},{-22,54}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(z1.products[1], Hbu_A_NH2.q_out) annotation (Line(
           points={{-22.5,34},{-22.5,22},{-22,22},{-22,8}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(z2.products[1], Hbu_AH_NH2.q_out) annotation (Line(
           points={{63.5,34},{63.5,22},{64,22},{64,8}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(h2.substrates[1], Hbu_AH_NH2.q_out) annotation (Line(
           points={{32,8},{64,8}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(Hbu_A_NH2.q_out, c1.substrates[1]) annotation (Line(
           points={{-22,8},{-22,-24},{-22.5,-24}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(Hbu_AH_NH2.q_out, c2.substrates[1]) annotation (Line(
           points={{64,8},{64,-24},{63.5,-24}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(c1.products[1], Hbu_A_NHCOO.q_out) annotation (Line(
           points={{-22.5,-44},{-22.5,-60},{-22,-60},{-22,-74}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(c2.products[1], Hbu_AH_NHCOO.q_out) annotation (Line(
           points={{63.5,-44},{63.5,-60},{64,-60},{64,-74}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
-      connect(Hbu_A_NH3.solute, total.u[1]) annotation (Line(
-          points={{-16,70},{-44,70},{-44,63.6667},{-52,63.6667}},
-          color={0,0,127},
-          smooth=Smooth.None));
-      connect(Hbu_AH_NH3.solute, total.u[2]) annotation (Line(
-          points={{70,70},{-2,70},{-2,63},{-52,63}},
-          color={0,0,127},
-          smooth=Smooth.None));
-      connect(Hbu_A_NH2.solute, total.u[3]) annotation (Line(
-          points={{-16,-2},{-44,-2},{-44,62.3333},{-52,62.3333}},
-          color={0,0,127},
-          smooth=Smooth.None));
-      connect(Hbu_AH_NH2.solute, total.u[4]) annotation (Line(
-          points={{70,-2},{-2,-2},{-2,61.6667},{-52,61.6667}},
-          color={0,0,127},
-          smooth=Smooth.None));
-      connect(Hbu_A_NHCOO.solute, total.u[5]) annotation (Line(
-          points={{-16,-84},{-44,-84},{-44,61},{-52,61}},
-          color={0,0,127},
-          smooth=Smooth.None));
-      connect(Hbu_AH_NHCOO.solute, total.u[6]) annotation (Line(
-          points={{70,-84},{-2,-84},{-2,60.3333},{-52,60.3333}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          thickness=1));
+        connect(Hbu_A_NH3.solute, totalAmounts.u[1]) annotation (Line(
+            points={{-16,70},{-44,70},{-44,63.6667},{-52,63.6667}},
+            color={0,0,127}));
+        connect(Hbu_AH_NH3.solute, totalAmounts.u[2]) annotation (Line(
+            points={{70,70},{-2,70},{-2,63},{-52,63}},
+            color={0,0,127}));
+        connect(Hbu_A_NH2.solute, totalAmounts.u[3]) annotation (Line(
+            points={{-16,-2},{-44,-2},{-44,62.3333},{-52,62.3333}},
+            color={0,0,127}));
+        connect(Hbu_AH_NH2.solute, totalAmounts.u[4]) annotation (Line(
+            points={{70,-2},{-2,-2},{-2,61.6667},{-52,61.6667}},
+            color={0,0,127}));
+        connect(Hbu_A_NHCOO.solute, totalAmounts.u[5]) annotation (Line(
+            points={{-16,-84},{-44,-84},{-44,61},{-52,61}},
+            color={0,0,127}));
+        connect(Hbu_AH_NHCOO.solute, totalAmounts.u[6]) annotation (Line(
+            points={{70,-84},{-2,-84},{-2,60.3333},{-52,60.3333}},
+            color={0,0,127}));
 
       connect(Hbu_A_NH2.q_out, h2.products[1]) annotation (Line(
           points={{-22,8},{-10,8},{-10,7.5},{12,7.5}},
           color={107,45,134},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
 
         connect(Hb_tn.specificForm, Hbtn) annotation (Line(
             points={{-74,-20},{-86,-20},{-86,0},{-98,0}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
-        connect(total.y, Hb_tn.amountOfSubunit) annotation (Line(
+            thickness=1));
+        connect(totalAmounts.y, Hb_tn.amountOfSubunit) annotation (Line(
             points={{-75,62},{-78,62},{-78,-12},{-72,-12}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
 
         for i in 1:4 loop
           connect(z1[i].products[2], H) annotation (Line(
             points={{-21.5,34},{-21.5,28},{-4,28},{-4,96},{88,96},{88,86},{100,
                 86}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(z2[i].products[2], H) annotation (Line(
             points={{64.5,34},{64.5,28},{-4,28},{-4,96},{88,96},{88,86},{100,86}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
 
         connect(c1[i].products[2], H) annotation (Line(
             points={{-21.5,-44},{-21.5,-50},{-4,-50},{-4,96},{88,96},{88,86},{
                 100,86}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(c2[i].products[2], H) annotation (Line(
             points={{64.5,-44},{64.5,-50},{-4,-50},{-4,96},{88,96},{88,86},{100,
                 86}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
 
           connect(H, h2[i].products[2]) annotation (Line(
             points={{100,86},{88,86},{88,96},{-4,96},{-4,8.5},{12,8.5}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
 
           connect(CO2, c2[i].substrates[2]) annotation (Line(
             points={{100,-60},{88,-60},{88,-20},{64.5,-20},{64.5,-24}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(CO2, c1[i].substrates[2]) annotation (Line(
             points={{100,-60},{88,-60},{88,-20},{-21.5,-20},{-21.5,-24}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         end for;
         connect(Hb_tn.specificSubunitForm, Hbu_A_NH2.q_out) annotation (Line(
             points={{-64,-2},{-64,8},{-22,8}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(tHb_u, Hb_tn.amount) annotation (Line(
             points={{-100,-78},{-64,-78},{-64,-20}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
 
         connect(Hb_tn.internalHeat, internalHeat) annotation (Line(
-            points={{-58,-20},{-58,-100},{-100,-100}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            points={{-58,-20},{-58,-98},{-100,-98}},
+            color={0,0,127}));
 
-        connect(Hbu_A_NH3.internalHeat, total1.u[1]) annotation (Line(
+        connect(Hbu_A_NH3.internalHeat, totalHeats.u[1]) annotation (Line(
             points={{-10.4,76},{-44,76},{-44,33.6667},{-52,33.6667}},
-            color={0,0,127},
-            smooth=Smooth.None));
-        connect(Hbu_AH_NH3.internalHeat, total1.u[2]) annotation (Line(
+            color={0,0,127}));
+        connect(Hbu_AH_NH3.internalHeat, totalHeats.u[2]) annotation (Line(
             points={{75.6,76},{-2,76},{-2,33},{-52,33}},
-            color={0,0,127},
-            smooth=Smooth.None));
-        connect(Hbu_A_NH2.internalHeat, total1.u[3]) annotation (Line(
+            color={0,0,127}));
+        connect(Hbu_A_NH2.internalHeat, totalHeats.u[3]) annotation (Line(
             points={{-10.4,4},{-44,4},{-44,32.3333},{-52,32.3333}},
-            color={0,0,127},
-            smooth=Smooth.None));
-        connect(Hbu_AH_NH2.internalHeat, total1.u[4]) annotation (Line(
+            color={0,0,127}));
+        connect(Hbu_AH_NH2.internalHeat, totalHeats.u[4]) annotation (Line(
             points={{75.6,4},{-2,4},{-2,31.6667},{-52,31.6667}},
-            color={0,0,127},
-            smooth=Smooth.None));
-        connect(Hbu_A_NHCOO.internalHeat, total1.u[5]) annotation (Line(
+            color={0,0,127}));
+        connect(Hbu_A_NHCOO.internalHeat, totalHeats.u[5]) annotation (Line(
             points={{-10.4,-78},{-44,-78},{-44,31},{-52,31}},
-            color={0,0,127},
-            smooth=Smooth.None));
-        connect(Hbu_AH_NHCOO.internalHeat, total1.u[6]) annotation (Line(
+            color={0,0,127}));
+        connect(Hbu_AH_NHCOO.internalHeat, totalHeats.u[6]) annotation (Line(
             points={{75.6,-78},{-2,-78},{-2,30.3333},{-52,30.3333}},
-            color={0,0,127},
-            smooth=Smooth.None));
-        connect(total1.y, Hb_tn.subunitInternalHeat) annotation (Line(
+            color={0,0,127}));
+        connect(totalHeats.y, Hb_tn.subunitInternalHeat) annotation (Line(
             points={{-75,32},{-76,32},{-76,-6},{-72,-6}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
       annotation ( Documentation(revisions="<html>
 <p><i>2014</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
@@ -1400,35 +1257,35 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         parameter Boolean storeResults=false;
         parameter Boolean loadStarts=true;
 
-        Chemical.Components.ChemicalReaction K1(
+        Components.ChemicalReaction K1(
           K=0.0121,
           nS=1,
           nP=2) annotation (Placement(transformation(
               extent={{10,-10},{-10,10}},
               rotation=270,
               origin={-44,68})));
-        Chemical.Components.ChemicalReaction K2(
+        Components.ChemicalReaction K2(
           K=0.0117,
           nS=1,
           nP=2) annotation (Placement(transformation(
               extent={{10,-10},{-10,10}},
               rotation=270,
               origin={-46,28})));
-        Chemical.Components.ChemicalReaction K3(
+        Components.ChemicalReaction K3(
           K=0.0871,
           nS=1,
           nP=2) annotation (Placement(transformation(
               extent={{10,-10},{-10,10}},
               rotation=270,
               origin={-48,-18})));
-        Chemical.Components.ChemicalReaction K4(
+        Components.ChemicalReaction K4(
           K=0.000386,
           nS=1,
           nP=2) annotation (Placement(transformation(
               extent={{10,-10},{-10,10}},
               rotation=270,
               origin={-50,-60})));
-        Chemical.Examples.Hemoglobin.Hemoglobin_MKM_Specie Hb0(
+        Hemoglobin_MKM_Specie Hb0(
           pKz=fill(pKzD, 4),
           pKc=fill(pKcD, 4),
           pKh=fill(pKhD, 4),
@@ -1440,102 +1297,114 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
           storeState=storeResults,
           loadStarts=loadStarts)
           annotation (Placement(transformation(extent={{-24,78},{-4,98}})));
-        Chemical.Examples.Hemoglobin.Hemoglobin_MKM_Specie Hb1(
-          pKz=cat(  1,
-                    fill(pKzD, 3),
-                    fill(pKzO, 1)),
-          pKc=cat(  1,
-                    fill(pKcD, 3),
-                    fill(pKcO, 1)),
-          pKh=cat(  1,
-                    fill(pKhD, 3),
-                    fill(pKhO, 1)),
-          dH_HbuANH2(displayUnit="kJ/mol") = cat(  1,
+        Hemoglobin_MKM_Specie Hb1(
+          pKz=cat(    1,
+                      fill(pKzD, 3),
+                      fill(pKzO, 1)),
+          pKc=cat(    1,
+                      fill(pKcD, 3),
+                      fill(pKcO, 1)),
+          pKh=cat(    1,
+                      fill(pKhD, 3),
+                      fill(pKhO, 1)),
+          dH_HbuANH2(displayUnit="kJ/mol") = cat(
+                    1,
                     fill(dH_HbuDANH2, 3),
-                    fill(dH_HbuDANH2-dHo, 1)),
-          dHz(displayUnit="kJ/mol") = cat(  1,
+                    fill(dH_HbuDANH2 - dHo, 1)),
+          dHz(displayUnit="kJ/mol") = cat(
+                    1,
                     fill(dHzD, 3),
                     fill(dHzO, 1)),
-          dHc(displayUnit="kJ/mol") = cat(  1,
+          dHc(displayUnit="kJ/mol") = cat(
+                    1,
                     fill(dHcD, 3),
                     fill(dHcO, 1)),
-          dHh(displayUnit="kJ/mol") = cat(  1,
+          dHh(displayUnit="kJ/mol") = cat(
+                    1,
                     fill(dHhD, 3),
                     fill(dHhO, 1)),
           storeState=storeResults,
           loadStarts=loadStarts)
           annotation (Placement(transformation(extent={{-24,40},{-4,60}})));
-        Chemical.Examples.Hemoglobin.Hemoglobin_MKM_Specie Hb2(
-          pKz=cat(  1,
-                    fill(pKzD, 2),
-                    fill(pKzO, 2)),
-          pKc=cat(  1,
-                    fill(pKcD, 2),
-                    fill(pKcO, 2)),
-          pKh=cat(  1,
-                    fill(pKhD, 2),
-                    fill(pKhO, 2)),
-          dH_HbuANH2(displayUnit="kJ/mol") = cat(  1,
+        Hemoglobin_MKM_Specie Hb2(
+          pKz=cat(    1,
+                      fill(pKzD, 2),
+                      fill(pKzO, 2)),
+          pKc=cat(    1,
+                      fill(pKcD, 2),
+                      fill(pKcO, 2)),
+          pKh=cat(    1,
+                      fill(pKhD, 2),
+                      fill(pKhO, 2)),
+          dH_HbuANH2(displayUnit="kJ/mol") = cat(
+                    1,
                     fill(dH_HbuDANH2, 2),
-                    fill(dH_HbuDANH2-dHo, 2)),
-          dHz(displayUnit="kJ/mol") = cat(  1,
+                    fill(dH_HbuDANH2 - dHo, 2)),
+          dHz(displayUnit="kJ/mol") = cat(
+                    1,
                     fill(dHzD, 2),
                     fill(dHzO, 2)),
-          dHc(displayUnit="kJ/mol") = cat(  1,
+          dHc(displayUnit="kJ/mol") = cat(
+                    1,
                     fill(dHcD, 2),
                     fill(dHcO, 2)),
-          dHh(displayUnit="kJ/mol") = cat(  1,
+          dHh(displayUnit="kJ/mol") = cat(
+                    1,
                     fill(dHhD, 2),
                     fill(dHhO, 2)),
           storeState=storeResults,
           loadStarts=loadStarts)
           annotation (Placement(transformation(extent={{-24,0},{-4,20}})));
-        Chemical.Examples.Hemoglobin.Hemoglobin_MKM_Specie Hb3(
-          pKz=cat(  1,
-                    fill(pKzD, 1),
-                    fill(pKzO, 3)),
-          pKc=cat(  1,
-                    fill(pKcD, 1),
-                    fill(pKcO, 3)),
-          pKh=cat(  1,
-                    fill(pKhD, 1),
-                    fill(pKhO, 3)),
-          dH_HbuANH2(displayUnit="kJ/mol") = cat(  1,
+        Hemoglobin_MKM_Specie Hb3(
+          pKz=cat(    1,
+                      fill(pKzD, 1),
+                      fill(pKzO, 3)),
+          pKc=cat(    1,
+                      fill(pKcD, 1),
+                      fill(pKcO, 3)),
+          pKh=cat(    1,
+                      fill(pKhD, 1),
+                      fill(pKhO, 3)),
+          dH_HbuANH2(displayUnit="kJ/mol") = cat(
+                    1,
                     fill(dH_HbuDANH2, 1),
-                    fill(dH_HbuDANH2-dHo, 3)),
-          dHz(displayUnit="kJ/mol") = cat(  1,
+                    fill(dH_HbuDANH2 - dHo, 3)),
+          dHz(displayUnit="kJ/mol") = cat(
+                    1,
                     fill(dHzD, 1),
                     fill(dHzO, 3)),
-          dHc(displayUnit="kJ/mol") = cat(  1,
+          dHc(displayUnit="kJ/mol") = cat(
+                    1,
                     fill(dHcD, 1),
                     fill(dHcO, 3)),
-          dHh(displayUnit="kJ/mol") = cat(  1,
+          dHh(displayUnit="kJ/mol") = cat(
+                    1,
                     fill(dHhD, 1),
                     fill(dHhO, 3)),
           storeState=storeResults,
           loadStarts=loadStarts)
           annotation (Placement(transformation(extent={{-24,-44},{-4,-24}})));
-        Chemical.Examples.Hemoglobin.Hemoglobin_MKM_Specie Hb4(
+        Hemoglobin_MKM_Specie Hb4(
           pKz=fill(pKzO, 4),
           pKc=fill(pKcO, 4),
           pKh=fill(pKhO, 4),
-          dH_HbuANH2(displayUnit="kJ/mol") = fill(dH_HbuDANH2-dHo, 4),
+          dH_HbuANH2(displayUnit="kJ/mol") = fill(dH_HbuDANH2 - dHo, 4),
           dHz(displayUnit="kJ/mol") = fill(dHzO, 4),
           dHc(displayUnit="kJ/mol") = fill(dHcO, 4),
           dHh(displayUnit="kJ/mol") = fill(dHhO, 4),
           storeState=storeResults,
           loadStarts=loadStarts)
           annotation (Placement(transformation(extent={{-24,-88},{-4,-68}})));
-        Chemical.Sources.UnlimitedGasStorage CO2(
+        Sources.UnlimitedGasStorage CO2(
           Simulation=Types.SimulationType.SteadyState,
           isIsolatedInSteadyState=false,
           PartialPressure=0)
           annotation (Placement(transformation(extent={{96,72},{76,92}})));
-        Chemical.Sources.UnlimitedSolutionStorage pH(
-                                         Simulation=Types.SimulationType.SteadyState,
+        Sources.UnlimitedSolutionStorage pH(
+          Simulation=Types.SimulationType.SteadyState,
           isIsolatedInSteadyState=false,
-          Conc(displayUnit="mol/l") = 10^(-7 + 3))
-          annotation (Placement(transformation(
+          Conc(displayUnit="mol/l") = 10^(-7 + 3)) annotation (Placement(
+              transformation(
               extent={{-10,-10},{10,10}},
               rotation=180,
               origin={34,82})));
@@ -1546,14 +1415,14 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
           annotation (Placement(transformation(extent={{44,6},{64,26}})));
         Modelica.Blocks.Math.Sum sO2(nin=4, k={4/4,3/4,2/4,1/4})
           annotation (Placement(transformation(extent={{62,-30},{82,-10}})));
-        Chemical.Components.Substance oxygen_unbound(       Simulation=
-              Types.SimulationType.SteadyState, solute_start=1e-08)
+        Components.Substance oxygen_unbound(Simulation=Types.SimulationType.SteadyState,
+            solute_start=1e-08)
           annotation (Placement(transformation(extent={{-94,-28},{-74,-8}})));
         Modelica.Blocks.Sources.Clock clock(offset=10)
           annotation (Placement(transformation(extent={{-10,-10},{10,10}},
               rotation=270,
               origin={-84,70})));
-        Chemical.Sources.UnlimitedGasStorage oxygen_in_air(
+        Sources.UnlimitedGasStorage oxygen_in_air(
           Simulation=Types.SimulationType.SteadyState,
           isIsolatedInSteadyState=false,
           PartialPressure(displayUnit="Pa") = 10,
@@ -1562,13 +1431,11 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
               extent={{-10,-10},{10,10}},
               rotation=270,
               origin={-84,34})));
-        Chemical.Components.GasSolubility partialPressure1(
-            kH_T0(displayUnit="(mmol/l)/kPa at 25degC") = 0.026029047188736,
+        Components.GasSolubility partialPressure1(
+          kH_T0(displayUnit="(mmol/l)/kPa at 25degC") = 0.026029047188736,
           C=1700,
-          T=310.15)
-          annotation (Placement(transformation(
-              extent={{-10,-10},{10,10}},
-              origin={-84,6})));
+          T=310.15) annotation (Placement(transformation(extent={{-10,-10},{
+                  10,10}}, origin={-84,6})));
         Modelica.Blocks.Math.Sum internalHeat(nin=5)
           annotation (Placement(transformation(extent={{44,-62},{64,-42}})));
         Modelica.Blocks.Math.Gain gain(k=4)
@@ -1579,233 +1446,186 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
           annotation (Placement(transformation(extent={{52,-92},{60,-84}})));
         Modelica.Blocks.Math.Division derInternalHeat_per_derO2
           annotation (Placement(transformation(extent={{72,-92},{92,-72}})));
-        Chemical.Components.GasSolubility partialPressure2(
+        Components.GasSolubility partialPressure2(
           T=310.15,
           kH_T0(displayUnit="(mmol/l)/kPa at 25degC") = 0.60734443440384,
-          C=2400)
-          annotation (Placement(transformation(
-              extent={{-10,-10},{10,10}},
-              origin={68,62})));
-        Chemical.Components.Substance CO2_unbound(Simulation=
-              Types.SimulationType.SteadyState, solute_start=
-              0.0012)
+          C=2400) annotation (Placement(transformation(extent={{-10,-10},{10,
+                  10}}, origin={68,62})));
+        Components.Substance CO2_unbound(Simulation=Types.SimulationType.SteadyState,
+            solute_start=0.0012)
           annotation (Placement(transformation(extent={{58,30},{78,50}})));
       equation
         connect(oxygen_unbound.q_out, K2.products[1]) annotation (Line(
             points={{-84,-18},{-62,-18},{-62,42},{-46,42},{-46,38},{-46.5,38}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygen_unbound.q_out, K3.products[1]) annotation (Line(
             points={{-84,-18},{-62,-18},{-62,0},{-48.5,0},{-48.5,-8}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(K1.products[1], oxygen_unbound.q_out) annotation (Line(
             points={{-44.5,78},{-44.5,80},{-62,80},{-62,-18},{-84,-18}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(oxygen_unbound.q_out, K4.products[1]) annotation (Line(
             points={{-84,-18},{-62,-18},{-62,-44},{-50.5,-44},{-50.5,-50}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
 
         connect(CO2_unbound.q_out, Hb0.CO2) annotation (Line(
             points={{68,40},{4,40},{4,82},{-4,82}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb0.H, pH.q_out) annotation (Line(
             points={{-4,96.6},{10,96.6},{10,82},{24,82}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb1.H, Hb0.H) annotation (Line(
             points={{-4,58.6},{10,58.6},{10,96.6},{-4,96.6}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb3.H, Hb0.H) annotation (Line(
             points={{-4,-25.4},{10,-25.4},{10,96.6},{-4,96.6}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb4.H, Hb0.H) annotation (Line(
             points={{-4,-69.4},{10,-69.4},{10,96.6},{-4,96.6}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb2.H, Hb0.H) annotation (Line(
             points={{-4,18.6},{10,18.6},{10,96.6},{-4,96.6}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb1.CO2, Hb0.CO2) annotation (Line(
             points={{-4,44},{4,44},{4,82},{-4,82}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb2.CO2, Hb0.CO2) annotation (Line(
             points={{-4,4},{4,4},{4,82},{-4,82}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb3.CO2, Hb0.CO2) annotation (Line(
             points={{-4,-40},{4,-40},{4,82},{-4,82}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb4.CO2, Hb0.CO2) annotation (Line(
             points={{-4,-84},{4,-84},{4,82},{-4,82}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb0.Hbtn, K1.products[2]) annotation (Line(
             points={{-23.8,88},{-43.5,88},{-43.5,78}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb1.Hbtn, K1.substrates[1]) annotation (Line(
             points={{-23.8,50},{-44,50},{-44,58}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb1.Hbtn, K2.products[2]) annotation (Line(
             points={{-23.8,50},{-44,50},{-44,38},{-45.5,38}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb2.Hbtn, K2.substrates[1]) annotation (Line(
             points={{-23.8,10},{-46,10},{-46,18}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb2.Hbtn, K3.products[2]) annotation (Line(
             points={{-23.8,10},{-46,10},{-46,-8},{-47.5,-8}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb3.Hbtn, K3.substrates[1]) annotation (Line(
             points={{-23.8,-34},{-48,-34},{-48,-28}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb3.Hbtn, K4.products[2]) annotation (Line(
             points={{-23.8,-34},{-48,-34},{-48,-50},{-49.5,-50}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb4.Hbtn, K4.substrates[1]) annotation (Line(
             points={{-23.8,-78},{-50,-78},{-50,-70}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb4.tHb_u, totalHemoglobin.fragment[1]) annotation (Line(
             points={{-24,-85.8},{-32,-85.8},{-32,-96},{22,-96},{22,10.4},{44,10.4}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(Hb3.tHb_u, totalHemoglobin.fragment[2]) annotation (Line(
             points={{-24,-41.8},{-32,-41.8},{-32,-48},{20,-48},{20,11.2},{44,11.2}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(Hb2.tHb_u, totalHemoglobin.fragment[3]) annotation (Line(
             points={{-24,2.2},{-32,2.2},{-32,-4},{18,-4},{18,12},{44,12}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(Hb1.tHb_u, totalHemoglobin.fragment[4]) annotation (Line(
             points={{-24,42.2},{-28,42.2},{-28,34},{16,34},{16,12.8},{44,12.8}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(Hb0.tHb_u, totalHemoglobin.fragment[5]) annotation (Line(
             points={{-24,80.2},{-28,80.2},{-28,64},{18,64},{18,13.6},{44,13.6}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
 
         connect(Hb1.tHb_u, sO2.u[4]) annotation (Line(
             points={{-24,42.2},{-28,42.2},{-28,34},{16,34},{16,-18.5},{60,-18.5}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(Hb2.tHb_u, sO2.u[3]) annotation (Line(
             points={{-24,2.2},{-32,2.2},{-32,2},{-32,2},{-32,-4},{18,-4},{18,-19.5},{60,
                 -19.5}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
 
         connect(Hb3.tHb_u, sO2.u[2]) annotation (Line(
             points={{-24,-41.8},{-32,-41.8},{-32,-48},{20,-48},{20,-20.5},{60,-20.5}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(Hb4.tHb_u, sO2.u[1]) annotation (Line(
             points={{-24,-85.8},{-32,-85.8},{-32,-96},{22,-96},{22,-21.5},{60,-21.5}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(partialPressure1.q_out,oxygen_in_air. q_out)
                                                   annotation (Line(
             points={{-84,16},{-84,24}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(partialPressure1.q_in,oxygen_unbound. q_out) annotation (Line(
             points={{-84,-2},{-84,-18}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Hb0.internalHeat, internalHeat.u[1]) annotation (Line(
-            points={{-24,78},{-24,66},{34,66},{34,-53.6},{42,-53.6}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            points={{-24,78.2},{-24,66},{34,66},{34,-53.6},{42,-53.6}},
+            color={0,0,127}));
         connect(Hb1.internalHeat, internalHeat.u[2]) annotation (Line(
-            points={{-24,40},{-26,40},{-26,36},{34,36},{34,-52.8},{42,-52.8}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            points={{-24,40.2},{-26,40.2},{-26,36},{34,36},{34,-52.8},{42,-52.8}},
+            color={0,0,127}));
         connect(Hb2.internalHeat, internalHeat.u[3]) annotation (Line(
-            points={{-24,0},{-28,0},{-28,-2},{34,-2},{34,-52},{42,-52}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            points={{-24,0.2},{-28,0.2},{-28,-2},{34,-2},{34,-52},{42,-52}},
+            color={0,0,127}));
         connect(Hb3.internalHeat, internalHeat.u[4]) annotation (Line(
-            points={{-24,-44},{-28,-44},{-28,-46},{34,-46},{34,-51.2},{42,-51.2}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            points={{-24,-43.8},{-28,-43.8},{-28,-46},{34,-46},{34,-51.2},{42,
+                -51.2}},
+            color={0,0,127}));
         connect(Hb4.internalHeat, internalHeat.u[5]) annotation (Line(
-            points={{-24,-88},{-28,-88},{-28,-90},{34,-90},{34,-52},{42,-52},{42,-50.4}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            points={{-24,-87.8},{-28,-87.8},{-28,-90},{34,-90},{34,-52},{42,-52},
+                {42,-50.4}},
+            color={0,0,127}));
         connect(gain.u, sO2.y) annotation (Line(
             points={{37.2,-88},{34,-88},{34,-96},{98,-96},{98,-20},{83,-20}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(internalHeat.y, der1.u) annotation (Line(
             points={{65,-52},{68,-52},{68,-66},{48,-66},{48,-76},{51.2,-76}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(gain.y, der2.u) annotation (Line(
             points={{46.4,-88},{51.2,-88}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(clock.y, oxygen_in_air.partialPressure) annotation (Line(
             points={{-84,59},{-84,44}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(derInternalHeat_per_derO2.u2, der2.y) annotation (Line(
             points={{70,-88},{60.4,-88}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(derInternalHeat_per_derO2.u1, der1.y) annotation (Line(
             points={{70,-76},{60.4,-76}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(CO2_unbound.q_out, partialPressure2.q_in) annotation (Line(
             points={{68,40},{68,54}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(CO2.q_out, partialPressure2.q_out) annotation (Line(
             points={{76,82},{68,82},{68,72}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         annotation (          experiment(
             StopTime=15000,
             Tolerance=1e-014,
@@ -1842,80 +1662,77 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
           parameter Types.Concentration KO2 = 0.000671946
             "oxygen dissociation coefficient of hemoglobin subunit";
 
-          Chemical.Components.Speciation Speciation(
-              NumberOfSubunits=12)
+          Components.Speciation Speciation(NumberOfSubunits=12)
             annotation (Placement(transformation(extent={{60,-20},{40,0}})));
-          Chemical.Components.Substance OxyHm[4](
+          Components.Substance OxyHm[4](
             each solute_start=0,
             each Simulation=Types.SimulationType.SteadyState,
             isDependent={isDependent,true,true,true})
-            "Oxygenated subunit of hemoglobin tetramer"
-            annotation (Placement(transformation(extent={{-90,-68},{-70,-48}})));
-          Chemical.Components.ChemicalReaction oxygenation1[4](each
-              nP=2, each K=KO2) annotation (Placement(transformation(extent={{-62,
-                    -68},{-42,-48}})));
-          Chemical.Components.Substance DeoxyHm[4](each Simulation=
-                Types.SimulationType.SteadyState,each  solute_start=1e-08)
-            "Deoxygenated subunit of hemoglobin tetramer"
-            annotation (Placement(transformation(extent={{-34,-68},{-14,-48}})));
+            "Oxygenated subunit of hemoglobin tetramer" annotation (Placement(
+                transformation(extent={{-90,-68},{-70,-48}})));
+          Components.ChemicalReaction oxygenation1[4](each nP=2, each K=KO2)
+            annotation (Placement(transformation(extent={{-62,-68},{-42,-48}})));
+          Components.Substance DeoxyHm[4](each Simulation=Types.SimulationType.SteadyState,
+              each solute_start=1e-08)
+            "Deoxygenated subunit of hemoglobin tetramer" annotation (
+              Placement(transformation(extent={{-34,-68},{-14,-48}})));
 
           Modelica.Blocks.Math.Add add[4] annotation (Placement(transformation(
                 extent={{-4,-4},{4,4}},
                 rotation=270,
                 origin={-58,-80})));
-          Chemical.Interfaces.ChemicalPort_a O2 annotation (Placement(
-                transformation(extent={{-26,-50},{-6,-30}}), iconTransformation(
-                  extent={{-26,-50},{-6,-30}})));
-          Chemical.Interfaces.ChemicalPort_a sForm annotation (
-              Placement(transformation(extent={{72,-54},{92,-34}}),
+          Interfaces.ChemicalPort_a O2 annotation (Placement(transformation(
+                  extent={{-26,-50},{-6,-30}}), iconTransformation(extent={{-26,
+                    -50},{-6,-30}})));
+          Interfaces.ChemicalPort_a sForm annotation (Placement(
+                transformation(extent={{72,-54},{92,-34}}),
                 iconTransformation(extent={{68,-50},{88,-30}})));
-          Chemical.Interfaces.ChemicalPort_a H "hydrogen ion (proton)"
-                                    annotation (Placement(transformation(extent={{-32,
-                    18},{-12,38}}), iconTransformation(extent={{-32,18},{-12,38}})));
-          Chemical.Components.Substance A[4]( each                Simulation=
-                Types.SimulationType.SteadyState,each  solute_start=1e-08)
+          Interfaces.ChemicalPort_a H "hydrogen ion (proton)" annotation (
+              Placement(transformation(extent={{-32,18},{-12,38}}),
+                iconTransformation(extent={{-32,18},{-12,38}})));
+          Components.Substance A[4](each Simulation=Types.SimulationType.SteadyState,
+              each solute_start=1e-08)
             "residual acid chains of hemoglobin subunits "
             annotation (Placement(transformation(extent={{-24,-14},{-4,6}})));
-          Chemical.Components.Substance HA[4](
+          Components.Substance HA[4](
             each solute_start=0,
             each Simulation=Types.SimulationType.SteadyState,
             each isDependent=true)
-            "residual acid chains of hemoglobin subunits "
-            annotation (Placement(transformation(extent={{-90,-14},{-70,6}})));
-          Chemical.Components.ChemicalReaction protonation1[4](each nP=2,each  K=KA)
+            "residual acid chains of hemoglobin subunits " annotation (
+              Placement(transformation(extent={{-90,-14},{-70,6}})));
+          Components.ChemicalReaction protonation1[4](each nP=2, each K=KA)
             annotation (Placement(transformation(extent={{-62,-14},{-42,6}})));
           Modelica.Blocks.Math.Add add1[
                                        4] annotation (Placement(transformation(
                 extent={{-4,-4},{4,4}},
                 rotation=270,
                 origin={-52,-24})));
-          Chemical.Components.Substance NH2[4](each                 Simulation=
-               Types.SimulationType.SteadyState,each  solute_start=1e-08)
-            "Val1 terminal of hemoglobin subunits "
+          Components.Substance NH2[4](each Simulation=Types.SimulationType.SteadyState,
+              each solute_start=1e-08) "Val1 terminal of hemoglobin subunits "
             annotation (Placement(transformation(extent={{-10,52},{10,72}})));
-          Chemical.Components.Substance NH3[             4](
+          Components.Substance NH3[4](
             each solute_start=0,
             each Simulation=Types.SimulationType.SteadyState,
             each isDependent=true) "Val1 terminal of hemoglobin subunits "
             annotation (Placement(transformation(extent={{-86,52},{-66,72}})));
-          Chemical.Components.ChemicalReaction protonation2[4](             each nP=2, each K=Kz)
+          Components.ChemicalReaction protonation2[4](each nP=2, each K=Kz)
             annotation (Placement(transformation(extent={{-58,52},{-38,72}})));
           Modelica.Blocks.Math.Add3 add2[
                                        4] annotation (Placement(transformation(
                 extent={{-4,-4},{4,4}},
                 rotation=270,
                 origin={0,40})));
-          Chemical.Interfaces.ChemicalPort_a CO2 annotation (
-              Placement(transformation(extent={{-6,76},{14,96}}),
-                iconTransformation(extent={{-6,76},{14,96}})));
-          Chemical.Components.ChemicalReaction carboxylation[4](
+          Interfaces.ChemicalPort_a CO2 annotation (Placement(transformation(
+                  extent={{-6,76},{14,96}}), iconTransformation(extent={{-6,
+                    76},{14,96}})));
+          Components.ChemicalReaction carboxylation[4](
             each nP=2,
             each nS=2,
             each K=Kc)
             "Carboxylation of Valin1 amino terminus of hemogloni subunit"
             annotation (Placement(transformation(extent={{36,52},{56,72}})));
-          Chemical.Components.Substance NHCOO[4](each Simulation=Types.SimulationType.SteadyState, each solute_start=1e-08)
-            "Val1 terminal of hemoglobin subunits "
+          Components.Substance NHCOO[4](each Simulation=Types.SimulationType.SteadyState,
+              each solute_start=1e-08) "Val1 terminal of hemoglobin subunits "
             annotation (Placement(transformation(extent={{66,52},{86,72}})));
           Types.RealIO.AmountOfSubstanceOutput tAmount(start=1e-08)
             annotation (Placement(transformation(
@@ -1952,237 +1769,188 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 
           connect(OxyHm.solute, add.u2) annotation (Line(
               points={{-80,-68},{-80,-74},{-60.4,-74},{-60.4,-75.2}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(DeoxyHm.solute, add.u1) annotation (Line(
               points={{-24,-68},{-26,-68},{-26,-75.2},{-55.6,-75.2}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(OxyHm.q_out, oxygenation1.substrates[1]) annotation (Line(
               points={{-80,-58},{-62,-58}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(oxygenation1.products[1], DeoxyHm.q_out) annotation (Line(
               points={{-42,-58.5},{-34,-58.5},{-34,-58},{-24,-58}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(Speciation.specificForm, sForm) annotation (Line(
               points={{40,-18},{40,-44},{82,-44}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(oxygenation1[1].products[2], O2) annotation (Line(
               points={{-42,-57.5},{-36,-57.5},{-36,-40},{-16,-40}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(oxygenation1[2].products[2], O2) annotation (Line(
               points={{-42,-57.5},{-36,-57.5},{-36,-40},{-16,-40}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(oxygenation1[3].products[2], O2) annotation (Line(
               points={{-42,-57.5},{-36,-57.5},{-36,-40},{-16,-40}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(oxygenation1[4].products[2], O2) annotation (Line(
               points={{-42,-57.5},{-36,-57.5},{-36,-40},{-16,-40}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(HA.q_out, protonation1.substrates[1]) annotation (Line(
               points={{-80,-4},{-62,-4}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(protonation1.products[1], A.q_out) annotation (Line(
               points={{-42,-4.5},{-42,-4},{-14,-4}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(H, protonation1[1].products[2]) annotation (Line(
               points={{-22,28},{-32,28},{-32,-3.5},{-42,-3.5}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(protonation1[2].products[2], H) annotation (Line(
               points={{-42,-3.5},{-32,-3.5},{-32,28},{-22,28}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(protonation1[3].products[2], H) annotation (Line(
               points={{-42,-3.5},{-32,-3.5},{-32,28},{-22,28}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(protonation1[4].products[2], H) annotation (Line(
               points={{-42,-3.5},{-32,-3.5},{-32,28},{-22,28}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(HA.solute, add1.u2) annotation (Line(
               points={{-80,-14},{-80,-19.2},{-54.4,-19.2}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(A.solute, add1.u1) annotation (Line(
               points={{-14,-14},{-14,-16},{-49.6,-16},{-49.6,-19.2}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(DeoxyHm.q_out, Speciation.specificSubunitForm[1:4])
             annotation (Line(
               points={{-24,-58},{-24,-52},{28,-52},{28,0},{50,0},{50,-0.416667}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
 
           connect(A.q_out, Speciation.specificSubunitForm[5:8]) annotation (
               Line(
               points={{-14,-4},{-14,0.25},{50,0.25}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(add.y, Speciation.amountOfSubunit[1:4]) annotation (Line(
               points={{-58,-84.4},{-58,-86},{14,-86},{14,-10.8333},{42,-10.8333}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
 
           connect(add1.y, Speciation.amountOfSubunit[5:8]) annotation (Line(
               points={{-52,-28.4},{-52,-28},{12,-28},{12,-9.5},{42,-9.5}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(NH3.q_out, protonation2.substrates[1]) annotation (Line(
               points={{-76,62},{-58,62}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(protonation2.products[1], NH2.q_out) annotation (Line(
               points={{-38,61.5},{0,61.5},{0,62}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(H, protonation2[1].products[2]) annotation (Line(
               points={{-22,28},{-22,62.5},{-38,62.5}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(protonation2[2].products[2], H) annotation (Line(
               points={{-38,62.5},{-22,62.5},{-22,28}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(protonation2[3].products[2], H) annotation (Line(
               points={{-38,62.5},{-22,62.5},{-22,28}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(protonation2[4].products[2], H) annotation (Line(
               points={{-38,62.5},{-22,62.5},{-22,28}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(add2.y, Speciation.amountOfSubunit[9:12]) annotation (Line(
               points={{0,35.6},{0,32},{12,32},{12,-8.16667},{42,-8.16667}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(NH2.q_out, Speciation.specificSubunitForm[9:12]) annotation (
               Line(
               points={{0,62},{0,58},{28,58},{28,0.916667},{50,0.916667}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(NH2.q_out, carboxylation.substrates[1]) annotation (Line(
               points={{0,62},{0,61.5},{36,61.5}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(carboxylation.products[1], NHCOO.q_out) annotation (Line(
               points={{56,61.5},{76,61.5},{76,62}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(carboxylation[1].products[2], H) annotation (Line(
               points={{56,62.5},{62,62.5},{62,28},{-22,28}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(carboxylation[1].substrates[2], CO2) annotation (Line(
               points={{36,62.5},{26,62.5},{26,86},{4,86}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(carboxylation[2].products[2], H) annotation (Line(
               points={{56,62.5},{62,62.5},{62,28},{-22,28}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(carboxylation[2].substrates[2], CO2) annotation (Line(
               points={{36,62.5},{26,62.5},{26,86},{4,86}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(carboxylation[3].products[2], H) annotation (Line(
               points={{56,62.5},{62,62.5},{62,28},{-22,28}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(carboxylation[3].substrates[2], CO2) annotation (Line(
               points={{36,62.5},{26,62.5},{26,86},{4,86}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(carboxylation[4].products[2], H) annotation (Line(
               points={{56,62.5},{62,62.5},{62,28},{-22,28}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(carboxylation[4].substrates[2], CO2) annotation (Line(
               points={{36,62.5},{26,62.5},{26,86},{4,86}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(NH3.solute, add2.u3) annotation (Line(
               points={{-76,52},{-76,44.8},{-3.2,44.8}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(NH2.solute, add2.u2) annotation (Line(
               points={{0,52},{0,44.8}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(NHCOO.solute, add2.u1) annotation (Line(
               points={{76,52},{76,44.8},{3.2,44.8}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(Speciation.amount, tAmount) annotation (Line(
               points={{50,-18},{50,-86}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(HA.solute, add3.u[9:12]) annotation (Line(
               points={{-80,-14},{-80,-20},{-98,-20},{-98,14.7333},{77.2,14.7333}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(NH3.solute, add3.u[5:8]) annotation (Line(
               points={{-76,52},{-76,14.2},{77.2,14.2}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(NHCOO.solute, add3.u[1:4]) annotation (Line(
               points={{76,52},{76,13.6667},{77.2,13.6667}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(add3.y, protonation) annotation (Line(
               points={{86.4,14},{100,14}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(OxyHm.solute, add4.u) annotation (Line(
               points={{-80,-68},{-80,-81.2}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(add4.y, oxygenation) annotation (Line(
               points={{-80,-90.4},{-80,-110}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
                     -100},{100,100}}), graphics={
                 Ellipse(
@@ -2260,17 +2028,17 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 
           parameter Types.AmountOfSubstance totalAmountOfHemoglobin=0.001;
 
-          Chemical.Components.ChemicalReaction      quaternaryForm(K=Ln)
+          Components.ChemicalReaction quaternaryForm(K=Ln)
             annotation (Placement(transformation(extent={{-16,26},{4,46}})));
 
-          Chemical.Examples.Hemoglobin.Develop.QuaternaryForm R(
+          QuaternaryForm R(
             KO2=KR,
             KA=10^(-6.89 + 3),
             Kz=10^(-7.25 + 3),
             Kc=10^(-8.35 + 3),
-            isDependent=true)
-            annotation (Placement(transformation(extent={{-40,30},{-20,50}})));
-          Chemical.Examples.Hemoglobin.Develop.QuaternaryForm T(
+            isDependent=true) annotation (Placement(transformation(extent={{-40,
+                    30},{-20,50}})));
+          QuaternaryForm T(
             KO2=KT,
             KA=10^(-7.52 + 3),
             Kz=10^(-7.73 + 3),
@@ -2283,15 +2051,14 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
             annotation (Placement(transformation(extent={{-10,-10},{10,10}},
                 rotation=270,
                 origin={0,2})));
-          Chemical.Interfaces.ChemicalPort_a H "H+ (proton)"
-            annotation (Placement(transformation(extent={{6,66},{26,86}}),
-                iconTransformation(extent={{90,90},{110,110}})));
-          Chemical.Interfaces.ChemicalPort_a
-                                    CO2 "carbon dioxide"
-                                        annotation (Placement(transformation(extent={{-22,54},
-                    {-2,74}}),     iconTransformation(extent={{14,40},{34,60}})));
-          Chemical.Interfaces.ChemicalPort_a O2 "oxygen"
-            annotation (Placement(transformation(extent={{-54,78},{-34,98}}),
+          Interfaces.ChemicalPort_a H "H+ (proton)" annotation (Placement(
+                transformation(extent={{6,66},{26,86}}), iconTransformation(
+                  extent={{90,90},{110,110}})));
+          Interfaces.ChemicalPort_a CO2 "carbon dioxide" annotation (
+              Placement(transformation(extent={{-22,54},{-2,74}}),
+                iconTransformation(extent={{14,40},{34,60}})));
+          Interfaces.ChemicalPort_a O2 "oxygen" annotation (Placement(
+                transformation(extent={{-54,78},{-34,98}}),
                 iconTransformation(extent={{90,-10},{110,10}})));
           Types.RealIO.FractionOutput          protonation annotation (
               Placement(transformation(
@@ -2316,93 +2083,73 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
           connect(R.CO2, CO2) annotation (Line(
               points={{-29.6,48.6},{-29.6,64},{-12,64}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(CO2, T.CO2) annotation (Line(
               points={{-12,64},{22,64},{22,48},{21.6,48},{21.6,48.6}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
 
           connect(R.O2, O2) annotation (Line(
               points={{-31.6,36},{-44,36},{-44,88}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(R.H, H) annotation (Line(
               points={{-32.2,42.8},{-32.2,42},{-34,42},{-34,76},{16,76}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(R.sForm, quaternaryForm.substrates[1]) annotation (Line(
               points={{-22.2,36},{-16,36}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(T.O2, O2) annotation (Line(
               points={{23.6,36},{36,36},{36,88},{-44,88}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(T.H, H) annotation (Line(
               points={{24.2,42.8},{26,42.8},{26,76},{16,76}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(T.sForm, quaternaryForm.products[1]) annotation (Line(
               points={{14.2,36},{4,36}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(R.tAmount, totalHb.fragment[1]) annotation (Line(
               points={{-26,31},{-26,18},{-4,18},{-4,12},{-5,12}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(T.tAmount, totalHb.fragment[2]) annotation (Line(
               points={{18,31},{18,18},{-3,18},{-3,12}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(T.protonation, add.u1) annotation (Line(
               points={{13,42},{13,-32},{15,-32}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(R.protonation, add.u2) annotation (Line(
               points={{-21,42},{-21,-38},{15,-38}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(division.u2, totalHb.totalAmountOfSubstance) annotation (Line(
               points={{40.8,-43.6},{-4,-43.6},{-4,-8}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(division.u1, add.y) annotation (Line(
               points={{40.8,-36.4},{38,-36.4},{38,-35},{26.5,-35}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(protonation, division.y) annotation (Line(
               points={{100,-40},{54.6,-40}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(division1.u1, add1.y) annotation (Line(
               points={{64.8,-76.4},{56,-76.4},{56,-56},{54.6,-56}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(R.oxygenation, add1.u2) annotation (Line(
               points={{-38,31},{-38,-59.6},{40.8,-59.6}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(T.oxygenation, add1.u1) annotation (Line(
               points={{30,31},{30,-52.4},{40.8,-52.4}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(totalHb.totalAmountOfSubstance, division1.u2) annotation (
               Line(
               points={{-4,-8},{-4,-83.6},{64.8,-83.6}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(division1.y, sO2) annotation (Line(
               points={{78.6,-80},{100,-80}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           annotation (             Documentation(revisions="<html>
 <p><i>2014</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
@@ -2417,96 +2164,82 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 
          extends Modelica.Icons.Example;
 
-          Chemical.Components.Substance
-                              oxygen_unbound(Simulation=SimulationType.SteadyState, solute_start=0.000001
-                *7.875647668393782383419689119171e-5)
+          Components.Substance oxygen_unbound(Simulation=SimulationType.SteadyState,
+              solute_start=0.000001*7.875647668393782383419689119171e-5)
             annotation (Placement(transformation(extent={{-4,-2},{16,18}})));
           Modelica.Blocks.Sources.Clock clock(offset=1e-06)
             annotation (Placement(transformation(extent={{-40,74},{-20,94}})));
-          Chemical.Sources.UnlimitedGasStorage oxygen_in_air(
+          Sources.UnlimitedGasStorage oxygen_in_air(
             Simulation=Types.SimulationType.SteadyState,
             usePartialPressureInput=true,
             T=310.15,
-            isIsolatedInSteadyState=false)
-                      annotation (Placement(transformation(
+            isIsolatedInSteadyState=false) annotation (Placement(
+                transformation(
                 extent={{-10,-10},{10,10}},
                 rotation=270,
                 origin={6,60})));
-          Chemical.Components.GasSolubility partialPressure1(kH_T0(
-                displayUnit="(mmol/l)/kPa at 25degC") = 0.026029047188736,
+          Components.GasSolubility partialPressure1(
+            kH_T0(displayUnit="(mmol/l)/kPa at 25degC") = 0.026029047188736,
             T=310.15,
-            C=1700)
-            annotation (Placement(transformation(
-                extent={{-10,-10},{10,10}},
-                origin={6,32})));
-          Chemical.Sources.UnlimitedSolutionStorage pH(
+            C=1700) annotation (Placement(transformation(extent={{-10,-10},{
+                    10,10}}, origin={6,32})));
+          Sources.UnlimitedSolutionStorage pH(
             q_out(conc(nominal=10^(-7.4 + 3))),
             Simulation=Types.SimulationType.SteadyState,
             Conc=10^(-7.2464 + 3),
-            isIsolatedInSteadyState=false)
-                                   annotation (Placement(transformation(
+            isIsolatedInSteadyState=false) annotation (Placement(
+                transformation(
                 extent={{-10,-10},{10,10}},
                 rotation=180,
                 origin={62,-10})));
-          Chemical.Sources.UnlimitedGasStorage
-                                      CO2_gas(
-              Simulation=Types.SimulationType.SteadyState,
-              PartialPressure=5332.8954966)
-            annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+          Sources.UnlimitedGasStorage CO2_gas(Simulation=Types.SimulationType.SteadyState,
+              PartialPressure=5332.8954966) annotation (Placement(
+                transformation(
+                extent={{-10,-10},{10,10}},
                 rotation=270,
                 origin={-34,56})));
-          Chemical.Components.GasSolubility
-                                   gasSolubility(C=2400, kH_T0(displayUnit="(mmol/l)/kPa at 25degC")=
-                 0.81805576878885)
-            annotation (Placement(transformation(extent={{-44,20},{-24,40}})));
-          Chemical.Components.Substance
-                               CO2_liquid(Simulation=Types.SimulationType.SteadyState,
-              isDependent=true)
-            annotation (Placement(transformation(extent={{-44,-4},{-24,16}})));
-          Chemical.Examples.Hemoglobin.Develop.Hemoglobin2 hemoglobin
-            annotation (Placement(transformation(extent={{-26,-74},{-6,-54}})));
+          Components.GasSolubility gasSolubility(C=2400, kH_T0(displayUnit=
+                  "(mmol/l)/kPa at 25degC") = 0.81805576878885) annotation (
+              Placement(transformation(extent={{-44,20},{-24,40}})));
+          Components.Substance CO2_liquid(Simulation=Types.SimulationType.SteadyState,
+              isDependent=true) annotation (Placement(transformation(extent={
+                    {-44,-4},{-24,16}})));
+          Hemoglobin2 hemoglobin annotation (Placement(transformation(extent=
+                    {{-26,-74},{-6,-54}})));
         equation
 
           connect(partialPressure1.q_out, oxygen_in_air.q_out)
                                                     annotation (Line(
               points={{6,42},{6,50}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(partialPressure1.q_in, oxygen_unbound.q_out) annotation (Line(
               points={{6,24},{6,8}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(clock.y, oxygen_in_air.partialPressure) annotation (Line(
               points={{-19,84},{6,84},{6,70}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(gasSolubility.q_in,CO2_liquid. q_out) annotation (Line(
               points={{-34,22},{-34,6}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(CO2_gas.q_out,gasSolubility. q_out) annotation (Line(
               points={{-34,46},{-34,40}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(hemoglobin.CO2, CO2_liquid.q_out) annotation (Line(
               points={{-13.6,-59},{-13.6,-23.5},{-34,-23.5},{-34,6}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(hemoglobin.H, pH.q_out) annotation (Line(
               points={{-6,-54},{26,-54},{26,-10},{52,-10}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(hemoglobin.O2, oxygen_unbound.q_out) annotation (Line(
               points={{-6,-64},{-10,-64},{-10,8},{6,8}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           annotation (            experiment(
               StopTime=18000,
               Tolerance=1e-014,
@@ -2547,30 +2280,27 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 
           parameter AmountOfSubstance totalAmountOfHemoglobin=0.001;
 
-          Chemical.Components.Substance
-                              oxygen_unbound(Simulation=SimulationType.SteadyState, solute_start=0.000001
-                *7.875647668393782383419689119171e-5)
+          Components.Substance oxygen_unbound(Simulation=SimulationType.SteadyState,
+              solute_start=0.000001*7.875647668393782383419689119171e-5)
             annotation (Placement(transformation(extent={{-4,-2},{16,18}})));
           Modelica.Blocks.Sources.Clock clock(offset=6.7)
             annotation (Placement(transformation(extent={{30,34},{50,54}})));
-          Chemical.Sources.UnlimitedGasStorage oxygen_in_air(
+          Sources.UnlimitedGasStorage oxygen_in_air(
             Simulation=Types.SimulationType.SteadyState,
             usePartialPressureInput=false,
             PartialPressure=0,
             T=310.15,
-            isIsolatedInSteadyState=false)
-                      annotation (Placement(transformation(
+            isIsolatedInSteadyState=false) annotation (Placement(
+                transformation(
                 extent={{-10,-10},{10,10}},
                 rotation=270,
                 origin={6,60})));
-          Chemical.Components.GasSolubility partialPressure1(
-              kH_T0(displayUnit="(mmol/l)/kPa at 25degC") = 0.024913516594933,
+          Components.GasSolubility partialPressure1(
+            kH_T0(displayUnit="(mmol/l)/kPa at 25degC") = 0.024913516594933,
             T=310.15,
-            C=1700)
-            annotation (Placement(transformation(
-                extent={{-10,-10},{10,10}},
-                origin={6,32})));
-          Chemical.Sources.UnlimitedSolutionStorage pH(
+            C=1700) annotation (Placement(transformation(extent={{-10,-10},{
+                    10,10}}, origin={6,32})));
+          Sources.UnlimitedSolutionStorage pH(
             q_out(conc(nominal=10^(-7.4 + 3))),
             isIsolatedInSteadyState=false,
             Simulation=Types.SimulationType.SteadyState,
@@ -2579,25 +2309,21 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
                 extent={{-10,-10},{10,10}},
                 rotation=180,
                 origin={62,-10})));
-          Chemical.Sources.UnlimitedGasStorage
-                                      CO2_gas(
-              Simulation=Types.SimulationType.SteadyState,
+          Sources.UnlimitedGasStorage CO2_gas(
+            Simulation=Types.SimulationType.SteadyState,
             usePartialPressureInput=false,
-            PartialPressure=0)
-            annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+            PartialPressure=0) annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
                 rotation=270,
                 origin={-34,56})));
-          Chemical.Components.GasSolubility
-                                   gasSolubility(C=2400, kH_T0(displayUnit="(mmol/l)/kPa at 25degC")=
-                 0.81805576878885)
-            annotation (Placement(transformation(extent={{-44,20},{-24,40}})));
-          Chemical.Components.Substance
-                               CO2_liquid(Simulation=Types.SimulationType.SteadyState,
-              isDependent=true)
-            annotation (Placement(transformation(extent={{-44,-4},{-24,16}})));
-          Chemical.Examples.Hemoglobin.Develop.Hemoglobin2
-            deoxyhemoglobin
-            annotation (Placement(transformation(extent={{-22,-68},{-2,-48}})));
+          Components.GasSolubility gasSolubility(C=2400, kH_T0(displayUnit=
+                  "(mmol/l)/kPa at 25degC") = 0.81805576878885) annotation (
+              Placement(transformation(extent={{-44,20},{-24,40}})));
+          Components.Substance CO2_liquid(Simulation=Types.SimulationType.SteadyState,
+              isDependent=true) annotation (Placement(transformation(extent={
+                    {-44,-4},{-24,16}})));
+          Hemoglobin2 deoxyhemoglobin annotation (Placement(transformation(
+                  extent={{-22,-68},{-2,-48}})));
           Types.RealIO.FractionOutput protonation
             "allosteric-dependent protonation"
             annotation (Placement(transformation(extent={{68,-76},{88,-56}})));
@@ -2619,58 +2345,46 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
                                                     annotation (Line(
               points={{6,42},{6,50}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(partialPressure1.q_in, oxygen_unbound.q_out) annotation (Line(
               points={{6,24},{6,8}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(gasSolubility.q_in,CO2_liquid. q_out) annotation (Line(
               points={{-34,22},{-34,6}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(CO2_gas.q_out,gasSolubility. q_out) annotation (Line(
               points={{-34,46},{-34,40}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(deoxyhemoglobin.CO2, CO2_liquid.q_out) annotation (Line(
               points={{-9.6,-53},{-9.6,-23.5},{-34,-23.5},{-34,6}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(clock.y, gain.u) annotation (Line(
               points={{51,44},{60,44}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(gain.y, pow.exponent) annotation (Line(
               points={{83,44},{90,44},{90,42},{89.6,42}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(pH.concentration, toMolPerM3.y) annotation (Line(
               points={{72,-10},{92,-10},{92,1}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(toMolPerM3.u, pow.y) annotation (Line(
               points={{92,24},{92,33.6}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(deoxyhemoglobin.H, pH.q_out) annotation (Line(
               points={{-2,-48},{26,-48},{26,-10},{52,-10}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(deoxyhemoglobin.O2, oxygen_unbound.q_out) annotation (Line(
               points={{-2,-58},{-6,-58},{-6,8},{6,8}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(deoxyhemoglobin.protonation, protonation) annotation (Line(
               points={{-20,-67},{-20,-66},{78,-66}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           annotation (            experiment(StopTime=1.3), Documentation(revisions=
                         "<html>
 <p><i>2014</i></p>
@@ -2730,44 +2444,34 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         equation
           connect(hemoglobin_titration.protonation, dH.u1) annotation (Line(
               points={{-42.2,63.4},{-42.2,47.7},{-52,47.7},{-52,32}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(dH.u2, hemoglobin_titration5.protonation) annotation (Line(
               points={{-44,24},{-42,24},{-42,-22.6},{-42.2,-22.6}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(hemoglobin_titration1.protonation, dH1.u1) annotation (Line(
               points={{-10.2,63.4},{-10.2,47.7},{-24,47.7},{-24,32}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(dH1.u2, hemoglobin_titration6.protonation) annotation (Line(
               points={{-16,24},{-14,24},{-14,-22.6},{-10.2,-22.6}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(dH2.u2, hemoglobin_titration7.protonation) annotation (Line(
               points={{20,24},{20,-22.6},{17.8,-22.6}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(hemoglobin_titration2.protonation, dH2.u1) annotation (Line(
               points={{17.8,63.4},{17.8,47.7},{12,47.7},{12,32}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(hemoglobin_titration3.protonation, dH3.u1) annotation (Line(
               points={{47.8,63.4},{47.8,46.7},{38,46.7},{38,32}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(dH3.u2, hemoglobin_titration8.protonation) annotation (Line(
               points={{46,24},{47.8,24},{47.8,-22.6}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(hemoglobin_titration4.protonation, dH4.u1) annotation (Line(
               points={{77.8,63.4},{77.8,46.7},{72,46.7},{72,30}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(dH4.u2, hemoglobin_titration9.protonation) annotation (Line(
               points={{80,22},{80,-22.6},{77.8,-22.6}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           annotation (
             experiment(
               StopTime=1.1,
@@ -2835,48 +2539,38 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         connect(H2O.q_out, waterDissociation.substrates[1]) annotation (Line(
             points={{-82,-12},{-56,-12}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(waterDissociation.products[2], H3O.q_out) annotation (Line(
             points={{-36,-11.5},{-26,-11.5},{-26,12},{-8,12}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(waterDissociation.products[1], OH.q_out) annotation (Line(
             points={{-36,-12.5},{-26,-12.5},{-26,-32},{-8,-32}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(tH2O.fragment[1], H2O.solute) annotation (Line(
             points={{-48,-69.3333},{-76,-69.3333},{-76,-22}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(OH.solute, tH2O.fragment[2]) annotation (Line(
             points={{-2,-42},{-2,-50},{-76,-50},{-76,-68},{-48,-68}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(H3O.solute, tH2O.fragment[3]) annotation (Line(
             points={{-2,2},{-2,-6},{8,-6},{8,-52},{-72,-52},{-72,-66.6667},{-48,
                 -66.6667}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
 
         connect(SID.y,toColoumn. u) annotation (Line(
             points={{73,84},{100,84},{100,-74},{92,-74}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(toColoumn.y, electroneutrality.total) annotation (Line(
             points={{69,-74},{56,-74},{56,-76}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(H3O.solute, electroneutrality.fragment[1]) annotation (Line(
             points={{-2,2},{-2,-6},{8,-6},{8,-89},{46,-89}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(OH.solute, electroneutrality.fragment[2]) annotation (Line(
             points={{-2,-42},{-2,-87},{46,-87}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         annotation ( Documentation(info="<html>
 <p>Self-ionization of water.</p>
 <p>Ions difference (SID) in water causes the acidity/basicity, where pH = -log10(aH+). An activity of hydrogen ions aH+ is approximated with concentration (mol/l) of the oxonium cations H3O+.</p>
@@ -2947,70 +2641,57 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         connect(HendersonHasselbalch.products[1], HCO3.q_out) annotation (Line(
             points={{-38,31.5},{-26,31.5},{-26,56},{-8,56}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(H3O.q_out, HendersonHasselbalch.products[2]) annotation (Line(
             points={{-8,12},{-26,12},{-26,32.5},{-38,32.5}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(CO2_liquid.q_out, HendersonHasselbalch.substrates[1]) annotation (
            Line(
             points={{-80,32},{-58,32}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(gasSolubility.q_in, CO2_liquid.q_out) annotation (Line(
             points={{-80,48},{-80,32}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(CO2_gas.q_out, gasSolubility.q_out) annotation (Line(
             points={{-80,72},{-80,66}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(HCO3.solute, electroneutrality.fragment[1]) annotation (Line(
             points={{-2,46},{-2,38},{16,38},{16,-89.3333},{46,-89.3333}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(CO3.solute, electroneutrality.fragment[2]) annotation (Line(
             points={{70,46},{70,38},{18,38},{18,-88},{46,-88}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(H3O.solute, electroneutrality.fragment[3]) annotation (Line(
             points={{-2,2},{-2,-6},{22,-6},{22,-86.6667},{46,-86.6667}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(H3O.q_out, c2.products[2]) annotation (Line(
             points={{-8,12},{48,12},{48,56.5},{36,56.5}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(HCO3.q_out, c2.substrates[1]) annotation (Line(
             points={{-8,56},{16,56}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(c2.products[1], CO3.q_out) annotation (Line(
             points={{36,55.5},{52,55.5},{52,56},{64,56}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(SID.y,toColoumn. u) annotation (Line(
             points={{75,84},{100,84},{100,-74},{92,-74}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(electroneutrality.total, toColoumn.y) annotation (Line(
             points={{56,-76},{56,-74},{69,-74}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         annotation ( Documentation(info="<html>
 <p>CO2 solution in water without any other acid-base buffers.</p>
 <pre><b>plotExpression(apply(-log10(CarbonDioxideInWater.H3O.solute)),&nbsp;false,&nbsp;&QUOT;pH&QUOT;,&nbsp;1);</b></pre>
 <p><br>Please note, that OH- (and CO3^-2) can be neglected from electroneutrality calculation, because of very small concentrations (in physiological pH) anyway. </p>
 <p>And if SID&GT;0 then also H3O+ can be also neglected from electroneutrality, because only bicarbonate anions HCO3- (or CO3^-2) are needed there to balance the electroneutrality.</p>
-<p><br>The partial pressure of CO2 in gas are input parameter. Outputs are an amount of free disolved CO2 in liquid and an amount of HCO3-.</p>
+<p><br>The partial pressure of CO2 in gas are input parameter. Outputs are an amount of free dissolved CO2 in liquid and an amount of HCO3-.</p>
 <p><br>The titration slope der(pH)/der(SID)=17.5 1/(mol/L) at pH=7.4 and pCO2=40 mmHg.</p>
 <p><br>Molar heat of formation (aqueous):</p>
 <p>CO2:        -413.5 kJ/mol  (gas: -393.5 kJ/mol )</p>
@@ -3064,60 +2745,50 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         parameter Real pKAs[n]=cat(1,{8.5},fill(4.0,98),fill(11.7,18),fill(12.5,24),fill(5.8,2),fill(6.0,2),{7.6,7.8,7.8,8,8},fill(10.3,50),{7.19,7.29,7.17,7.56,7.08,7.38,6.82,6.43,4.92,5.83,6.24,6.8,5.89,5.2,6.8,5.5,8,3.1})
           "acid dissociation constants";
 
-        Chemical.Components.Substance A[n](
+        Components.Substance A[n](
           each Simulation=Types.SimulationType.SteadyState,
           each isDependent=true,
           each solute_start=0.00033) "deprotonated acid groups"
           annotation (Placement(transformation(extent={{4,-16},{24,4}})));
-        Chemical.Components.ChemicalReaction react[n](
-          each nP=2,
-          K=fill(10.0, n) .^ (-pKAs .+ 3))
+        Components.ChemicalReaction react[n](each nP=2, K=fill(10.0, n) .^ (-
+              pKAs .+ 3))
           annotation (Placement(transformation(extent={{-44,-2},{-24,18}})));
 
-        Chemical.Components.Substance HA[n](
-          each Simulation=Types.SimulationType.SteadyState, each
-            solute_start=0.00033) "protonated acid groups"
+        Components.Substance HA[n](each Simulation=Types.SimulationType.SteadyState,
+            each solute_start=0.00033) "protonated acid groups"
           annotation (Placement(transformation(extent={{-76,-2},{-56,18}})));
 
       equation
         connect(react.products[1], A.q_out) annotation (Line(
             points={{-24,7.5},{-12,7.5},{-12,-6},{14,-6}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         for i in 1:n loop
           connect(react[i].products[2], H3O.q_out) annotation (Line(
               points={{-24,8.5},{-14,8.5},{-14,22},{14,22}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
         end for;
         connect(HA.q_out, react.substrates[1]) annotation (Line(
             points={{-66,8},{-44,8}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(A.solute, molarConservationLaw.fragment[1]) annotation (Line(
             points={{20,-16},{20,-20},{36,-20},{36,-1},{44,-1}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(HA.solute, molarConservationLaw.fragment[2]) annotation (Line(
             points={{-60,-2},{-60,-8},{-78,-8},{-78,36},{36,36},{36,0},{44,0},{
                 44,1}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(SID.y,toColoumn. u) annotation (Line(
             points={{75,86},{100,86},{100,-74},{92,-74}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(HA.solute, electroneutrality.fragment) annotation (Line(
             points={{-60,-2},{-60,-88},{46,-88}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(toColoumn.y, electroneutrality.total) annotation (Line(
             points={{69,-74},{56,-74},{56,-76}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         annotation ( Documentation(revisions="<html>
 <p><i>2014</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
@@ -3145,38 +2816,33 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
           "strong ions difference with respect to albumin charge shift"
           annotation (Placement(transformation(extent={{44,74},{64,94}})));
 
-        Chemical.Components.Substance H(
+        Components.Substance H(
           q_out(conc(nominal=10^(-7.4 + 3))),
           Simulation=Types.SimulationType.SteadyState,
           solute_start=10^(-7.4 + 3),
           isDependent=true) "hydrogen ions activity" annotation (Placement(
-              transformation(
-              extent={{-10,-10},{10,10}},
-              origin={36,-12})));
+              transformation(extent={{-10,-10},{10,10}}, origin={36,-12})));
 
-        Chemical.Components.Substance H3PO4(
+        Components.Substance H3PO4(
           Simulation=Types.SimulationType.SteadyState,
           isDependent=true,
-          solute_start=1e-08)
-          annotation (Placement(transformation(extent={{-98,-58},{-78,-38}})));
-        Chemical.Components.Substance H2PO4(Simulation=Types.SimulationType.SteadyState,
-            solute_start=0.0005)
-          annotation (Placement(transformation(extent={{-44,-58},{-24,-38}})));
-        Chemical.Components.Substance HPO4(Simulation=Types.SimulationType.SteadyState,
+          solute_start=1e-08) annotation (Placement(transformation(extent={{-98,
+                  -58},{-78,-38}})));
+        Components.Substance H2PO4(Simulation=Types.SimulationType.SteadyState,
+            solute_start=0.0005) annotation (Placement(transformation(extent=
+                  {{-44,-58},{-24,-38}})));
+        Components.Substance HPO4(Simulation=Types.SimulationType.SteadyState,
             solute_start=0.0006)
           annotation (Placement(transformation(extent={{16,-58},{36,-38}})));
-        Chemical.Components.Substance PO4(Simulation=Types.SimulationType.SteadyState,
+        Components.Substance PO4(Simulation=Types.SimulationType.SteadyState,
             solute_start=1e-08)
           annotation (Placement(transformation(extent={{72,-58},{92,-38}})));
 
-        Chemical.Components.ChemicalReaction chemicalReaction(nP=2, K=10
-              ^(-1.915 + 3))
+        Components.ChemicalReaction chemicalReaction(nP=2, K=10^(-1.915 + 3))
           annotation (Placement(transformation(extent={{-70,-58},{-50,-38}})));
-        Chemical.Components.ChemicalReaction chemicalReaction1(nP=2, K=10
-              ^(-6.66 + 3))
+        Components.ChemicalReaction chemicalReaction1(nP=2, K=10^(-6.66 + 3))
           annotation (Placement(transformation(extent={{-14,-58},{6,-38}})));
-        Chemical.Components.ChemicalReaction chemicalReaction2(nP=2, K=10
-              ^(-11.78 + 3))
+        Components.ChemicalReaction chemicalReaction2(nP=2, K=10^(-11.78 + 3))
           annotation (Placement(transformation(extent={{44,-58},{64,-38}})));
         SteadyStates.Components.MolarConservationLaw tP04(
           each Simulation=Types.SimulationType.SteadyState,
@@ -3203,91 +2869,72 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         connect(H3PO4.q_out, chemicalReaction.substrates[1]) annotation (Line(
             points={{-88,-48},{-70,-48}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(chemicalReaction.products[1], H2PO4.q_out) annotation (Line(
             points={{-50,-48.5},{-42,-48.5},{-42,-48},{-34,-48}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(H2PO4.q_out, chemicalReaction1.substrates[1]) annotation (Line(
             points={{-34,-48},{-14,-48}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(chemicalReaction1.products[1], HPO4.q_out) annotation (Line(
             points={{6,-48.5},{16,-48.5},{16,-48},{26,-48}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(HPO4.q_out, chemicalReaction2.substrates[1]) annotation (Line(
             points={{26,-48},{44,-48}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(chemicalReaction2.products[1], PO4.q_out) annotation (Line(
             points={{64,-48.5},{74,-48.5},{74,-48},{82,-48}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(chemicalReaction.products[2], H.q_out) annotation (Line(
             points={{-50,-47.5},{-44,-47.5},{-44,-32},{36,-32},{36,-12}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(chemicalReaction1.products[2], H.q_out) annotation (Line(
             points={{6,-47.5},{14,-47.5},{14,-32},{36,-32},{36,-12}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(chemicalReaction2.products[2], H.q_out) annotation (Line(
             points={{64,-47.5},{72,-47.5},{72,-32},{36,-32},{36,-12}},
             color={107,45,134},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(H3PO4.solute, tP04.fragment[1]) annotation (Line(
             points={{-82,-58},{-82,-86},{-28,-86},{-28,-85.5}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(H2PO4.solute, tP04.fragment[2]) annotation (Line(
             points={{-28,-58},{-28,-62},{-64,-62},{-64,-84.5},{-28,-84.5}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(HPO4.solute, tP04.fragment[3]) annotation (Line(
             points={{32,-58},{32,-64},{-50,-64},{-50,-83.5},{-28,-83.5}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(PO4.solute, tP04.fragment[4]) annotation (Line(
             points={{88,-58},{88,-68},{-40,-68},{-40,-82.5},{-28,-82.5}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(H.solute, minusPh.u) annotation (Line(
             points={{42,-22},{42,-26},{54,-26},{54,-10},{62,-10}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(SID.y, toColoumn.u) annotation (Line(
             points={{65,84},{100,84},{100,-86},{96,-86}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(toColoumn.y, electroneutrality.total) annotation (Line(
             points={{73,-86},{70,-86},{70,-76},{58,-76}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(H2PO4.solute, electroneutrality.fragment[1]) annotation (Line(
             points={{-28,-58},{-28,-62},{24,-62},{24,-89.3333},{48,-89.3333}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(HPO4.solute, electroneutrality.fragment[2]) annotation (Line(
             points={{32,-58},{32,-88},{48,-88}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(PO4.solute, electroneutrality.fragment[3]) annotation (Line(
             points={{88,-58},{88,-68},{28,-68},{28,-86.6667},{48,-86.6667}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         annotation ( Documentation(info="<html>
 <p>Henderson-Hasselbalch equation in ideal buffered solution, where pH remains constant.</p>
-<p>The partial pressure of CO2 in gas are input parameter. Outputs are an amount of free disolved CO2 in liquid and an amount of HCO3-.</p>
+<p>The partial pressure of CO2 in gas are input parameter. Outputs are an amount of free dissolved CO2 in liquid and an amount of HCO3-.</p>
 </html>",      revisions="<html>
 <p><i>2014</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
@@ -3347,20 +2994,18 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
           parameter Real pKAs[n]=cat(1,{8.5},fill(4.0,98),fill(11.7,18),fill(12.5,24),fill(5.8,2),fill(6.0,2),{7.6,7.8,7.8,8,8},fill(10.3,50),{7.19,7.29,7.17,7.56,7.08,7.38,6.82,6.43,4.92,5.83,6.24,6.8,5.89,5.2,6.8,5.5,8,3.1})
             "acid dissociation constants";
 
-          Chemical.Components.Substance A[n](
+          Components.Substance A[n](
             each Simulation=Types.SimulationType.SteadyState,
             each isDependent=true,
             each solute_start=0.00033) "deprotonated acid groups"
             annotation (Placement(transformation(extent={{-10,14},{10,34}})));
-          Chemical.Components.ChemicalReaction react[n](
-            each nP=2,
-            K=fill(10.0, n) .^ (-pKAs .+ 3))
-            annotation (Placement(transformation(extent={{-44,16},{-24,36}})));
+          Components.ChemicalReaction react[n](each nP=2, K=fill(10.0, n) .^
+                (-pKAs .+ 3)) annotation (Placement(transformation(extent={{-44,
+                    16},{-24,36}})));
 
-          Chemical.Components.Substance HA[n](
-            each Simulation=Types.SimulationType.SteadyState, each
-              solute_start=0.00033) "protonated acid groups"
-            annotation (Placement(transformation(extent={{-76,16},{-56,36}})));
+          Components.Substance HA[n](each Simulation=Types.SimulationType.SteadyState,
+              each solute_start=0.00033) "protonated acid groups" annotation (
+             Placement(transformation(extent={{-76,16},{-56,36}})));
 
           Components.Substance CO2_liquid(Simulation=Types.SimulationType.SteadyState,
               isDependent=isDependent[1])
@@ -3392,95 +3037,75 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
           connect(react.products[1], A.q_out) annotation (Line(
               points={{-24,25.5},{-12,25.5},{-12,24},{0,24}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           for i in 1:n loop
             connect(react[i].products[2], H3O.q_out) annotation (Line(
                 points={{-24,26.5},{-14,26.5},{-14,40},{38,40}},
                 color={107,45,134},
-                thickness=1,
-                smooth=Smooth.None));
+                thickness=1));
           end for;
           connect(HA.q_out, react.substrates[1]) annotation (Line(
               points={{-66,26},{-44,26}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(A.solute, tAlb.fragment[1]) annotation (Line(
               points={{6,14},{6,10},{-54,10},{-54,-5},{-40,-5}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(HA.solute, tAlb.fragment[2]) annotation (Line(
               points={{-60,16},{-60,-4},{-40,-4},{-40,-3}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(toColoumn.y, electroneutrality.total) annotation (Line(
               points={{69.2,-70},{56,-70},{56,-76}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(substances[1], CO2_liquid.q_out) annotation (Line(
               points={{0,73.3333},{0,74},{-66,74}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(HCO3.q_out, substances[2]) annotation (Line(
               points={{52,80},{0,80}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(H2PO4.q_out, phosphateAcidification.substrates[1]) annotation (Line(
               points={{-52,-44},{-32,-44}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(phosphateAcidification.products[1], HPO4.q_out) annotation (Line(
               points={{-12,-44.5},{-2,-44.5},{-2,-44},{8,-44}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(H2PO4.solute, tP04.fragment[1]) annotation (Line(
               points={{-46,-54},{-46,-75},{-28,-75}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(HPO4.solute, tP04.fragment[2]) annotation (Line(
               points={{14,-54},{14,-60},{-40,-60},{-40,-73},{-28,-73}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(phosphateAcidification.products[2], H3O.q_out) annotation (Line(
               points={{-12,-43.5},{-4,-43.5},{-4,-28},{20,-28},{20,40},{38,40}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(HCO3.solute, electroneutrality.fragment[1]) annotation (Line(
               points={{58,70},{58,-62},{32,-62},{32,-88},{46,-88}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(H2PO4.solute, electroneutrality.fragment[2]) annotation (Line(
               points={{-46,-54},{-46,-86},{46,-86},{46,-88}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(HPO4.solute, electroneutrality.fragment[3]) annotation (Line(
               points={{14,-54},{14,-88},{46,-88}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(Cl.q_out, substances[3]) annotation (Line(
               points={{86,52},{0,52},{0,86.6667}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(HA.solute, electroneutrality.fragment[(m+1):(n+m)]) annotation (Line(
               points={{-60,16},{-60,-88},{46,-88}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(SID_less_Cl.y, toColoumn.u) annotation (Line(
               points={{89,-32},{92,-32},{92,-70},{87.6,-70}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(Cl.solute, electroneutrality.fragment[4]) annotation (Line(
               points={{92,42},{92,10},{54,10},{54,-64},{34,-64},{34,-88},{46,
                   -88}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           annotation ( Documentation(revisions="<html>
 <p><i>2014</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
@@ -3528,34 +3153,28 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
           connect(HendersonHasselbalch.products[1],HCO3. q_out) annotation (Line(
               points={{-40,55.5},{-30,55.5},{-30,80},{-12,80}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(H3O.q_out,HendersonHasselbalch. products[2]) annotation (Line(
               points={{-12,36},{-30,36},{-30,56.5},{-40,56.5}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(CO2_liquid.q_out,HendersonHasselbalch. substrates[1]) annotation (
              Line(
               points={{-80,56},{-60,56}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(substances[1], CO2_liquid.q_out) annotation (Line(
               points={{-80,73.3333},{-80,56}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(HCO3.q_out, substances[2]) annotation (Line(
               points={{-12,80},{-80,80}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(Cl.q_out, substances[3]) annotation (Line(
               points={{86,92},{-80,92},{-80,86.6667}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
         end ErythrocyteAcidBase;
 
         model BloodAcidBase
@@ -3570,14 +3189,12 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
             annotation (Line(
               points={{-24,12},{14,12}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(membrane.particlesOutside, erythrocyteAcidBase.substances)
             annotation (Line(
               points={{34,12},{58,12}},
               color={107,45,134},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
         end BloodAcidBase;
       end Develop;
     end AcidBase;
@@ -3612,9 +3229,9 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         "Numerical scale. Default is from mmol to mol, but for some substances such as hormones, hydronium or hydroxide ions can be much smaller."
           annotation ( HideResult=true, Dialog(tab="Solver",group="Numerical support of very small concentrations"));
 
-      Chemical.Interfaces.ChemicalPort_b            q_out(conc(start=solute_start/NormalVolume))
-        "Concentration and molar flow from/to compartment" annotation (Placement(transformation(extent={{-10,
-                -10},{10,10}})));
+      Interfaces.ChemicalPort_b q_out(conc(start=solute_start/NormalVolume))
+        "Concentration and molar flow from/to compartment"
+        annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
       parameter Types.MolarEnergy dH=0 "Standard Enthalpy Change"
         annotation ( HideResult=true, Dialog(tab="Energies"));
@@ -3645,8 +3262,13 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         Documentation(revisions="<html>
 <p>2009-2015 by Marek Matejak, Charles University, Prague, Czech Republic </p>
 </html>", info="<html>
-<p><b>Solute = Concentration &middot; Volume = &int; MolarFlow</b></p>
+<h4>Solute = Concentration &middot; Volume = &int; MolarFlow</h4>
 <p>The main class from &ldquo;Chemical&rdquo; package is called &QUOT;Substance&QUOT;. It has one chemical connector, where molar concentration and molar flow is presented as usually. An amount of a substance (&QUOT;solute&QUOT;) is accumulated by molar flow inside an instance of this class. In the default setting the volume is set to one liter, so in this setting the concentration at &ldquo;mol/L&rdquo; has the same value as the variable solute at &ldquo;mol&rdquo;. But in the advanced settings the default volume can be changed with external input. The molar flow at the port can be also negative, which means that the solute leaves the Substance instance.&nbsp;</p>
+<p><br>Having defined amount of all particles in solution as n(solution) and mass of solvent as m(solvent). It can be expressed mole fraction x and molality b as follows:</p>
+<p><b>x = Solute / n(solution) = Concentration &middot; Volume /n(solution)</b></p>
+<p><b>b = Solute / m(solvent) = Concentration &middot; Volume /m(solvent)</b></p>
+<p><br>The activity (mole fraction based) can be expressed using mole-fraction-based activity coefficient gamma as:</p>
+<h4>a = gamma * x</h4>
 </html>"));
     end Substance;
 
@@ -3656,15 +3278,15 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
       Real KaT "Dissociation constant at current temperature";
       Types.MolarFlowRate rr "Reaction molar flow rate";
 
-      extends Chemical.Interfaces.ConditionalVolume;
+      extends Physiolibrary.Chemical.Interfaces.ConditionalVolume;
 
       parameter Boolean useDissociationConstantInput = false
         "=true, if external dissociation ratio is used"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Boolean useForwardRateInput = false
         "=true, if external forward rate is used"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       Modelica.Blocks.Interfaces.RealInput dissociationConstant(start=K) = KBase if useDissociationConstantInput
         "Dissociation coefficient [SI-unit]"
@@ -3673,15 +3295,12 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
             rotation=270,
             origin={0,40})));
 
-      Chemical.Interfaces.ChemicalPort_b
-                                products[nP] "Products"
-                             annotation (Placement(
-            transformation(extent={{90,-10},{110,10}})));
+      Physiolibrary.Chemical.Interfaces.ChemicalPort_b products[nP] "Products"
+        annotation (Placement(transformation(extent={{90,-10},{110,10}})));
 
-      Chemical.Interfaces.ChemicalPort_a
-                                substrates[nS] "Substrates"
-                                annotation (Placement(
-            transformation(extent={{-110,-10},{-90,10}})));
+      Physiolibrary.Chemical.Interfaces.ChemicalPort_a substrates[nS]
+        "Substrates"
+        annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
 
       parameter Real K = 1
         "Fixed dissociation constant [SI-unit] if useDissociationConstantInput=false"
@@ -3710,7 +3329,7 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         "Activity coefficients of products"
         annotation ( HideResult=true, Dialog(group="Products", tab="Reaction type"));
 
-     extends Chemical.Interfaces.ConditionalHeatPort;
+     extends Physiolibrary.Chemical.Interfaces.ConditionalHeatPort;
 
       parameter Types.Temperature TK=298.15 "Base temperature"
         annotation ( HideResult=true, Dialog(tab="Temperature dependence"));
@@ -3720,7 +3339,7 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         annotation ( HideResult=true, Dialog(tab="Temperature dependence"));
 
       parameter Types.Fraction solventFraction=1
-        "Free solvent fraction in liquid (i.e. water fraction in plasma=0.94, in RBC=0.65, in blood=0.81)";
+        "Free solvent fraction in liquid (i.e. 'mol/mol' ratio between current solution and pure solvent in one liter; e.g. in plasma=0.96, in RBC=0.717)";
 
       Real KBase "dissociation constant at TK" annotation (HideResult=true);
 
@@ -3747,6 +3366,8 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
       end if;
 
       KaT = KBase * Modelica.Math.exp(((-dH)/Modelica.Constants.R)*(1/T_heatPort - 1/TK));  //Hoff's equation
+      //this Hoff's equation is valid in gases reactions with the same number of substrates and products and plus-minus in liquid solutions.
+      //for gaseous reaction with dn!=0 (stoichoimetry difference, i.e. the stoichiometru number of products minus the stoichiometry number of reactants) is the Van't Hoff's energy (dE) different from enthalphy of reaction (DH): dE=dH-dn*R*T (Ref: D. M. Golden, "Standard states for thermochemical and activation parameters," Journal of Chemical Education, vol. 48, p. 235, 1971/04/01 1971.)
 
       rr*fsp = forwardRate*volume*(product((as.*substrates.conc).^s)*fp - (1/KaT)*product((ap.*products.conc).^p)*fs);  //Elementary first-order rate kinetics - the main equation
 
@@ -3770,13 +3391,11 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
             Polygon(
               points={{-60,6},{-60,4},{54,4},{54,4},{18,14},{18,6},{-60,6}},
               lineColor={0,0,0},
-              smooth=Smooth.None,
               fillColor={0,0,0},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{54,-8},{54,-6},{-60,-6},{-60,-6},{-24,-16},{-24,-8},{54,-8}},
               lineColor={0,0,0},
-              smooth=Smooth.None,
               fillColor={0,0,0},
               fillPattern=FillPattern.Solid)}),
         Documentation(revisions="<html>
@@ -3864,7 +3483,7 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 </tr>
 <tr>
 <td><p>T<sub>K</sub></p></td>
-<td><p>base temperature of tabulated coeficients</p></td>
+<td><p>base temperature of tabulated coefficients</p></td>
 </tr>
 <tr>
 <td><p>&omega;</p></td>
@@ -3890,7 +3509,7 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
        //q_in is dissolved in liquid and q_out is in gaseous solution"
 
       extends Icons.GasSolubility;
-      extends Chemical.Interfaces.ConditionalHeatPort;
+      extends Interfaces.ConditionalHeatPort;
 
       parameter Types.DiffusionPermeability solubilityRateCoef=0.01
         "The rate constant of incoming gas to solution (default 10 liter per second)"
@@ -3909,17 +3528,13 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         annotation (HideResult=true,Dialog(tab="Temperature dependence"));
 
       parameter Types.Fraction solventFraction=1
-        "Free solvent fraction in liquid (i.e. water fraction in plasma=0.94, in RBC=0.65, in blood=0.81)";
+        "Free solvent fraction in liquid (i.e. 'mol/mol' ratio between current solution and pure solvent in one liter; e.g. in plasma=0.96, in RBC=0.717)";
 
-      Chemical.Interfaces.ChemicalPort_b
-                                q_out "Gaseous solution"
-                             annotation (Placement(
-            transformation(extent={{-10,90},{10,110}})));
+      Interfaces.ChemicalPort_b q_out "Gaseous solution"
+        annotation (Placement(transformation(extent={{-10,90},{10,110}})));
 
-      Chemical.Interfaces.ChemicalPort_a
-                                q_in "Dissolved in liquid solution"
-                                annotation (Placement(
-            transformation(extent={{-10,-90},{10,-70}})));
+      Interfaces.ChemicalPort_a q_in "Dissolved in liquid solution"
+        annotation (Placement(transformation(extent={{-10,-90},{10,-70}})));
     equation
       q_in.q + q_out.q = 0;
 
@@ -4000,7 +3615,7 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 </tr>
 <tr>
 <td><p>T<sub>K</sub></p></td>
-<td><p>base temperature of tabulated coeficients</p></td>
+<td><p>base temperature of tabulated coefficients</p></td>
 </tr>
 <tr>
 <td><p>&Omega;</p></td>
@@ -4028,11 +3643,11 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 
     model Diffusion "Solute diffusion"
       extends Icons.Diffusion;
-      extends Chemical.Interfaces.OnePort;
+      extends Interfaces.OnePort;
 
       parameter Boolean useConductanceInput = false
         "=true, if external conductance value is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.DiffusionPermeability Conductance=0
         "Diffusion conductance if useConductanceInput=false"
@@ -4070,7 +3685,7 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
     model Membrane
       "Donnan's equilibrium of electrolytes usable for glomerular membrane, open/leak membrane channels, pores, ..."
       extends Icons.Membrane;
-      extends Chemical.Interfaces.ConditionalHeatPort;
+      extends Interfaces.ConditionalHeatPort;
 
       parameter Integer NumberOfParticles = 1
         "Number of penetrating particle types";
@@ -4081,7 +3696,7 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 
       parameter Boolean usePermeabilityInput = false
         "=true, if external permeability value is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       Interfaces.ChemicalPort_a particlesInside[NumberOfParticles]
         "inner side of membrane, solution"
@@ -4108,9 +3723,9 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         annotation (HideResult=true,Dialog(tab="Temperature dependence"));
 
       parameter Types.Fraction solventFractionInside=1
-        "Free solvent fraction inside (i.e. water fraction in plasma=0.94, in cells=0.65, in blood=0.81)";
+        "Free solvent fraction inside (i.e. 'mol/mol' ratio between current solution and pure solvent in one liter; e.g. in plasma=0.96, in RBC=0.717)";
       parameter Types.Fraction solventFractionOutside=1
-        "Free solvent fraction outside (i.e. water fraction in plasma=0.94, in cells=0.65, in blood=0.81)";
+        "Free solvent fraction outside (i.e. 'mol/mol' ratio between current solution and pure solvent in one liter; e.g. in plasma=0.96, in RBC=0.717)";
 
     protected
        Real KAdjustment
@@ -4191,18 +3806,17 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 
       extends SteadyStates.Interfaces.SteadyStateSystem(
                                                Simulation=Types.SimulationType.SteadyState, NumberOfDependentStates=NumberOfSubunits-1);
-      extends Chemical.Interfaces.ConditionalVolume;
+      extends Interfaces.ConditionalVolume;
 
       parameter Integer NumberOfSubunits=1
-        "Number of independent subunits occuring in molecule";
+        "Number of independent subunits occurring in molecule";
 
-      Chemical.Interfaces.ChemicalPort_a specificForm
-        "Specific form composed with subunits form of subunitSpiecies"                                                        annotation (Placement(
-            transformation(extent={{90,-90},{110,-70}})));
-      Chemical.Interfaces.ChemicalPort_a specificSubunitForm[NumberOfSubunits]
+      Interfaces.ChemicalPort_a specificForm
+        "Specific form composed with subunits form of subunitSpiecies"
+        annotation (Placement(transformation(extent={{90,-90},{110,-70}})));
+      Interfaces.ChemicalPort_a specificSubunitForm[NumberOfSubunits]
         "Specific form of subunits of specific molecule form in connector called spieces"
-                                                                                                            annotation (Placement(
-            transformation(extent={{-10,90},{10,110}})));
+        annotation (Placement(transformation(extent={{-10,90},{10,110}})));
     protected
       Real fractions[NumberOfSubunits];
     public
@@ -4230,10 +3844,10 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
     //system internal heat
       parameter Boolean useInternalHeatsInput = false
         "=true, if subunitInternalHeat inputs are used instead of parameter SubunitEnthalpies"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs",tab="Heat"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs",tab="Heat"));
 
       parameter Types.MolarEnergy SubunitEnthalpies[NumberOfSubunits]=zeros(NumberOfSubunits)
-        "Enthalpy changes of substances (can relative to one choosen specific form of chemical substance in the system) if useEnthalpiesInput=false"
+        "Enthalpy changes of substances (can relative to one chosen specific form of chemical substance in the system) if useEnthalpiesInput=false"
         annotation (HideResult=not useInternalHeatsInput, Dialog(enable=not useInternalHeatsInput,tab="Heat"));
 
       Types.RealIO.EnergyInput subunitInternalHeat[NumberOfSubunits](each start=0)=internalHeatOfSubunit if useInternalHeatsInput
@@ -4278,7 +3892,7 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 <p>This block identifies one specific chemical form of one macromolecule defined by forms of its subunits  (one chosen chemical species - called <i>specie</i>).</p>
 <p>Only main connector called <b>species </b>is designed for inflow and outflow of macromolecule to/from <i>system</i>. The concentration in this connector is the concentration of its specific <i>specie.</i></p>
 <p>Connectors <b>subunitSpecies[:] </b>represent specific forms of the macromolecule subunit types. If the subnunit type occures n-times in macromolecule, the inflow is n-time greater than the inflow of macromolecule.</p>
-<p><br>Initial total concentrations of subunits must be set to be right distribution of total macromolecule concentration. So the ratios between subunit concentrations are the ratios of their occurence in macromolecule. In equilibrium are this proporties fullfiled.</p>
+<p><br>Initial total concentrations of subunits must be set to be right distribution of total macromolecule concentration. So the ratios between subunit concentrations are the ratios of their occurrence in macromolecule. In equilibrium are this proporties fulfilled.</p>
 <p><br>For example: If the macromolecule has four identical independent subunits and each subunit can occur in two form F1 and F2, then the concentration of macromolecule <i>specie </i>composed only from four subunits in form F1 is <b>species.conc=</b>conc*fF1^4. </p>
 <p>Where:</p>
 <p>conc is totat concentration of macromolecule in <i>system</i> accumulated by <b>species.q</b>,</p>
@@ -4295,10 +3909,8 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
     model Degradation "Degradation of solute"
       extends Interfaces.ConditionalVolume;
 
-      Chemical.Interfaces.ChemicalPort_a
-                                q_in "Degraded solute outflow"
-                                annotation (Placement(
-            transformation(extent={{-110,-10},{-90,10}})));
+      Interfaces.ChemicalPort_a q_in "Degraded solute outflow"
+        annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
 
       parameter Types.Time HalfTime
         "Degradation half time. The time after which will remain half of initial concentration in the defined volume when no other generation nor clearence nor degradation exist.";
@@ -4314,12 +3926,12 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
                             graphics={
             Rectangle(
               extent={{-100,-50},{100,50}},
-              lineColor={0,0,127},
+              lineColor={107,45,134},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{-80,26},{62,0},{-80,-26},{-80,26}},
-              lineColor={0,0,127},
+              lineColor={107,45,134},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
             Text(
@@ -4333,38 +3945,32 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
             Polygon(
               points={{-68,24},{-68,-24},{-58,-22},{-58,22},{-68,24}},
               lineColor={0,0,127},
-              smooth=Smooth.None,
-              fillColor={0,0,127},
+              fillColor={107,45,134},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{-46,20},{-46,-20},{-36,-18},{-36,18},{-46,20}},
               lineColor={0,0,127},
-              smooth=Smooth.None,
-              fillColor={0,0,127},
+              fillColor={107,45,134},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{-24,16},{-24,-16},{-14,-14},{-14,14},{-24,16}},
               lineColor={0,0,127},
-              smooth=Smooth.None,
-              fillColor={0,0,127},
+              fillColor={107,45,134},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{-2,12},{-2,-12},{8,-10},{8,10},{-2,12}},
               lineColor={0,0,127},
-              smooth=Smooth.None,
-              fillColor={0,0,127},
+              fillColor={107,45,134},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{20,8},{20,-8},{30,-6},{30,6},{20,8}},
               lineColor={0,0,127},
-              smooth=Smooth.None,
-              fillColor={0,0,127},
+              fillColor={107,45,134},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{40,4},{40,-4},{50,-2},{50,2},{40,4}},
               lineColor={0,0,127},
-              smooth=Smooth.None,
-              fillColor={0,0,127},
+              fillColor={107,45,134},
               fillPattern=FillPattern.Solid)}),
         Documentation(revisions="<html>
 <table>
@@ -4397,12 +4003,11 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
       parameter Real K(unit="1")=1
         "Coefficient such that Clearance = K*solutionFlow";
 
-      extends Chemical.Interfaces.ConditionalSolutionFlow(SolutionFlow=Clearance/K);
+      extends Hydraulic.Interfaces.ConditionalSolutionFlow(SolutionFlow=
+            Clearance/K);
 
-      Chemical.Interfaces.ChemicalPort_a
-                                q_in "solute outflow"
-                                annotation (Placement(
-            transformation(extent={{-110,-10},{-90,10}})));
+      Interfaces.ChemicalPort_a q_in "solute outflow"
+        annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
 
       Types.VolumeFlowRate clearance;
     equation
@@ -4423,7 +4028,7 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{-80,25},{80,0},{-80,-25},{-80,25}},
-              lineColor={0,0,127},
+              lineColor={107,45,134},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
             Text(
@@ -4456,8 +4061,8 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
     end Clearance;
 
     model Stream "Flow of whole solution"
-      extends Chemical.Interfaces.OnePort;
-      extends Chemical.Interfaces.ConditionalSolutionFlow;
+      extends Interfaces.OnePort;
+      extends Hydraulic.Interfaces.ConditionalSolutionFlow;
 
     equation
       q_in.q = if
@@ -4474,7 +4079,7 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
               rotation=360),
             Polygon(
               points={{-80,25},{80,0},{-80,-25},{-80,25}},
-              lineColor={0,0,127},
+              lineColor={107,45,134},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid,
               rotation=360),
@@ -4532,8 +4137,8 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
     end Stream;
 
     model SolutePump "Prescribed solute flow"
-      extends Chemical.Interfaces.OnePort;
-      extends Chemical.Interfaces.ConditionalSoluteFlow;
+      extends Interfaces.OnePort;
+      extends Interfaces.ConditionalSoluteFlow;
 
     equation
       q_in.q = q;
@@ -4543,14 +4148,14 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
                 100,100}}), graphics={
             Rectangle(
               extent={{-100,-50},{100,50}},
-              lineColor={0,0,127},
+              lineColor={107,45,134},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid,
               rotation=360),
             Polygon(
               points={{-80,25},{80,0},{-80,-25},{-80,25}},
               lineColor={0,0,127},
-              fillColor={0,0,127},
+              fillColor={107,45,134},
               fillPattern=FillPattern.Solid,
               rotation=360),
             Text(
@@ -4565,12 +4170,12 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
     end SolutePump;
 
     model Dilution "Adding/removing of the solvent to/from running solution"
-      extends Chemical.Interfaces.OnePort;
+      extends Interfaces.OnePort;
       extends Icons.Dilution;
 
       parameter Boolean useDilutionInput = false
         "=true, if dilition input is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.Fraction Dilution=1
         "Concentration ratio after per before dilution (0..no solutes, 1..no dilution) if useDilutionInput=false"
@@ -4607,30 +4212,27 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 
       parameter Boolean useEffect = false
         "=true, if reabsorption fraction is BaseReabsorption^(1/Effect)"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Boolean useMaxReabInput = false
         "=true, if external maximum of reabsorption molar flow is used"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Boolean useBaseReabsorption = false
         "=false, if BaseReabsorption=1"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.MolarFlowRate MaxReabsorption = Modelica.Constants.inf
         "Maximal reabsorption molar flow if useMaxReabInput=false"
         annotation (Dialog(enable=not useMaxReabInput));
 
-      Chemical.Interfaces.ChemicalPort_a
-                                Inflow "Tubular inflow"              annotation (Placement(
-            transformation(extent={{-110,30},{-90,50}})));
-      Chemical.Interfaces.ChemicalPort_b
-                                Outflow "Tubular outflow"
+      Interfaces.ChemicalPort_a Inflow "Tubular inflow"
+        annotation (Placement(transformation(extent={{-110,30},{-90,50}})));
+      Interfaces.ChemicalPort_b Outflow "Tubular outflow"
         annotation (Placement(transformation(extent={{90,30},{110,50}})));
 
-      Chemical.Interfaces.ChemicalPort_b
-                                Reabsorption "Reabsorption from tubules"          annotation (Placement(
-            transformation(extent={{-10,-110},{10,-90}})));
+      Interfaces.ChemicalPort_b Reabsorption "Reabsorption from tubules"
+        annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
       Types.RealIO.FractionInput baseReabsorption=baseReabFract if useBaseReabsorption
         "Base fraction of molar inflow for reabsorption flow"
                                    annotation (Placement(transformation(extent={{-20,-20},
@@ -4691,14 +4293,18 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
     extends Modelica.Icons.SensorsPackage;
 
     model MolarFlowMeasure "Measure of molar flow"
-      extends Chemical.Interfaces.OnePort;
-      extends Icons.MolarFlowMeasure;
+      extends Interfaces.OnePort;
+      //extends Icons.MolarFlowMeasure;
+      extends Modelica.Icons.RotationalSensor;
 
      Types.RealIO.MolarFlowRateOutput molarFlowRate
                              annotation (Placement(transformation(extent={{-20,-20},
                 {20,20}},
             rotation=270,
-            origin={0,-60})));
+            origin={0,-60}), iconTransformation(
+            extent={{-20,-20},{20,20}},
+            rotation=270,
+            origin={0,-80})));
     equation
       q_in.conc = q_out.conc;
 
@@ -4708,32 +4314,40 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
         Documentation(revisions="<html>
 <p><i>2009-2010</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
-</html>"));
+</html>"), Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
+                {100,100}}), graphics={
+            Text(
+              extent={{-31,-7},{28,-66}},
+              lineColor={0,0,0},
+              textString="n'")}));
     end MolarFlowMeasure;
 
     model ConcentrationMeasure "Measure of molar concentration"
+      extends Modelica.Icons.RotationalSensor;
 
-      Chemical.Interfaces.ChemicalPort_a
-                                q_in "For measure only"
-                                annotation (Placement(
-            transformation(extent={{-10,-30},{10,-10}})));
+      Interfaces.ChemicalPort_a q_in "For measure only" annotation (Placement(
+            transformation(extent={{-10,-10},{10,10}}), iconTransformation(
+              extent={{-10,-10},{10,10}})));
       Types.RealIO.ConcentrationOutput concentration "Concentration"
                              annotation (Placement(transformation(extent={{-20,-20},
                 {20,20}},
             rotation=90,
-            origin={0,40})));
+            origin={0,40}), iconTransformation(
+            extent={{-20,-20},{20,20}},
+            rotation=270,
+            origin={0,-80})));
     equation
 
       concentration =         q_in.conc;
 
       q_in.q = 0;
      annotation (
-        Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
-                100,100}}), graphics={    Rectangle(
-              extent={{-20,20},{20,-20}},
-              lineColor={0,0,255},
-              fillColor={255,255,255},
-              fillPattern=FillPattern.Solid)}),
+        Icon(coordinateSystem(preserveAspectRatio=false,extent={{-100,-100},{
+                100,100}}), graphics={
+            Text(
+              extent={{-29,-3},{30,-62}},
+              lineColor={0,0,0},
+              textString="c")}),
         Documentation(revisions="<html>
 <p><i>2009-2010</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
@@ -4742,7 +4356,9 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 
     model IncrementalFlowConcentrationMeasure
       "Incremental flow concentration meassure in circulation after absorption/secretion source (i.e. portal vein concentration)"
-      extends Chemical.Interfaces.ConditionalSolutionFlow;
+      extends Modelica.Icons.RotationalSensor;
+
+      extends Hydraulic.Interfaces.ConditionalSolutionFlow;
 
      Types.RealIO.ConcentrationOutput concentration
         "Concentration after absorption source"                           annotation (Placement(transformation(extent={{-12,-86},
@@ -4758,19 +4374,15 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
       Interfaces.ChemicalPort_a q_in
         annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
     equation
-      concentration = q_in.conc + addition/q;
+      concentration = if (q>0) then q_in.conc + addition/q else q_in.conc;
       q_in.q=0;
 
      annotation (
         Icon(coordinateSystem(preserveAspectRatio=false,extent={{-100,-100},{100,100}}),
-                            graphics={Rectangle(
-              extent={{-100,-50},{100,50}},
-              lineColor={0,0,127},
-              fillColor={255,255,255},
-              fillPattern=FillPattern.Solid), Text(
-              extent={{-88,-50},{80,50}},
+                            graphics={        Text(
+              extent={{-88,-48},{86,0}},
               textString="%name",
-              lineColor={0,0,255})}),        Documentation(revisions="<html>
+              lineColor={0,0,0})}),          Documentation(revisions="<html>
 <p><i>2009-2010</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
 </html>"));
@@ -4781,12 +4393,10 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
     extends Modelica.Icons.SourcesPackage;
 
     model UnlimitedSolutePump "Molar pump of solute to system"
-      extends Chemical.Interfaces.ConditionalSoluteFlow;
+      extends Interfaces.ConditionalSoluteFlow;
 
-      Chemical.Interfaces.ChemicalPort_b
-                                q_out "Outflow"
-                             annotation (Placement(
-            transformation(extent={{90,-10},{110,10}})));
+      Interfaces.ChemicalPort_b q_out "Outflow"
+        annotation (Placement(transformation(extent={{90,-10},{110,10}})));
 
     equation
       q_out.q = - q;
@@ -4796,13 +4406,13 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
                 100,100}}), graphics={
             Rectangle(
               extent={{-100,-42},{100,40}},
-              lineColor={0,0,127},
+              lineColor={107,45,134},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{-48,20},{50,0},{-48,-21},{-48,20}},
-              lineColor={0,0,127},
-              fillColor={0,0,127},
+              lineColor={107,45,134},
+              fillColor={107,45,134},
               fillPattern=FillPattern.Solid),
             Text(
               extent={{-82,-82},{90,-58}},
@@ -4815,15 +4425,13 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 
     model UnlimitedSolutionStorage "Constant concentration source"
 
-      Chemical.Interfaces.ChemicalPort_b
-                                q_out
+      Interfaces.ChemicalPort_b q_out
         "constant concentration with any possible flow"
-                                 annotation (Placement(
-            transformation(extent={{90,-10},{110,10}})));
+        annotation (Placement(transformation(extent={{90,-10},{110,10}})));
 
       parameter Boolean useConcentrationInput = false
         "=true, if fixed concentration is from input instead of parameter"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
        parameter Types.Concentration Conc = 0
         "Fixed concentration if useConcentrationInput=false"
@@ -4897,15 +4505,13 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
 
     model UnlimitedGasStorage "Constant ideal gas source"
       extends Interfaces.ConditionalHeatPort;
-      Chemical.Interfaces.ChemicalPort_b
-                                q_out
+      Interfaces.ChemicalPort_b q_out
         "constant gas concentration with any possible flow"
-                                 annotation (Placement(
-            transformation(extent={{90,-10},{110,10}})));
+        annotation (Placement(transformation(extent={{90,-10},{110,10}})));
 
       parameter Boolean usePartialPressureInput = false
         "=true, if fixed partial pressure is from input instead of parameter"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
        parameter Types.Pressure PartialPressure = 0
         "Fixed partial pressure if usePartialPressureInput=false"
@@ -4955,7 +4561,6 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
             fillPattern=FillPattern.Backward),
             Polygon(
               points={{-100,100},{100,-100},{100,100},{-100,100}},
-              smooth=Smooth.None,
               fillColor={159,159,223},
               fillPattern=FillPattern.Backward,
               pattern=LinePattern.None,
@@ -4988,7 +4593,7 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
     end UnlimitedGasStorage;
 
     model UnlimitedSolutePumpOut "Molar pump of solute out of system"
-      extends Chemical.Interfaces.ConditionalSoluteFlow;
+      extends Interfaces.ConditionalSoluteFlow;
 
       Interfaces.ChemicalPort_a q_in "Inflow"
         annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
@@ -5001,13 +4606,13 @@ package Chemical "Domain with Molar Concentration and Molar Flow"
                 100,100}}), graphics={
             Rectangle(
               extent={{-100,-42},{100,40}},
-              lineColor={0,0,127},
+              lineColor={107,45,134},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{-48,20},{50,0},{-48,-21},{-48,20}},
-              lineColor={0,0,127},
-              fillColor={0,0,127},
+              lineColor={107,45,134},
+              fillColor={107,45,134},
               fillPattern=FillPattern.Solid),
             Text(
               extent={{-82,-82},{90,-58}},
@@ -5100,7 +4705,7 @@ Connector with one flow signal of type Real.
     end ChemicalPort_b;
 
     partial model OnePort
-      "Partial transfer of solute beween two ports without its accumulation"
+      "Partial transfer of solute between two ports without its accumulation"
 
       ChemicalPort_b            q_out
         annotation (Placement(transformation(extent={{90,-10},{110,10}})));
@@ -5114,7 +4719,7 @@ Connector with one flow signal of type Real.
       "Partial model to include a conditional HeatPort in order to describe the power loss via a thermal network"
 
       parameter Boolean useHeatPort = false "=true, if HeatPort is enabled"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true), Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true), Dialog(group="External inputs/outputs"));
       parameter Types.Temperature T=310.15
         "Fixed device temperature if useHeatPort = false"
         annotation ( HideResult=true, Dialog(enable=not useHeatPort,tab="Temperature dependence"));
@@ -5166,9 +4771,9 @@ on the model behaviour.
 
       parameter Boolean useNormalizedVolume = true
         "Normalized volume of solution is 1 liter"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
-      Types.Volume volume "Solution volume" annotation(HideResult=useNormalizedVolume);
+      Types.Volume volume "Solution volume"; //annotation(HideResult=useNormalizedVolume);
 
       Types.RealIO.VolumeInput solutionVolume=volume if not useNormalizedVolume
         "Volume of solution"                                                                         annotation (Placement(transformation(
@@ -5182,39 +4787,12 @@ on the model behaviour.
 
     end ConditionalVolume;
 
-    partial model ConditionalSolutionFlow
-      "Input of solution volumetric flow vs. parametric solution volumetric flow"
-
-      parameter Boolean useSolutionFlowInput = false
-        "=true, if solution flow input is used instead of parameter SolutionFlow"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
-
-      parameter Types.VolumeFlowRate SolutionFlow=0
-        "Volumetric flow of solution if useSolutionFlowInput=false"
-        annotation ( HideResult=not useSolutionFlowInput, Dialog(enable=not useSolutionFlowInput));
-
-      Types.RealIO.VolumeFlowRateInput solutionFlow(start=SolutionFlow)=q if useSolutionFlowInput annotation (Placement(transformation(
-            extent={{-20,-20},{20,20}},
-            rotation=270,
-            origin={0,40}), iconTransformation(
-            extent={{-20,-20},{20,20}},
-            rotation=270,
-            origin={0,70})));
-
-      Types.VolumeFlowRate q "Current solution flow";
-    equation
-      if not useSolutionFlowInput then
-        q = SolutionFlow;
-      end if;
-
-    end ConditionalSolutionFlow;
-
     partial model ConditionalSoluteFlow
       "Input of solute molar flow vs. parametric solute molar flow"
 
       parameter Boolean useSoluteFlowInput = false
         "=true, if solute flow input is used instead of parameter SoluteFlow"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.MolarFlowRate SoluteFlow=0
         "Volumetric flow of solute if useSoluteFlowInput=false"

@@ -80,7 +80,7 @@ This is discussed in the description of package
               extent={{-32,0},{36,-58}},
               lineColor={0,0,0},
               textString="s"),
-            Line(points={{-46,0},{46,0}}, color={0,0,0})}));
+            Line(points={{-46,0},{46,0}})}));
     end Integrator;
 
         block Add "u + parameter"
@@ -105,7 +105,6 @@ This is discussed in the description of package
             Polygon(
               points={{-100,100},{100,40},{100,-40},{-100,-100},{-100,100}},
               lineColor={0,0,127},
-              smooth=Smooth.None,
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
             Text(
@@ -151,7 +150,7 @@ This is discussed in the description of package
 
           parameter Boolean useBaseInput = false
         "=true, if exponential base input is used instead of parameter Base"
-          annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+          annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
           parameter Real Base=10 "exponential base if useBaseInput=false"
             annotation (Dialog(enable=not useBaseInput));
@@ -542,10 +541,10 @@ input <i>u</i>:
             slope1:=slope[i-1]; //predchozi bod
             slope2:=slope[i]; //soucasny bod
             //vypocty parametru kubiky (od 2 do n) podle souradnic a smernic dvou bodu : y=a[i,4]+a[i,3]*x+a[i,2]*x^2+a[i,1]*x^3
-            a[i,1]:=-(-x2*slope2 - x2*slope1 + x1*slope2 + x1*slope1 + 2*y2 - 2*y1)/(x2 - x1)^3;
-            a[i,2]:=(-x2^2*slope2-2*x2^2*slope1-3*x2*y1+x2*slope1*x1+3*x2*y2-x2*slope2*x1-3*y1*x1+slope1*x1^2+3*y2*x1+2*slope2*x1^2)/(x2-x1)^3;
-            a[i,3]:=-(-slope1*x2^3-2*x2^2*slope2*x1-x2^2*slope1*x1+x2*slope2*x1^2+2*x2*slope1*x1^2+6*x2*x1*y2-6*x2*x1*y1+slope2*x1^3)/(x2-x1)^3;
-            a[i,4]:=(-slope1*x2^3*x1+y1*x2^3-slope2*x1^2*x2^2+slope1*x1^2*x2^2-3*y1*x2^2*x1+3*y2*x1^2*x2+slope2*x1^3*x2-y2*x1^3)/(x2-x1)^3;
+            a[i,1]:=-(-x2*slope2 - x2*slope1 + x1*slope2 + x1*slope1 + 2*y2 - 2*y1)/((x2 - x1)^3);
+            a[i,2]:=(-(x2^2)*slope2-2*(x2^2)*slope1-3*x2*y1+x2*slope1*x1+3*x2*y2-x2*slope2*x1-3*y1*x1+slope1*(x1^2)+3*y2*x1+2*slope2*(x1^2))/((x2-x1)^3);
+            a[i,3]:=-(-slope1*(x2^3)-2*(x2^2)*slope2*x1-(x2^2)*slope1*x1+x2*slope2*(x1^2)+2*x2*slope1*(x1^2)+6*x2*x1*y2-6*x2*x1*y1+slope2*(x1^3))/((x2-x1)^3);
+            a[i,4]:=(-slope1*(x2^3)*x1+y1*(x2^3)-slope2*(x1^2)*(x2^2)+slope1*(x1^2)*(x2^2)-3*y1*(x2^2)*x1+3*y2*(x1^2)*x2+slope2*(x1^3)*x2-y2*(x1^3))/((x2-x1)^3);
       end for;
       a[1,  :] := { 0, 0, slope[1], y[1] - x[1]*slope[1]}; //vypocet prvni sady parametru kubiky  - primky
       a[n+1,:] := { 0, 0, slope[n], y[n] - x[n]*slope[n]}; //vypocet posledni sady parametru kubiky - primky
@@ -728,28 +727,22 @@ input <i>u</i>:
       effect = spline.effect;
       connect(feedback.y, integrator.u) annotation (Line(
           points={{-38,59},{-38,50}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(integrator.y, feedback.u2) annotation (Line(
           points={{-38,27},{-38,16},{-62,16},{-62,68},{-46,68}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(feedback.u1, u) annotation (Line(
           points={{-38,76},{-38,94},{-88,94},{-88,0},{-80,0}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(integrator.y, spline.u) annotation (Line(
           points={{-38,27},{-38,-8},{-8,-8}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(yBase, spline.yBase) annotation (Line(
           points={{0,20},{0,-6}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(spline.y, y) annotation (Line(
           points={{0,-12},{0,-40}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       annotation ( Documentation(revisions="<html>
 <p><i>2009-2010</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
@@ -811,36 +804,28 @@ input <i>u</i>:
       effect = integrator.y;
       connect(yBase, product.u1) annotation (Line(
           points={{0,20},{0,30},{0,-20},{6,-20}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(product.y, y) annotation (Line(
           points={{-2.02067e-015,-43},{-2.02067e-015,-55.5},{0,-55.5},{0,-40}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(feedback.y, integrator.u) annotation (Line(
           points={{-26,35},{-26,24}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(integrator.y, feedback.u2) annotation (Line(
           points={{-26,1},{-26,-8},{-50,-8},{-50,44},{-34,44}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(integrator.y, product.u2) annotation (Line(
           points={{-26,1},{-26,-8},{-6,-8},{-6,-20}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(feedback.u1, spline.y) annotation (Line(
           points={{-26,52},{-26,62}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(u, spline.u) annotation (Line(
           points={{-80,0},{-82,0},{-82,66},{-34,66}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(fraction.y, spline.yBase) annotation (Line(
           points={{-35,86},{-26,86},{-26,68}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       annotation ( Documentation(revisions="<html>
 <p><i>2009-2010</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
@@ -905,56 +890,43 @@ input <i>u</i>:
       effect = integrator.y;
       connect(curve.u, u) annotation (Line(
           points={{-76,0},{-88,0},{-88,-20},{-100,-20}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(yBase, product.u1) annotation (Line(
           points={{0,60},{0,31},{0,-38},{6,-38}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(product.y, y) annotation (Line(
           points={{-2.02067e-015,-61},{-2.02067e-015,-55.5},{0,-55.5},{0,-60}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(feedback.y, integrator.u) annotation (Line(
           points={{-14,17},{-14,6}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(integrator.y, feedback.u2) annotation (Line(
           points={{-14,-17},{-14,-26},{-38,-26},{-38,26},{-22,26}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(integrator.y, product.u2) annotation (Line(
           points={{-14,-17},{-14,-26},{-6,-26},{-6,-38}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(curve.val, switch1.u3) annotation (Line(
           points={{-56,0},{-54,0},{-54,42},{-50,42}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(Constant1.y, switch1.u1) annotation (Line(
           points={{-57.4,58},{-50,58}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(switch1.u2, Failed) annotation (Line(
           points={{-50,50},{-58,50},{-58,38},{-80,38},{-80,40},{-100,40}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(switch2.y, feedback.u1) annotation (Line(
           points={{-3,80},{0,80},{0,64},{-14,64},{-14,34}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(booleanConstant.y, switch2.u2) annotation (Line(
           points={{-75,72},{-38,72},{-38,80},{-26,80}},
-          color={255,0,255},
-          smooth=Smooth.None));
+          color={255,0,255}));
       connect(switch2.u1, switch1.y) annotation (Line(
           points={{-26,72},{-34,72},{-34,66},{-22,66},{-22,50},{-27,50}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(One.y, switch2.u3) annotation (Line(
           points={{-37.5,88},{-26,88}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       annotation (        Documentation(revisions="<html>
 <p><i>2009-2010</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>

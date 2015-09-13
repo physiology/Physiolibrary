@@ -1,5 +1,5 @@
 within Physiolibrary;
-package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
+package Osmotic "Please use 'Chemical' library instead!"
  extends Modelica.Icons.Package;
 
   package Examples
@@ -15,7 +15,8 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
       Physiolibrary.Osmotic.Components.OsmoticCell interstitium(volume_start(
             displayUnit="l") = 0.001, ImpermeableSolutes={0.28})
         annotation (Placement(transformation(extent={{34,36},{54,56}})));
-      Physiolibrary.Osmotic.Components.Membrane membrane(cond=1.2501026264094e-10)
+      Physiolibrary.Osmotic.Components.Membrane membrane(cond=
+            1.2501026264094e-10)
         annotation (Placement(transformation(extent={{-4,36},{16,56}})));
       Physiolibrary.Osmotic.Components.OsmoticCell cells1(volume_start(
             displayUnit="l") = 0.001, ImpermeableSolutes={0.285})
@@ -23,29 +24,26 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
       Physiolibrary.Osmotic.Components.OsmoticCell interstitium1(volume_start(
             displayUnit="l") = 0.001, ImpermeableSolutes={0.29})
         annotation (Placement(transformation(extent={{34,-64},{54,-44}})));
-      Physiolibrary.Osmotic.Components.Membrane membrane1(cond=1.2501026264094e-10)
+      Physiolibrary.Osmotic.Components.Membrane membrane1(cond=
+            1.2501026264094e-10)
         annotation (Placement(transformation(extent={{-4,-64},{16,-44}})));
     equation
       connect(cells.q_in[1], membrane.q_in) annotation (Line(
           points={{-34,46},{-4,46}},
           color={127,127,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(membrane.q_out, interstitium.q_in[1]) annotation (Line(
           points={{16,46},{44,46}},
           color={127,127,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(cells1.q_in[1], membrane1.q_in) annotation (Line(
           points={{-34,-54},{-4,-54}},
           color={127,127,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(membrane1.q_out, interstitium1.q_in[1]) annotation (Line(
           points={{16,-54},{44,-54}},
           color={127,127,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
                 -100},{100,100}}),      graphics={
             Text(
@@ -59,7 +57,6 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
             Line(
               points={{-98,8},{98,8}},
               color={135,135,135},
-              smooth=Smooth.None,
               thickness=1)}),
         experiment(StopTime=60),
         Documentation(revisions=
@@ -77,8 +74,8 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
         "cerebro-spinal fluid"
         annotation (Placement(transformation(extent={{-76,-6},{-56,14}})));
       Physiolibrary.Osmotic.Components.Membrane choroid_plexus(
-          useHydraulicPressureInputs=true, cond(displayUnit="ml/(mmHg.day)") = 1.9966916949595e-12)
-        "choroid plexus"
+          useHydraulicPressureInputs=true, cond(displayUnit="ml/(mmHg.day)") =
+          1.9966916949595e-12) "choroid plexus"
         annotation (Placement(transformation(extent={{-16,-6},{-36,14}})));
       Physiolibrary.Hydraulic.Components.ElasticVessel CSF_hydraulic(
         volume_start=0.00015,
@@ -90,8 +87,8 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
             extent={{-10,10},{10,-10}},
             rotation=180,
             origin={8,-22})));
-      Physiolibrary.Osmotic.Sensors.FlowMeasure flowMeasure annotation (Placement(
-            transformation(
+      Physiolibrary.Osmotic.Sensors.FlowMeasure flowMeasure annotation (
+          Placement(transformation(
             extent={{-10,10},{10,-10}},
             rotation=180,
             origin={8,4})));
@@ -109,8 +106,8 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
             rotation=180,
             origin={82,86})));
       Physiolibrary.Osmotic.Components.Membrane arachnoid_villi(
-          useHydraulicPressureInputs=true, cond(displayUnit="ml/(mmHg.day)") = 1.1285648710641e-11)
-        "choroid plexus"
+          useHydraulicPressureInputs=true, cond(displayUnit="ml/(mmHg.day)") =
+          1.1285648710641e-11) "choroid plexus"
         annotation (Placement(transformation(extent={{-36,46},{-16,66}})));
       Physiolibrary.Hydraulic.Components.Pump arachnoid_villi_hydraulic(
           useSolutionFlowInput=true)
@@ -143,123 +140,89 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
     equation
       connect(CSF_hydraulic.q_in, pressureMeasure.q_in) annotation (Line(
           points={{-86,-22},{-86,68},{-84,68}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(CSF_hydraulic.q_in, choroid_plexus_hydraulic.q_out) annotation (
           Line(
           points={{-86,-22},{-2,-22}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(flowMeasure.q_in, ECF_osmotic.port) annotation (Line(
           points={{18,4},{32,4},{32,32},{36,32}},
           color={127,127,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(CSF_osmotic.q_in[1], arachnoid_villi.q_in) annotation (Line(
           points={{-66,4},{-66,56},{-36,56}},
           color={127,127,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(CSF_hydraulic.q_in, arachnoid_villi_hydraulic.q_in) annotation (
           Line(
           points={{-86,-22},{-86,86},{-2,86}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(arachnoid_villi_hydraulic.q_out, veins.y) annotation (Line(
           points={{18,86},{72,86}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(arachnoid_villi.q_out, flowMeasure1.q_in) annotation (Line(
           points={{-16,56},{-2,56}},
           color={127,127,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(flowMeasure1.q_out, ECF_osmotic.port) annotation (Line(
           points={{18,56},{32,56},{32,32},{36,32}},
           color={127,127,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(conductor.q_out, choroidPlexusCapilaries.q_in) annotation (Line(
           points={{96,-10},{96,-22},{66,-22}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(choroidPlexusCapilaries.q_in, conductor1.q_in) annotation (Line(
           points={{66,-22},{66,40}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(veins.y, conductor1.q_out) annotation (Line(
           points={{72,86},{66,86},{66,60}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(arteries.y, conductor.q_in) annotation (Line(
           points={{90,26},{96,26},{96,10}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(choroid_plexus_hydraulic.q_in, choroidPlexusCapilaries.q_in)
         annotation (Line(
           points={{18,-22},{66,-22}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(pressureMeasure1.q_in, veins.y) annotation (Line(
           points={{62,68},{66,68},{66,86},{72,86}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(choroidPlexusCapilaries.q_in, pressureMeasure2.q_in) annotation (
           Line(
           points={{66,-22},{56,-22},{56,-18}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(CSF_osmotic.q_in[1], choroid_plexus.q_out) annotation (Line(
           points={{-66,4},{-36,4}},
           color={127,127,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(choroid_plexus.q_in, flowMeasure.q_out) annotation (Line(
           points={{-16,4},{-2,4}},
           color={127,127,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(pressureMeasure2.pressure, choroid_plexus.hydraulicPressureIn)
         annotation (Line(
           points={{46,-16},{28,-16},{28,20},{-18,20},{-18,12}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(pressureMeasure1.pressure, arachnoid_villi.hydraulicPressureOut)
         annotation (Line(
           points={{52,70},{-18,70},{-18,64}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(pressureMeasure.pressure, arachnoid_villi.hydraulicPressureIn)
         annotation (Line(
           points={{-74,70},{-34,70},{-34,64}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(pressureMeasure.pressure, choroid_plexus.hydraulicPressureOut)
         annotation (Line(
           points={{-74,70},{-52,70},{-52,28},{-34,28},{-34,12}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(flowMeasure1.volumeFlowRate, arachnoid_villi_hydraulic.solutionFlow)
         annotation (Line(
-          points={{8,62},{8,79}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          points={{8,64},{8,79}},
+          color={0,0,127}));
       connect(flowMeasure.volumeFlowRate, choroid_plexus_hydraulic.solutionFlow)
         annotation (Line(
-          points={{8,-2},{8,-15}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          points={{8,-4},{8,-15}},
+          color={0,0,127}));
       annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
                 -100},{100,100}}),      graphics={
             Text(
@@ -269,12 +232,10 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
             Line(
               points={{-50,-54},{-62,-14}},
               color={215,215,215},
-              smooth=Smooth.None,
               arrow={Arrow.None,Arrow.Filled}),
             Line(
               points={{-50,-54},{-72,-30}},
               color={215,215,215},
-              smooth=Smooth.None,
               arrow={Arrow.None,Arrow.Filled})}),
         experiment(StopTime=86400),
         Documentation(revisions=
@@ -318,7 +279,7 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
 
       parameter Boolean useImpermeableSolutesInput = false
         "=true, if impermeable substance amount as an input"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.AmountOfSubstance ImpermeableSolutes[NumberOfMembraneTypes]=zeros(NumberOfMembraneTypes)
         "Amount of impermeable substance if useImpermeableSolutesInput=false"
@@ -369,7 +330,7 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
 
      parameter Boolean useConductanceInput = false
         "=true, if membrane permeability input is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
      parameter Types.OsmoticPermeability cond=1e-15
         "Membrane permeability for solvent if useConductanceInput = false"
@@ -377,7 +338,7 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
 
       parameter Boolean useHydraulicPressureInputs = false
         "=true, if hydraulic pressure inputs is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.Pressure HydraulicPressureIn=0
         "Hydraulic pressure inside if useHydraulicPressureInputs=false"
@@ -398,7 +359,7 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
 
       parameter Boolean useTemperatureInputs = false
         "=true, if temperature on both sides is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.Temperature T=310.15
         "Temperature on both membrane sides if  useTemperatureInputs=false"
@@ -462,7 +423,7 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
 
     model SolventFlux "Prescripted solvent flow"
       extends Interfaces.OnePort;
-      extends Chemical.Interfaces.ConditionalSolutionFlow;
+      extends Hydraulic.Interfaces.ConditionalSolutionFlow;
 
     equation
       q_in.q = q;
@@ -476,13 +437,13 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
               lineColor={0,0,255}),
             Rectangle(
               extent={{-100,-50},{100,50}},
-              lineColor={0,0,127},
+              lineColor={127,127,0},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{-78,25},{82,0},{-78,-25},{-78,25}},
-              lineColor={0,0,127},
-              fillColor={0,0,127},
+              lineColor={127,127,0},
+              fillColor={127,127,0},
               fillPattern=FillPattern.Solid)}),
         Documentation(revisions="<html>
 <p><i>2009-2010</i></p>
@@ -493,7 +454,8 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
     model IdealOverflowFiltration
       "Semipermeable membrane filtration (e.g. flux through capillary membrane) of overflowing solution (e.g. blood microcirculation)"
       extends Icons.FlowFiltration;
-      extends Chemical.Interfaces.ConditionalSolutionFlow;// "E.g. volumetric inflow to capilary net";
+      extends Hydraulic.Interfaces.ConditionalSolutionFlow;
+                                                          // "E.g. volumetric inflow to capilary net";
 
       Interfaces.OsmoticPort_a port_a
         "Inflowing ospomarity and positive filtrate flow rate (e.g. blood osmolarity and flux through capillary membrane from blood to interstitium)"
@@ -506,7 +468,7 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
 
        parameter Boolean useHydraulicPressureInputs = false
         "=true, if hydraulic pressure inputs is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.Pressure HydraulicPressureIn=0
         "Hydraulic pressure inside of leaving overflow (e.g. blood pressure after capillary net) if useHydraulicPressureInputs=false"
@@ -530,7 +492,7 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
 
       parameter Boolean useTemperatureInputs = false
         "=true, if temperature on both sides is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.Temperature T=310.15
         "Temperature on both membrane sides if  useTemperatureInputs=false"
@@ -643,7 +605,7 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
 
       parameter Boolean useExternalOutflowMin = false
         "=true, if minimal outflow is garanted"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.VolumeFlowRate OutflowMin = 0
         "Minimal outflow if useExternalOutflowMin=false"
@@ -693,12 +655,16 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
     extends Modelica.Icons.SensorsPackage;
     model FlowMeasure "Measurement of flux through semipermeable membrane"
       extends Interfaces.OnePort;
-      extends Icons.FlowMeasure;
+      extends Modelica.Icons.RotationalSensor;
+      //extends Icons.FlowMeasure;
 
       Types.RealIO.VolumeFlowRateOutput volumeFlowRate "Flux through membrane"
         annotation (Placement(transformation(extent={{-20,-20},{20,20}},
             rotation=270,
-            origin={0,-60})));
+            origin={0,-60}), iconTransformation(
+            extent={{-20,-20},{20,20}},
+            rotation=270,
+            origin={0,-80})));
     equation
       q_out.o = q_in.o;
 
@@ -708,14 +674,19 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
         Documentation(revisions="<html>
 <p><i>2009-2010</i></p>
 <p>Marek Matejak, Charles University, Prague, Czech Republic </p>
-</html>"));
+</html>"), Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
+                {100,100}}), graphics={
+            Text(
+              extent={{-29,-7},{30,-66}},
+              lineColor={0,0,0},
+              textString="V'")}));
     end FlowMeasure;
   end Sensors;
 
   package Sources
     extends Modelica.Icons.SourcesPackage;
     model SolventInflux "Prescribed solvent inflow"
-      extends Chemical.Interfaces.ConditionalSolutionFlow;
+      extends Hydraulic.Interfaces.ConditionalSolutionFlow;
 
       Interfaces.OsmoticPort_b
                           q_out
@@ -730,13 +701,13 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
                             graphics={
             Rectangle(
               extent={{-60,-30},{60,30}},
-              lineColor={0,0,127},
+              lineColor={127,127,0},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{-48,20},{50,0},{-48,-21},{-48,20}},
-              lineColor={0,0,127},
-              fillColor={0,0,127},
+              lineColor={127,127,0},
+              fillColor={127,127,0},
               fillPattern=FillPattern.Solid),
             Text(
               extent={{-92,-58},{80,-34}},
@@ -748,7 +719,7 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
     end SolventInflux;
 
     model SolventOutflux "Prescribed solvent outflow"
-     extends Chemical.Interfaces.ConditionalSolutionFlow;
+     extends Hydraulic.Interfaces.ConditionalSolutionFlow;
       Interfaces.OsmoticPort_a
                           q_in
                              annotation ( Placement(
@@ -760,14 +731,14 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={
             Rectangle(
-              extent={{-60,-32},{60,30}},
-              lineColor={0,0,127},
+              extent={{-60,-30},{60,30}},
+              lineColor={127,127,0},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
             Polygon(
-              points={{-48,18},{50,-2},{-48,-26},{-48,18}},
-              lineColor={0,0,127},
-              fillColor={0,0,127},
+              points={{-46,22},{52,0},{-46,-22},{-46,22}},
+              lineColor={127,127,0},
+              fillColor={127,127,0},
               fillPattern=FillPattern.Solid),
             Text(
               extent={{-78,-58},{72,-36}},
@@ -782,7 +753,7 @@ package Osmotic "Domain with Osmorarity and Solvent Volumetric Flow"
 
       parameter Boolean useOsmolarityInput = false
         "=true, if fixed osmolarity at port is from input instead of parameter"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
        parameter Types.Osmolarity Osm = 0
         "Fixed osmolarity at port if useOsmolarityInput=false"
@@ -897,7 +868,7 @@ i.e., it defines a fixed temperature as a boundary condition.
               lineColor={127,127,0},
               fillColor={127,127,0},
               fillPattern=FillPattern.Solid),
-        Text(extent = {{-160,110},{40,50}}, lineColor = {127,127,0}, textString = "%name")}),
+        Text(extent=  {{-160,110},{40,50}}, lineColor=  {127,127,0}, textString=  "%name")}),
         Documentation(info="<html>
 <p>
 Connector with one flow signal of type Real.
@@ -930,7 +901,7 @@ Connector with one flow signal of type Real.
               lineColor={127,127,0},
              fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
-        Text(extent = {{-160,110},{40,50}}, lineColor = {127,127,0}, textString = "%name")}),
+        Text(extent=  {{-160,110},{40,50}}, lineColor=  {127,127,0}, textString=  "%name")}),
         Documentation(info="<html>
 <p>
 Connector with one flow signal of type Real.

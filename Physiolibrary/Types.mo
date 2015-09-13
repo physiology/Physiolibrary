@@ -25,7 +25,7 @@ package Types "Physiological units with nominals"
 </html>"));
   end NewType;
 
-  annotation (__Dymola_DocumentationClass=true, Documentation(info="<html>
+  annotation (DocumentationClass=true, Documentation(info="<html>
 <p>Package <b>Physiolibrary</b> is a modelica package for <b>Human Physiology</b> that is developed from <b>HumMod</b> modelica implementation, see <a href=\"http://patf-biokyb.lf1.cuni.cz/wiki/hummod/hummod\">http://hummod.org</a>. It provides constants, types, connectors, partial models and model components fitted for physiological models of human body. </p>
 <p>This is a short <b>User&apos;s Guide</b> for the overall library. Some of the main sublibraries have their own User&apos;s Guides that can be accessed by the following links: </p>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
@@ -34,7 +34,7 @@ package Types "Physiological units with nominals"
 </tr>
 <tr>
 <td valign=\"top\"><p>Blocks</p></td>
-<td valign=\"top\"><p>Usefull blocks, that are missing in package Modelica.Blocks (MSL 3.2), cubic interpolation curves, multiplication factors.</p></td>
+<td valign=\"top\"><p>Useful blocks, that are missing in package Modelica.Blocks (MSL 3.2), cubic interpolation curves, multiplication factors.</p></td>
 </tr>
 <tr>
 <td valign=\"top\"><p>Chemical</p></td>
@@ -177,32 +177,28 @@ package Types "Physiological units with nominals"
       equation
         connect(Bone_PO2.y, busConnector.Bone_PO2) annotation (Line(
             points={{6.1,65},{70.05,65},{70.05,-2},{90,-2}},
-            color={0,0,127},
-            smooth=Smooth.None), Text(
+            color={0,0,127}), Text(
             string="%second",
             index=1,
             extent={{6,3},{6,3}}));
         connect(BoneBloodFlow.y, busConnector.Bone_BloodFlow)
                                                          annotation (Line(
             points={{6.1,31},{71.05,31},{71.05,-2},{90,-2}},
-            color={0,0,127},
-            smooth=Smooth.None), Text(
+            color={0,0,127}), Text(
             string="%second",
             index=1,
             extent={{6,3},{6,3}}));
         connect(BoneO2Need.y, busConnector.Bone_O2Need)
                                                       annotation (Line(
             points={{6.1,-9},{71.05,-9},{71.05,-2},{90,-2}},
-            color={0,0,127},
-            smooth=Smooth.None), Text(
+            color={0,0,127}), Text(
             string="%second",
             index=1,
             extent={{6,3},{6,3}}));
         connect(BoneLiquidVol.y, busConnector.Bone_LiquidVol)
                                                          annotation (Line(
             points={{6.1,-51},{71.05,-51},{71.05,-2},{90,-2}},
-            color={0,0,127},
-            smooth=Smooth.None), Text(
+            color={0,0,127}), Text(
             string="%second",
             index=1,
             extent={{6,3},{6,3}}));
@@ -238,44 +234,38 @@ package Types "Physiological units with nominals"
         connect(busConnector, outputToFile.busConnector) annotation (Line(
             points={{16,18},{48,18},{48,58},{80,58}},
             color={255,204,51},
-            thickness=0.5,
-            smooth=Smooth.None));
+            thickness=0.5));
         connect(Bone_PO2.y, busConnector.Bone_PO2) annotation (Line(
             points={{-67.5,80},{-11.95,80},{-11.95,18},{16,18}},
-            color={0,0,127},
-            smooth=Smooth.None), Text(
+            color={0,0,127}), Text(
             string="%second",
             index=1,
             extent={{6,3},{6,3}}));
         connect(BoneBloodFlow.y, busConnector.Bone_BloodFlow)
                                                          annotation (Line(
             points={{-67.5,40},{-10.95,40},{-10.95,18},{16,18}},
-            color={0,0,127},
-            smooth=Smooth.None), Text(
+            color={0,0,127}), Text(
             string="%second",
             index=1,
             extent={{6,3},{6,3}}));
         connect(BoneO2Need.y, busConnector.Bone_O2Need)
                                                       annotation (Line(
             points={{-67.5,-24},{-10.95,-24},{-10.95,18},{16,18}},
-            color={0,0,127},
-            smooth=Smooth.None), Text(
+            color={0,0,127}), Text(
             string="%second",
             index=1,
             extent={{6,3},{6,3}}));
         connect(BoneLiquidVol.y, busConnector.Bone_LiquidVol)
                                                          annotation (Line(
             points={{-67.5,-60},{-10.95,-60},{-10.95,18},{16,18}},
-            color={0,0,127},
-            smooth=Smooth.None), Text(
+            color={0,0,127}), Text(
             string="%second",
             index=1,
             extent={{6,3},{6,3}}));
         connect(busConnector, outputToFile_SI.busConnector) annotation (Line(
             points={{16,18},{48,18},{48,-16},{82,-16}},
             color={255,204,51},
-            thickness=0.5,
-            smooth=Smooth.None), Text(
+            thickness=0.5), Text(
             string="%first",
             index=-1,
             extent={{-6,3},{-6,3}}));
@@ -6181,7 +6171,7 @@ The Real output y is a constant signal:
       extends Modelica.Icons.Function;
 
       input String name "Name of parameter";
-      input String storeUnit "Prefered units to store variable value";
+      input String storeUnit "Preferred units to store variable value";
       input UnitConversions.RealTypeRecord[:] unitConversions = UnitConversions.RealTypeDef
         "Unit conversions";
 
@@ -6214,7 +6204,7 @@ The Real output y is a constant signal:
 
       input String name "Variable name";
       input Real value "Variable value";
-      input String storeUnit "Prefered units to store variable value";
+      input String storeUnit "Preferred units to store variable value";
       input UnitConversions.RealTypeRecord[:] unitConversions = UnitConversions.RealTypeDef
         "Unit conversions";
     //algorithm
@@ -6248,7 +6238,7 @@ The Real output y is a constant signal:
       input Real initialValue "Initial variable value[in SI units]";
       input Real finalValue "Final variable value[in SI units]";
 
-      input String storeUnit "Prefered units to store variable value";
+      input String storeUnit "Preferred units to store variable value";
       input UnitConversions.RealTypeRecord[:] unitConversions = UnitConversions.RealTypeDef
         "Unit conversions";
     //algorithm

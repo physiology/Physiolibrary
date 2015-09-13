@@ -1,5 +1,5 @@
 within ;
-package Physiolibrary "Modelica library for Physiology (version 2.3.0)"
+package Physiolibrary "Modelica library for Physiology (version 2.3.1alpha)"
  extends Modelica.Icons.Package;
 
 
@@ -392,7 +392,7 @@ package Physiolibrary "Modelica library for Physiology (version 2.3.0)"
   annotation (Documentation(info="<html>
 <p><ul>
 <li>migration to GITHub https://github.com/MarekMatejak/Physiolibrary from http://patf-biokyb.lf1.cuni.cz/repos/Modelica/Physiolibrary svn repository, commit 4947 </li>
-<li><font style=\"color: #333333; \">The library uses the Modelica Standard Libary (MSL) version 3.2.</font></li>
+<li><font style=\"color: #333333; \">The library uses the Modelica Standard Library (MSL) version 3.2.</font></li>
 <li><font style=\"color: #333333; \">Contains nice physiological icons.</font></li>
 <li><font style=\"color: #333333; \">Support for physiological units: min,kcal,mmHg,ml,mEq,..</font></li>
 <li><font style=\"color: #333333; \">Base blocks for chemical, hydraulical, osmotic, thermal or mixed domains</font></li>
@@ -453,7 +453,7 @@ package Physiolibrary "Modelica library for Physiology (version 2.3.0)"
 
   end Contact;
 
-  annotation (__Dymola_DocumentationClass=true, Documentation(info="<html>
+  annotation (DocumentationClass=true, Documentation(info="<html>
 <p>Package <b>Physiolibrary</b> is a modelica package for <b>Human Physiology</b> that is developed from <b>HumMod</b> modelica implementation, see <a href=\"http://patf-biokyb.lf1.cuni.cz/wiki/hummod/hummod\">http://hummod.org</a>. It provides constants, types, connectors, partial models and model components fitted for physiological models of human body. </p>
 <p>This is a short <b>User&apos;s Guide</b> for the overall library. Some of the main sublibraries have their own User&apos;s Guides that can be accessed by the following links: </p>
 <table cellspacing=\"0\" cellpadding=\"2\" border=\"1\"><tr>
@@ -486,7 +486,7 @@ package Physiolibrary "Modelica library for Physiology (version 2.3.0)"
 </tr>
 <tr>
 <td valign=\"top\"><p><a href=\"modelica://Physiolibrary.Blocks\">Blocks</a></p></td>
-<td valign=\"top\"><p>Usefull blocks, that are missing in package Modelica.Blocks (MSL 3.2), cubic interpolation curves, multiplication factors.</p></td>
+<td valign=\"top\"><p>Useful blocks, that are missing in package Modelica.Blocks (MSL 3.2), cubic interpolation curves, multiplication factors.</p></td>
 </tr>
 </table>
 </html>"));
@@ -494,7 +494,7 @@ package Physiolibrary "Modelica library for Physiology (version 2.3.0)"
 
 
   annotation (preferredView="info",
-version="2.3.0",
+version="2.3.1alpha",
 versionBuild=1,
 versionDate="2015-02-16",
 dateModified = "2015-02-16 15:49:00Z",

@@ -32,28 +32,19 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
     equation
       connect(heart.q_out, arteries.q_in) annotation (Line(
           points={{14,-40},{46,-40},{46,-74}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(arteries.q_in, resistance.q_out) annotation (Line(
           points={{46,-74},{16,-74}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(resistance.q_in, veins.q_in) annotation (Line(
           points={{-4,-74},{-32,-74}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(veins.q_in, heart.q_in) annotation (Line(
           points={{-32,-74},{-32,-40},{-6,-40}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(pulse.y, heart.solutionFlow) annotation (Line(
           points={{-73,84},{-62,84},{-62,-26},{4,-26},{4,-33}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
                 -100},{100,100}}), graphics={                          Text(
               extent={{-40,-12},{80,-22}},
@@ -92,23 +83,16 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
     equation
       connect(heart.q_out, arteries.q_in) annotation (Line(
           points={{-30,48},{-4,48}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(resistance.q_out, veins.y) annotation (Line(
           points={{18,24},{18,20},{-30,20}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(pulses.volumeflowrate, heart.solutionFlow) annotation (Line(
           points={{-45,68},{-40,68},{-40,55}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(resistance.q_in, arteries.q_in) annotation (Line(
           points={{18,44},{18,48},{-4,48}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       annotation (
         Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
                 {100,100}}), graphics={Text(
@@ -168,28 +152,19 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
     equation
       connect(resistance.q_out, veins.y) annotation (Line(
           points={{50,24},{50,20},{-30,20}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(pulses.volumeflowrate, heart.solutionFlow) annotation (Line(
           points={{-45,68},{-40,68},{-40,55}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(heart.q_out, impedance.q_in) annotation (Line(
           points={{-30,48},{-24,48},{-24,50},{-16,50}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(impedance.q_out, arteries.q_in) annotation (Line(
           points={{4,50},{16,50},{16,48},{26,48}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(resistance.q_in, arteries.q_in) annotation (Line(
           points={{50,44},{50,48},{26,48}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       annotation (
         Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
                 {100,100}}), graphics={Text(
@@ -246,38 +221,25 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
     equation
       connect(resistance.q_out, veins.y) annotation (Line(
           points={{48,24},{48,20},{-30,20}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(pulses.volumeflowrate, heart.solutionFlow) annotation (Line(
           points={{-45,68},{-40,68},{-40,55}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(heart.q_out, impedance.q_in) annotation (Line(
           points={{-30,48},{-16,48}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(impedance.q_out, arteries.q_in) annotation (Line(
           points={{4,48},{26,48}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(heart.q_out, inertia.q_in) annotation (Line(
           points={{-30,48},{-26,48},{-26,66},{-16,66}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(inertia.q_out, arteries.q_in) annotation (Line(
           points={{4,66},{12,66},{12,48},{26,48}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(resistance.q_in, arteries.q_in) annotation (Line(
           points={{48,44},{48,48},{26,48}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       annotation (
         Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
                 {100,100}}), graphics={Text(
@@ -376,116 +338,76 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
     equation
       connect(pulmonaryArteries.q_in,pulmonary. q_in) annotation (Line(
           points={{-52,84},{-30,84}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(pulmonary.q_out, pulmonaryVeinsAndLeftAtrium.q_in) annotation (
           Line(
           points={{-10,84},{14,84}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(veins.q_in, nonMuscle.q_in)  annotation (Line(
           points={{-54,-36},{-24,-36}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(nonMuscle.q_out, arteries.q_in)  annotation (Line(
           points={{-4,-36},{24,-36}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(rightHeart.q_out,pulmonaryArteries. q_in) annotation (Line(
           points={{-36,18},{-28,18},{-28,60},{-70,60},{-70,84},{-52,84}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(leftHeart.q_in, pulmonaryVeinsAndLeftAtrium.q_in) annotation (
           Line(
           points={{16,16},{-4,16},{-4,60},{32,60},{32,84},{14,84}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(leftHeart.q_out,arteries. q_in) annotation (Line(
           points={{36,16},{44,16},{44,-36},{24,-36}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(pressureMeasure.q_in,rightHeart. q_in) annotation (Line(
           points={{-72,30},{-72,18},{-56,18}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(pressureMeasure1.q_in, pulmonaryVeinsAndLeftAtrium.q_in)
         annotation (Line(
           points={{-2,30},{-4,30},{-4,60},{32,60},{32,84},{14,84}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(muscle.q_out, arteries.q_in) annotation (Line(
           points={{-4,-18},{10,-18},{10,-36},{24,-36}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(kidney.q_out, arteries.q_in) annotation (Line(
           points={{-4,-54},{10,-54},{10,-36},{24,-36}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(kidney.q_in, nonMuscle.q_in) annotation (Line(
           points={{-24,-54},{-34,-54},{-34,-36},{-24,-36}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(muscle.q_in, nonMuscle.q_in) annotation (Line(
           points={{-24,-18},{-34,-18},{-34,-36},{-24,-36}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(veins.q_in, largeVeins.q_out) annotation (Line(
           points={{-54,-36},{-84,-36},{-84,-18}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(largeVeins.q_in, rightAtrium.q_in) annotation (Line(
           points={{-84,2},{-84,18},{-72,18}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(rightAtrium.q_in, rightHeart.q_in) annotation (Line(
           points={{-72,18},{-56,18}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(RNormalCO.y, rightStarling.yBase) annotation (Line(
           points={{-51,44},{-46,44},{-46,34}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(LNormalCO.y, leftStarling.yBase) annotation (Line(
           points={{21,46},{26,46},{26,34}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(pressureMeasure.q_in, rightAtrium.q_in) annotation (Line(
           points={{-72,30},{-72,18}},
-          color={0,0,0},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(rightHeart.solutionFlow, rightStarling.y) annotation (Line(
           points={{-46,25},{-46,28},{-46,28}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(leftStarling.y, leftHeart.solutionFlow) annotation (Line(
           points={{26,28},{26,23}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(pressureMeasure.pressure, rightStarling.u) annotation (Line(
           points={{-62,32},{-54,32}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(pressureMeasure1.pressure, leftStarling.u) annotation (Line(
           points={{8,32},{18,32}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
                 -100},{100,100}}), graphics={Text(
               extent={{-82,-80},{80,-100}},
@@ -511,7 +433,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
         Physiolibrary.Types.RealIO.VolumeFlowRateOutput volumeflowrate
           annotation (Placement(transformation(extent={{80,-10},{100,10}}),
               iconTransformation(extent={{80,-10},{100,10}})));
-        discrete Time T0 "begining of cardiac cycle";
+        discrete Time T0 "beginning of cardiac cycle";
         Boolean b(start=false);
         discrete Time HP "duration of cardiac cycle";
         parameter Frequency HR=1.2;
@@ -522,7 +444,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
       equation
         b = time - pre(T0) >= pre(HP) "true if new cardiac cycle begins";
         when {initial(),b} then
-          T0 = time "set begining of cardiac cycle";
+          T0 = time "set beginning of cardiac cycle";
           HP = 1/HR "update length of carciac cycle";
           TD2 = TD1 + (2/5)*HP "compute end time of systole";
         end when;
@@ -618,88 +540,62 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
       equation
         connect(CAP.y, PulmonaryArteries.compliance) annotation (Line(
             points={{-34.25,63},{-30,63},{-30,46}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(V0AP.y, PulmonaryArteries.zeroPressureVolume) annotation (Line(
             points={{-50.25,51},{-50.25,50.5},{-38,50.5},{-38,46}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(RP.y, TotalPulmonaryResistance.cond) annotation (Line(
             points={{7.5,65},{8,65},{8,44}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(CVP.y, PulmonaryVeins.compliance) annotation (Line(
             points={{51.75,67},{52,67},{52,46}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(CVS.y, SystemicVeins.compliance) annotation (Line(
             points={{-36.25,-35},{-36,-35},{-36,-52}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(RT.y, TotalSystemicResistance.cond) annotation (Line(
             points={{-2.75,-45},{6,-45},{6,-54}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(CAS.y, SystemicArteries.compliance) annotation (Line(
             points={{45.75,-31},{46,-31},{46,-52}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(PulmonaryArteries.q_in, TotalPulmonaryResistance.q_in)
           annotation (Line(
             points={{-30,38},{-2,38}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(TotalPulmonaryResistance.q_out, PulmonaryVeins.q_in)
           annotation (Line(
             points={{18,38},{52,38}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(PulmonaryVeins.q_in, leftHeart.inflow) annotation (Line(
             points={{52,38},{74,38},{74,4.44089e-16}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(leftHeart.outflow, SystemicArteries.q_in) annotation (Line(
             points={{52,0},{52,-60},{46,-60}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(SystemicArteries.q_in, TotalSystemicResistance.q_in)
           annotation (Line(
             points={{46,-60},{16,-60}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(TotalSystemicResistance.q_out, SystemicVeins.q_in) annotation (
             Line(
             points={{-4,-60},{-36,-60}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(SystemicVeins.q_in, rightHeart.inflow) annotation (Line(
             points={{-36,-60},{-78,-60},{-78,3},{-72,3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(PulmonaryVeins.zeroPressureVolume, V0VP.y) annotation (Line(
             points={{44,46},{40,46},{40,55},{35.75,55}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(SystemicVeins.zeroPressureVolume, V0VS.y) annotation (Line(
             points={{-44,-52},{-52,-52},{-52,-47},{-58.25,-47}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(V0AS.y, SystemicArteries.zeroPressureVolume) annotation (Line(
             points={{29.75,-43},{38,-43},{38,-52}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(rightHeart.outflow, PulmonaryArteries.q_in) annotation (Line(
             points={{-48,3},{-48,38},{-30,38}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         annotation ( Documentation(info="<html>
 <p>Model of cardiovascular system using to demonstrate elastic and resistance features of veins and arteries in pulmonary and systemic circulation and influence of cardiac output on it. </p>
 <ul>
@@ -779,23 +675,16 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
         equation
           connect(pump.q_out, outflow) annotation (Line(
               points={{6,12},{52,12}},
-              color={0,0,0},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(pump.solutionFlow, pulses.volumeflowrate) annotation (Line(
               points={{-4,19},{-4,40},{-21,40}},
-              color={0,0,127},
-              smooth=Smooth.None));
+              color={0,0,127}));
           connect(inflow, pump.q_in) annotation (Line(
               points={{-54,10},{-34,10},{-34,12},{-14,12}},
-              color={0,0,0},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           connect(inflow, inflow) annotation (Line(
               points={{-54,10},{-54,10}},
-              color={0,0,0},
-              thickness=1,
-              smooth=Smooth.None));
+              thickness=1));
           annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={
                     {-100,-100},{100,100}}), graphics={Polygon(
                           points={{32,-34},{24,-24},{18,-10},{18,-8},{22,22},{
@@ -924,147 +813,97 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
       equation
         connect(aorta.q_in, Raorta.q_in) annotation (Line(
             points={{-111,-3},{-94,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(Raorta.q_out, aorticInertia.q_in) annotation (Line(
             points={{-64,-3},{-52,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(systemicInertia.q_out, veins.q_in) annotation (Line(
             points={{90,-3},{105,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(timeVaryingElastanceLeft.C, leftVentricle.compliance)
           annotation (Line(
             points={{-212,17},{-209,17},{-209,9}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(timeVaryingElastanceRight.C, rightVentricle.compliance)
           annotation (Line(
             points={{174,19},{174,9},{171,9}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(veins.q_in, tricuspidValve.q_in) annotation (Line(
             points={{105,-3},{122,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(timeVaryingElastanceLeft.Pi, leftVentricle.externalPressure)
           annotation (Line(
             points={{-205,17},{-205,16.5},{-197,16.5},{-197,9}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(timeVaryingElastanceRight.Pi, rightVentricle.externalPressure)
           annotation (Line(
             points={{181,19},{181,9},{183,9}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(heartRate.y, timeVaryingElastanceLeft.HR) annotation (Line(
             points={{-241.75,36},{-232.375,36},{-232.375,33.6},{-220.6,33.6}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(aorticInertia.q_out, arteries.q_in) annotation (Line(
             points={{-22,-3},{-1,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(arteries.q_in, RSystemic.q_in) annotation (Line(
             points={{-1,-3},{16,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(RSystemic.q_out, systemicInertia.q_in) annotation (Line(
             points={{46,-3},{60,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(rightVentricle.q_in, tricuspidValve.q_out) annotation (Line(
             points={{171,-3},{152,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(RRightMyo.q_in, rightVentricle.q_in) annotation (Line(
             points={{192,-3},{171,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(heartRate.y, timeVaryingElastanceRight.HR) annotation (Line(
             points={{-241.75,36},{-34,36},{-34,35.6},{165.4,35.6}},
-            color={0,0,127},
-            smooth=Smooth.None));
+            color={0,0,127}));
         connect(RRightMyo.q_out, pulmonaryValve.q_in) annotation (Line(
             points={{222,-3},{230,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(pulmonaryValve.q_out, pulmonaryArtery.q_in) annotation (Line(
             points={{260,-3},{266,-3},{266,57},{243,57}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(pulmonaryArtery.q_in, RPulmonaryArtery.q_in) annotation (Line(
             points={{243,57},{243,58},{217.5,58}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(RPulmonaryArtery.q_out, pulmonaryArterialInertia.q_in)
           annotation (Line(
             points={{182.5,58},{173,58}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(pulmonaryArterialInertia.q_out, pulmonaryArterioles.q_in)
           annotation (Line(
             points={{143,58},{124,58}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(pulmonaryArterioles.q_in, RPulmonaryVeins.q_in) annotation (
             Line(
             points={{124,58},{-42,58},{-42,60},{-205,60}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(RPulmonaryVeins.q_out, pulmonaryVeinsInertia.q_in) annotation (
             Line(
             points={{-235,60},{-263,60}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(pulmonaryVeinsInertia.q_out, pulmonaryVeins.q_in) annotation (
             Line(
             points={{-293,60},{-296,60},{-296,-3},{-279,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(pulmonaryVeins.q_in, mitralValve.q_in) annotation (Line(
             points={{-279,-3},{-258,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(mitralValve.q_out, leftVentricle.q_in) annotation (Line(
             points={{-228,-3},{-209,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(leftVentricle.q_in, RLeftMyo.q_in) annotation (Line(
             points={{-209,-3},{-196,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(aorticValve.q_out, aorta.q_in) annotation (Line(
             points={{-128,-3},{-111,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         connect(RLeftMyo.q_out, aorticValve.q_in) annotation (Line(
             points={{-166,-3},{-158,-3}},
-            color={0,0,0},
-            thickness=1,
-            smooth=Smooth.None));
+            thickness=1));
         annotation(Diagram(coordinateSystem(extent={{-350,-100},{400,100}},      preserveAspectRatio=false,  grid = {2, 2}),
               graphics),                                                                                                    Icon(coordinateSystem(extent={{-350,
                   -100},{400,100}},                                                                                                    preserveAspectRatio = true, grid = {2, 2})),
@@ -1136,12 +975,10 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
                   fillPattern=FillPattern.Solid),
                 Line(
                   points={{-78,0},{-68,18},{-54,52},{-44,64},{-30,60},{-26,46}},
-                  color={0,0,255},
-                  smooth=Smooth.None),
+                  color={0,0,255}),
                 Line(
                   points={{-26,46},{-26,32},{-20,10},{-8,2},{36,2},{80,2}},
-                  color={0,0,255},
-                  smooth=Smooth.None),
+                  color={0,0,255}),
                 Text(
                   extent={{-70,98},{-22,80}},
                   lineColor={0,0,255},
@@ -1171,7 +1008,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
 
       parameter Boolean useConductanceInput = false
         "=true, if external conductance value is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.HydraulicConductance Conductance=0
         "Hydraulic conductance if useConductanceInput=false"
@@ -1220,7 +1057,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
 
        parameter Boolean useV0Input = false
         "=true, if zero-pressure-volume input is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
        parameter Types.Volume ZeroPressureVolume = 1e-11
         "Maximal volume, that does not generate pressure if useV0Input=false"
@@ -1236,7 +1073,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
             origin={-80,80})));
       parameter Boolean useComplianceInput = false
         "=true, if compliance input is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
       parameter Types.HydraulicCompliance Compliance = 1
         "Compliance if useComplianceInput=false"
         annotation (Dialog(enable=not useComplianceInput));
@@ -1248,7 +1085,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
             origin={0,80})));
       parameter Boolean useExternalPressureInput = false
         "=true, if external pressure input is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
       parameter Types.Pressure ExternalPressure=0
         "External pressure. Set zero if internal pressure is relative to external. Valid only if useExternalPressureInput=false."
         annotation (Dialog(enable=not useExternalPressureInput));
@@ -1285,13 +1122,17 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
       end if;
       excessVolume = max( 0, volume - zpv);
       q_in.pressure =
-      smooth(0, if noEvent(volume>CollapsingPressureVolume)
-      then
-      excessVolume/c + ep
-     else
-      a*log(max(Modelica.Constants.eps,volume/CollapsingPressureVolume))) + ep;
+      smooth(0,
+        if noEvent(volume>CollapsingPressureVolume) then
+          (excessVolume/c + ep)
+        else
+          (a*log(max(Modelica.Constants.eps,volume/CollapsingPressureVolume)) + ep));
       //then: normal physiological state
       //else: abnormal collapsing state
+
+      //Collapsing state: the max function prevents the zero or negative input to logarithm, the logarithm brings more negative pressure for smaller volume
+      //However this collapsing is limited with numerical precission, which is reached relatively soon.
+
       state = volume; // der(volume) =  q_in.q;
       change = q_in.q;
      // assert(volume>=-Modelica.Constants.eps,"Collapsing of vessels are not supported!");
@@ -1301,8 +1142,14 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
               extent={{-318,-140},{160,-100}},
               textString="%name",
               lineColor={0,0,255})}),        Documentation(revisions="<html>
-<p><i>2009-2014</i></p>
-<p>Marek Matejak, Charles University, Prague, Czech Republic </p>
+<p><i>2009-2014 - </i>Marek Matejak, Charles University, Prague, Czech Republic</p>
+<ul>
+<li>initial implementation </li>
+</ul>
+<p>4.5.2015 - Tom&aacute;&scaron; Kulh&aacute;nek, Charles University, Prague, Czech Republic</p>
+<ul>
+<li>fix of external pressure</li>
+</ul>
 </html>", info="<html>
 <p>Pressure can be generated by an elastic tissue surrounding some accumulated volume. Typically there is a threshold volume, below which the relative pressure is equal to external pressure and the wall of the blood vessels is not stressed. But if the volume rises above this value, the pressure increases proportionally. The slope in this pressure-volume characteristic is called &ldquo;Compliance&rdquo;.</p>
 <ul>
@@ -1316,21 +1163,21 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
 
     model Pump "Prescribed volumetric flow"
       extends Hydraulic.Interfaces.OnePort;
-      extends Chemical.Interfaces.ConditionalSolutionFlow;
+      extends Interfaces.ConditionalSolutionFlow;
     equation
       volumeFlowRate = q;
      annotation (
         Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={
             Rectangle(
-              extent={{-100,-40},{100,60}},
-              lineColor={0,0,127},
+              extent={{-100,-50},{100,60}},
+              lineColor={0,0,0},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
             Polygon(
-              points={{-80,35},{80,10},{-80,-15},{-80,35}},
+              points={{-80,25},{80,0},{-80,-25},{-80,25}},
               lineColor={0,0,127},
-              fillColor={0,0,127},
+              fillColor={0,0,0},
               fillPattern=FillPattern.Solid),
             Text(
               extent={{-150,-90},{150,-50}},
@@ -1371,7 +1218,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
                              annotation (Placement(
             transformation(extent={{66,-74},{94,-46}})));
       parameter Boolean useHeightInput = false "=true, if height input is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
       parameter Types.Height H=0
         "Height of hydrostatic column if useHeightInput=false"
         annotation (Dialog(enable=not useFlowInput));
@@ -1384,7 +1231,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
       parameter Modelica.SIunits.Density ro=1060; //liquid density
       parameter Boolean useExternalG = false
         "=true, if external gravity acceleration is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
       parameter Types.Acceleration GravityAcceleration = 9.81
         "Gravity acceleration if useExternalG=false"
         annotation (Dialog(enable=not useExternalG));
@@ -1396,7 +1243,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
             origin={0,-100})));
       parameter Boolean usePumpEffect = false
         "=true, if musce pump effect is used"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
       Types.RealIO.FractionInput
                             pumpEffect(start=PumpEffect)=pe if       usePumpEffect      annotation (Placement(transformation(extent={{-20,-20},
                 {20,20}},
@@ -1506,7 +1353,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
                 -60},{-60,-20}})));
       parameter Boolean useExternalOutflowMin = false
         "=true, if minimal outflow is garanted"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
       parameter Types.VolumeFlowRate OutflowMin = 0
         "Minimal outflow if useExternalOutflowMin=false"
         annotation (Dialog(enable=not useExternalOutflowMin));
@@ -1560,11 +1407,11 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
       parameter Types.HydraulicConductance _Goff(final min=0, displayUnit="l/(mmHg.min)") = 1.2501026264094e-12
         "Backward state-off conductance (closed valve conductance)"
         annotation (Dialog(enable=not useLimitationInputs)); //= 1e-5 (l/min)/mmHg
-      parameter Types.Pressure Pknee(final min=0, start=0)
+      parameter Types.Pressure Pknee(final min=0) = 0
         "Forward threshold pressure";
       parameter Boolean useLimitationInputs = false
         "=true, if Gon and Goff are from inputs"
-        annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+        annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
       Types.RealIO.HydraulicConductanceInput Gon(start=_Gon)=gon if useLimitationInputs
         "open valve conductance = infinity for ideal case" annotation (Placement(
             transformation(
@@ -1595,7 +1442,6 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
               points={{-76,66},{-76,-82},{34,-10},{34,12},{-66,68},{-76,74},{
                   -76,66}},
               lineColor={0,0,127},
-              smooth=Smooth.None,
               fillColor={0,0,255},
               fillPattern=FillPattern.Solid), Rectangle(
               extent={{40,96},{68,-94}},
@@ -1615,13 +1461,104 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
 <p>Tomas Kulhanek, Charles University, Prague, Czech Republic </p>
 </html>"));
     end IdealValve;
+
+    model VesselSegment
+      "Vessel segment with resistance, inductance and compliance properties"
+       extends Modelica.Icons.UnderConstruction;
+
+      parameter Physiolibrary.Types.Height length "Length of the vessel";
+      parameter Physiolibrary.Types.Height radius
+        "Internal radius of the vessel";
+      parameter Physiolibrary.Types.Height wallWidth "Width of the vassel wall";
+      parameter Physiolibrary.Types.Pressure E
+        "Young's elactic modulus of the wall of the vessels";
+
+      parameter Real viscosity = 0.04 "Blood viscosity";
+      parameter Real density = 1050 "Blood density";
+
+      parameter Boolean isTerminal "Is it the segment before bifurcation?";
+
+      parameter Physiolibrary.Types.Fraction reflectionCoef = 0.8
+        "Reflection coefficient";
+      parameter Real freq "Angular frequency";
+      parameter Real angle
+        "The phase lead of pressure in relation to wall displacement";
+
+      parameter Real viscoelasticity = 15 "Wall viscoelacticity of the segment";
+      parameter Real sigma "Poisson ratio for arterial wall";
+
+      parameter Real pulseWaveVelocity "Pulse wave velocity";
+
+      function fact
+        input Integer n;
+        output Real y;
+      algorithm
+        y := 1;
+        for
+         k in 2:n loop
+          y := y*k;
+        end for;
+      end fact;
+
+      function Bessel
+         input Integer m;
+         input Complex x;
+         input Integer N = 20;
+         output Complex y;
+      algorithm
+         y := Complex(0,0);
+         for k in 0:N loop
+           y := y + ((-1)^k / (2^(2*k+m)*fact(k)*fact(m+k))) * x^(2*k+m);
+         end for;
+      end Bessel;
+
+      parameter Real alpha = radius*sqrt(freq*density/viscosity);
+      parameter Complex F10= 2*Bessel(1,alpha*Modelica.ComplexMath.j^(3/2))/(alpha*Bessel(0,alpha*Modelica.ComplexMath.j^(3/2))* Modelica.ComplexMath.j^(3/2))
+        "special expression";
+
+      parameter Complex impedance = ((density*pulseWaveVelocity/(sqrt(1-sigma^2)))*(1-F10)^(-1/2)) * Complex(cos(angle/2),sin(angle/2))
+        "Impedance of the vessel"; //Physiolibrary.Types.HydraulicResistance
+
+      Conductor conductor(Conductance = 1/((8*viscosity*length/(Modelica.Constants.pi*radius^4)) + (if
+                                                                                                    (isTerminal) then Modelica.ComplexMath.real(impedance)*(1+reflectionCoef)/(1-reflectionCoef) else 1)))
+        annotation (Placement(transformation(extent={{-68,-10},{-48,10}})));
+      Inertia inertia(I=(9*density*length/(4*Modelica.Constants.pi*radius^2)))
+        annotation (Placement(transformation(extent={{-14,-10},{6,10}})));
+      ElasticVessel elasticVessel(Compliance=(3*Modelica.Constants.pi*(radius^3)*length/(2*E*wallWidth)))
+        annotation (Placement(transformation(extent={{40,-10},{60,10}})));
+      Interfaces.HydraulicPort_a
+                           q_in "Volume inflow" annotation (Placement(
+            transformation(extent={{-114,-14},{-86,14}})));
+      Interfaces.HydraulicPort_b
+                           q_out "Volume outflow"
+                             annotation (Placement(
+            transformation(extent={{86,-14},{114,14}})));
+    equation
+      connect(q_in, conductor.q_in) annotation (Line(
+          points={{-100,0},{-86,0},{-86,2.22045e-016},{-68,2.22045e-016}},
+          thickness=1));
+      connect(conductor.q_out, inertia.q_in) annotation (Line(
+          points={{-48,0},{-14,0}},
+          thickness=1));
+      connect(inertia.q_out, elasticVessel.q_in) annotation (Line(
+          points={{6,0},{50,0}},
+          thickness=1));
+      connect(elasticVessel.q_in, q_out) annotation (Line(
+          points={{50,0},{100,0}},
+          thickness=1));
+      annotation ( Documentation(info="<html>
+<p>The segment becommest from the Avolio&apos;s model of arterial tree: </p>
+<p>http://staff.ustc.edu.cn/~yhe/avolio-arterial-system-model.pdf</p>
+</html>"));
+    end VesselSegment;
   end Components;
 
   package Sensors
     extends Modelica.Icons.SensorsPackage;
     model FlowMeasure "Volumetric flow between ports"
       extends Interfaces.OnePort;
-      extends Icons.FlowMeasure;
+      //extends Icons.FlowMeasure;
+      extends Modelica.Icons.RotationalSensor;
 
       Types.RealIO.VolumeFlowRateOutput volumeFlow "Actual volume flow rate"
                              annotation (Placement(transformation(extent={{-20,-20},
@@ -1643,22 +1580,14 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
                              graphics={
             Line(
               points={{-60,80},{80,80},{62,60}},
-              color={0,0,255},
-              smooth=Smooth.None),
+              color={0,0,255}),
             Line(
               points={{62,100},{80,80}},
-              color={0,0,255},
-              smooth=Smooth.None),
-            Rectangle(
-              extent={{-100,14},{-70,-14}},
-              pattern=LinePattern.None,
-              fillColor={190,0,0},
-              fillPattern=FillPattern.Solid),
-            Rectangle(
-              extent={{70,14},{100,-14}},
-              pattern=LinePattern.None,
-              fillColor={190,0,0},
-              fillPattern=FillPattern.Solid)}));
+              color={0,0,255}),
+            Text(
+              extent={{-25,-11},{34,-70}},
+              lineColor={0,0,0},
+              textString="V'")}));
     end FlowMeasure;
 
     model PressureMeasure "Hydraulic pressure at port"
@@ -1683,7 +1612,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
   package Sources
     extends Modelica.Icons.SourcesPackage;
     model UnlimitedPump "Prescribed flow at port"
-      extends Chemical.Interfaces.ConditionalSolutionFlow;
+      extends Interfaces.ConditionalSolutionFlow;
       Interfaces.HydraulicPort_b
                            q_out
                              annotation (Placement(
@@ -1695,13 +1624,13 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
                 100,100}}), graphics={
             Rectangle(
               extent={{-100,-50},{100,50}},
-              lineColor={0,0,127},
+              lineColor={0,0,0},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{-80,25},{80,0},{-80,-25},{-80,25}},
-              lineColor={0,0,127},
-              fillColor={0,0,127},
+              lineColor={0,0,0},
+              fillColor={0,0,0},
               fillPattern=FillPattern.Solid),
             Text(
               extent={{-150,-94},{150,-54}},
@@ -1733,7 +1662,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
       model UnlimitedVolume "Prescribed pressure at port"
         parameter Boolean usePressureInput = false
         "=true, if pressure input is used"
-          annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+          annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
         parameter Types.Pressure P=0
         "Hydraulic pressure if usePressureInput=false"
@@ -1801,7 +1730,7 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
       end UnlimitedVolume;
 
     model UnlimitedOutflowPump "Prescribed flow at port"
-      extends Chemical.Interfaces.ConditionalSolutionFlow;
+      extends Interfaces.ConditionalSolutionFlow;
       Interfaces.HydraulicPort_a q_in annotation (Placement(transformation(extent={{
                 -114,-14},{-86,14}}), iconTransformation(extent={{-114,-14},{-86,14}})));
     equation
@@ -1811,13 +1740,13 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
                             graphics={
             Rectangle(
               extent={{-100,-50},{100,50}},
-              lineColor={0,0,127},
+              lineColor={0,0,0},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid),
             Polygon(
               points={{-80,25},{80,0},{-80,-25},{-80,25}},
-              lineColor={0,0,127},
-              fillColor={0,0,127},
+              lineColor={0,0,0},
+              fillColor={0,0,0},
               fillPattern=FillPattern.Solid),
             Text(
               extent={{-150,-94},{150,-54}},
@@ -1890,7 +1819,6 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
               points={{-1.22465e-014,100},{100,1.22465e-014},{1.22465e-014,-100},
                   {-100,-1.22465e-014},{-1.22465e-014,100}},
               lineColor={0,0,0},
-              smooth=Smooth.None,
               fillPattern=FillPattern.Solid,
               fillColor={0,0,0},
               rotation=180)}),
@@ -1898,7 +1826,6 @@ package Hydraulic "Domain with Pressure and Volumetric Flow"
                 100,100}}), graphics={Polygon(
               points={{0,50},{50,0},{0,-50},{-50,0},{0,50}},
               lineColor={0,0,0},
-              smooth=Smooth.None,
               fillPattern=FillPattern.Solid,
               fillColor={0,0,0}),Text(extent={{-112,118},{88,58}},   lineColor = {0,0,0}, textString = "%name")}),
         Documentation(info="<html>
@@ -1923,14 +1850,12 @@ Connector with one flow signal of type Real.
               lineThickness=1), Polygon(
               points={{0,100},{100,0},{0,-100},{-100,0},{0,100}},
               lineColor={0,0,0},
-              smooth=Smooth.None,
               fillPattern=FillPattern.Solid,
               fillColor={200,200,200})}),
         Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
                 100,100}}), graphics={Polygon(
               points={{0,50},{50,0},{0,-50},{-50,0},{0,50}},
               lineColor={0,0,0},
-              smooth=Smooth.None,
               fillPattern=FillPattern.Solid,
               fillColor={200,200,200}),Text(extent = {{-160,110},{40,50}}, lineColor = {0,0,0}, textString = "%name")}));
     end HydraulicPort_b;
@@ -1948,6 +1873,33 @@ Connector with one flow signal of type Real.
       volumeFlowRate = q_in.q;
       dp = q_in.pressure - q_out.pressure;
     end OnePort;
+
+    partial model ConditionalSolutionFlow
+      "Input of solution volumetric flow vs. parametric solution volumetric flow"
+
+      parameter Boolean useSolutionFlowInput = false
+        "=true, if solution flow input is used instead of parameter SolutionFlow"
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
+
+      parameter Types.VolumeFlowRate SolutionFlow=0
+        "Volumetric flow of solution if useSolutionFlowInput=false"
+        annotation ( HideResult=not useSolutionFlowInput, Dialog(enable=not useSolutionFlowInput));
+
+      Types.RealIO.VolumeFlowRateInput solutionFlow(start=SolutionFlow)=q if useSolutionFlowInput annotation (Placement(transformation(
+            extent={{-20,-20},{20,20}},
+            rotation=270,
+            origin={0,40}), iconTransformation(
+            extent={{-20,-20},{20,20}},
+            rotation=270,
+            origin={0,70})));
+
+      Types.VolumeFlowRate q "Current solution flow";
+    equation
+      if not useSolutionFlowInput then
+        q = SolutionFlow;
+      end if;
+
+    end ConditionalSolutionFlow;
   end Interfaces;
   annotation (Documentation(revisions="<html>
 <p>Licensed by Marek Matejak under the Modelica License 2</p>

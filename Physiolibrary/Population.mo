@@ -35,48 +35,38 @@ package Population
     equation
       connect(preyMortality.y, predatorEffect.yBase) annotation (Line(
           points={{37,0},{42,0},{42,-12}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(predator.population, predatorEffect.u) annotation (Line(
           points={{8,42},{8,20},{56,20},{56,-14},{50,-14}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(predatorReproduction.y, preyEffekt.yBase) annotation (Line(
           points={{-47,84},{-42,84},{-42,72}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(prey.population, preyEffekt.u) annotation (Line(
           points={{4,-40},{4,-48},{-66,-48},{-66,70},{-50,70}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(reproduction2.port_b, predator.port) annotation (Line(
           points={{-32,52},{2,52}},
           color={0,127,127},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(predator.port, mortality2.port_a) annotation (Line(
           points={{2,52},{34.2,52}},
           color={0,127,127},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(reproduction1.port_b, prey.port) annotation (Line(
           points={{-36,-30},{-2,-30}},
           color={0,127,127},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(prey.port, mortality1.port_a) annotation (Line(
           points={{-2,-30},{32.2,-30}},
           color={0,127,127},
-          thickness=1,
-          smooth=Smooth.None));
+          thickness=1));
       connect(preyEffekt.y, reproduction2.changePerMember) annotation (Line(
           points={{-42,66},{-42,56}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       connect(predatorEffect.y, mortality1.changePerMember) annotation (Line(
           points={{42,-18},{42,-26}},
-          color={0,0,127},
-          smooth=Smooth.None));
+          color={0,0,127}));
       annotation (
         experiment(StopTime=20),
         __Dymola_experimentSetupOutput(equdistant=false));
@@ -98,7 +88,7 @@ package Population
          annotation ( HideResult=true, Dialog(group="Initialization"));
 
       parameter Types.Population NominalPopulation = 1
-        "Numerical scale. Default is 1, but for huge amount of cells it should be any number in the apropriate numerical order of typical amount."
+        "Numerical scale. Default is 1, but for huge amount of cells it should be any number in the appropriate numerical order of typical amount."
           annotation ( HideResult=true, Dialog(tab="Solver",group="Numerical support of very huge populations"));
       parameter Types.PopulationChange NominalPopulationChange = 1/(60*60*24)
         "Numerical scale. Default change is 1 individual per day, but for much faster or much slower chnages should be different."
@@ -216,7 +206,7 @@ package Population
                 {100,100}}), graphics={
             Rectangle(
               extent={{-100,-50},{100,50}},
-              lineColor={0,0,127},
+              lineColor={0,127,127},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid,
               rotation=360),
@@ -247,7 +237,7 @@ package Population
       annotation (Icon(graphics={
             Rectangle(
               extent={{-100,-52},{100,48}},
-              lineColor={0,0,127},
+              lineColor={0,127,127},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid,
               rotation=360),
@@ -279,7 +269,7 @@ package Population
                        graphics={
             Rectangle(
               extent={{-100,-52},{100,48}},
-              lineColor={0,0,127},
+              lineColor={0,127,127},
               fillColor={255,255,255},
               fillPattern=FillPattern.Solid,
               rotation=360),
@@ -331,7 +321,7 @@ package Population
               lineColor={0,127,127},
               fillColor={0,127,127},
               fillPattern=FillPattern.Solid),
-        Text(extent=  {{-160,110},{40,50}}, lineColor={0,127,127},
+        Text(extent = {{-160,110},{40,50}}, lineColor={0,127,127},
               textString="%name")}),
         Documentation(info="<html>
 <p>
@@ -382,7 +372,7 @@ Connector with one flow signal of type Real.
     end PopulationPort_b;
 
     partial model OnePort
-      "Partial change of population beween two ports without its accumulation"
+      "Partial change of population between two ports without its accumulation"
 
       PopulationPort_b port_b
         annotation (Placement(transformation(extent={{90,-10},{110,10}})));
@@ -397,7 +387,7 @@ Connector with one flow signal of type Real.
 
       parameter Boolean useChangeInput = false
         "=true, if real input connector is used instead of parameter PopulationChange"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.PopulationChange PopulationChange=0
         "Population change if useChangeInput=false"
@@ -424,7 +414,7 @@ Connector with one flow signal of type Real.
 
       parameter Boolean useChangePerMemberInput = false
         "=true, if real input connector is used instead of parameter LifeTime"
-      annotation(Evaluate=true, HideResult=true, choices(__Dymola_checkBox=true),Dialog(group="External inputs/outputs"));
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true),Dialog(group="External inputs/outputs"));
 
       parameter Types.Time LifeTime=1e-8
         "Mean life time for population (=1.44*halftime) if useChangePerMember=false"
